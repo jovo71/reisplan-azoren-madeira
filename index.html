@@ -6,1304 +6,1123 @@
 <title>Azoren & Madeira — Zomer 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ocean: #0a3d62;
-    --ocean-light: #1a6496;
-    --foam: #e8f4fd;
-    --lava: #c0392b;
-    --green: #1e8449;
-    --sand: #f5f0e8;
-    --text: #1a1a2e;
-    --muted: #6b7c93;
-    --white: #ffffff;
-    --radius: 16px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: #f2ede6;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-  }
+:root {
+  --ocean: #0a3d62; --ocean-l: #1a6496; --foam: #e8f4fd;
+  --sand: #f5f0e8; --text: #1a1a2e; --muted: #6b7c93;
+  --r: 14px; --bg: #f0ebe2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65}
 
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
-    background: var(--ocean);
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 30% 40%, rgba(26,100,150,0.6) 0%, transparent 55%),
-      radial-gradient(ellipse at 75% 20%, rgba(10,61,98,0.8) 0%, transparent 50%),
-      linear-gradient(180deg, #0a1628 0%, #0a3d62 40%, #1a6496 100%);
-  }
-  .hero-waves {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 120px;
-    overflow: hidden;
-  }
-  .hero-waves svg { width: 100%; height: 100%; }
-  .hero-dots {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 60px 24px 80px;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-    text-align: center;
-  }
-  .hero-eyebrow {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 20px;
-  }
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 10vw, 80px);
-    font-weight: 900;
-    line-height: 1.05;
-    color: #fff;
-    margin-bottom: 8px;
-    text-shadow: 0 4px 32px rgba(0,0,0,0.4);
-  }
-  .hero-title span { color: #7ec8e3; }
-  .hero-subtitle {
-    font-size: 16px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 40px;
-    font-weight: 300;
-  }
-  .hero-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 48px;
-  }
-  .pill {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: 40px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.85);
-    font-size: 13px;
-    font-weight: 500;
-  }
-  .pill-icon { font-size: 16px; }
-  .scroll-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    color: rgba(255,255,255,0.4);
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    animation: bounce 2s infinite;
-  }
-  .scroll-cta svg { width: 20px; height: 20px; }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;background:var(--ocean);overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(26,100,150,.6) 0%,transparent 55%),linear-gradient(180deg,#071220 0%,#0a3d62 50%,#1a6496 100%)}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:30px 30px}
+.hero-content{position:relative;z-index:2;padding:60px 24px 90px;max-width:700px;margin:0 auto;width:100%;text-align:center}
+.hero-eye{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px;font-weight:600}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(48px,12vw,90px);font-weight:900;color:#fff;line-height:1;margin-bottom:12px;text-shadow:0 4px 40px rgba(0,0,0,.4)}
+.hero-title span{color:#7ec8e3}
+.hero-sub{color:rgba(255,255,255,.55);font-size:16px;font-weight:300;margin-bottom:36px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:44px}
+.pill{padding:7px 16px;border-radius:30px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.82);font-size:13px;font-weight:500;backdrop-filter:blur(8px)}
+.scroll-hint{color:rgba(255,255,255,.3);font-size:12px;letter-spacing:1px;text-transform:uppercase;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.hero-wave{position:absolute;bottom:0;left:0;right:0}
+.hero-wave svg{width:100%;display:block}
 
-  /* ── NAV ── */
-  .sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(242,237,230,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    padding: 0 16px;
-  }
-  .nav-inner {
-    max-width: 860px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 10px 0;
-  }
-  .nav-inner::-webkit-scrollbar { display: none; }
-  .nav-btn {
-    flex-shrink: 0;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .nav-btn:hover, .nav-btn.active {
-    background: var(--ocean);
-    color: #fff;
-  }
-  .nav-sep {
-    width: 1px;
-    height: 18px;
-    background: rgba(0,0,0,0.12);
-    flex-shrink: 0;
-  }
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(240,235,226,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.07)}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;padding:8px 16px}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;padding:6px 14px;border-radius:20px;border:none;background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+.nav-btn:hover,.nav-btn.active{background:var(--ocean);color:#fff}
+.nav-sep{width:1px;height:16px;background:rgba(0,0,0,.1);flex-shrink:0;margin:0 4px}
 
-  /* ── LAYOUT ── */
-  .section { max-width: 860px; margin: 0 auto; padding: 48px 16px; }
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(0,0,0,0.1);
-  }
+/* LAYOUT */
+.section{max-width:900px;margin:0 auto;padding:48px 16px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.1)}
 
-  /* ── OVERVIEW GRID ── */
-  .overview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-  .stat-card {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-  .stat-icon { font-size: 28px; margin-bottom: 10px; }
-  .stat-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--ocean);
-    line-height: 1;
-  }
-  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:40px}
+.stat-card{background:#fff;border-radius:var(--r);padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.stat-icon{font-size:24px;margin-bottom:8px}
+.stat-val{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--ocean);line-height:1}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:3px}
 
-  /* ── HIGHLIGHTS TABLE ── */
-  .highlights-table {
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-  .ht-header {
-    display: grid;
-    grid-template-columns: 60px 90px 1fr 140px;
-    gap: 0;
-    background: var(--ocean);
-    color: rgba(255,255,255,0.7);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 12px 20px;
-  }
-  .ht-row {
-    display: grid;
-    grid-template-columns: 60px 90px 1fr 140px;
-    gap: 0;
-    padding: 14px 20px;
-    border-bottom: 1px solid #f0ebe3;
-    align-items: center;
-    transition: background 0.15s;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-  }
-  .ht-row:last-child { border-bottom: none; }
-  .ht-row:hover { background: var(--foam); }
-  .ht-day { font-weight: 700; color: var(--ocean); font-size: 14px; }
-  .ht-date { font-size: 12px; color: var(--muted); }
-  .ht-main { font-size: 14px; }
-  .ht-main strong { color: var(--text); }
-  .ht-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .badge-hike { background: #e8f5e9; color: #2e7d32; }
-  .badge-swim { background: #e3f2fd; color: #1565c0; }
-  .badge-city { background: #fce4ec; color: #880e4f; }
-  .badge-nature { background: #f3e5f5; color: #6a1b9a; }
-  .badge-thermal { background: #fff3e0; color: #e65100; }
-  .badge-drive { background: #e0f2f1; color: #00695c; }
-  .badge-flight { background: #f5f5f5; color: #424242; }
+/* HIGHLIGHTS TABLE */
+.hl-table{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:8px}
+.hl-thead{display:grid;grid-template-columns:50px 82px 1fr 130px;background:var(--ocean);color:rgba(255,255,255,.65);font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:10px 18px}
+.hl-row{display:grid;grid-template-columns:50px 82px 1fr 130px;padding:12px 18px;border-bottom:1px solid #f0ebe3;align-items:center;text-decoration:none;color:inherit;transition:background .15s;cursor:pointer}
+.hl-row:last-child{border-bottom:none}
+.hl-row:hover{background:var(--foam)}
+.hl-day{font-weight:700;color:var(--ocean);font-size:14px}
+.hl-date{font-size:12px;color:var(--muted)}
+.hl-main{font-size:13px;line-height:1.4}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.b-hike{background:#e8f5e9;color:#2e7d32}
+.b-swim{background:#e3f2fd;color:#1565c0}
+.b-city{background:#fce4ec;color:#880e4f}
+.b-nat{background:#f3e5f5;color:#6a1b9a}
+.b-therm{background:#fff3e0;color:#e65100}
+.b-drive{background:#e0f2f1;color:#00695c}
+.b-fly{background:#f5f5f5;color:#424242}
+@media(max-width:560px){
+  .hl-thead,.hl-row{grid-template-columns:40px 72px 1fr}
+  .hl-thead>:last-child,.hl-row>:last-child{display:none}
+}
 
-  /* ── DAY CARDS ── */
-  .days-grid { display: flex; flex-direction: column; gap: 0; }
-  .island-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 32px 0 16px;
-  }
-  .island-header-label {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--ocean);
-  }
-  .island-header-sub { font-size: 13px; color: var(--muted); }
+/* ISLAND SECTIONS */
+.island-section{max-width:900px;margin:0 auto;padding:0 16px 40px}
+.island-header{padding:32px 0 20px}
+.island-header h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ocean);margin-bottom:4px}
+.island-sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+.island-info-box{background:#fff;border-radius:12px;padding:14px 18px;font-size:13px;color:#444;border-left:3px solid var(--ocean);line-height:1.6}
+.island-info-box.warning{border-left-color:#f57f17;background:#fffde7;color:#5d4037}
+.island-info-box a{color:var(--ocean)}
 
-  .day-card {
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .day-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+/* DAY CARDS */
+.day-card{background:#fff;border-radius:var(--r);margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.07);overflow:hidden;transition:box-shadow .2s}
+.day-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.11)}
+.day-card-header{display:flex;align-items:center;gap:14px;padding:0;cursor:pointer;user-select:none}
+.day-photo-thumb{flex-shrink:0;width:110px;height:80px;overflow:hidden;background:#ddd}
+.day-photo-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.day-card:hover .day-photo-thumb img{transform:scale(1.06)}
+.day-header-info{flex:1;padding:14px 8px 14px 0;min-width:0}
+.day-meta-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.day-num{font-size:11px;font-weight:700;color:var(--ocean);background:#e8f4fd;padding:2px 8px;border-radius:10px}
+.day-date{font-size:11px;color:var(--muted)}
+.day-chip{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+.chip-azoren{background:#e8f5e9;color:#2e7d32}
+.chip-madeira{background:#e3f2fd;color:#1565c0}
+.chip-transfer{background:#fce4ec;color:#880e4f}
+.star-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#fff8e1;color:#f57f17}
+.day-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--text);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day-toggle{padding:14px 16px;color:#bbb;font-size:20px;transition:transform .25s;flex-shrink:0}
+.day-toggle.open{transform:rotate(90deg);color:var(--ocean)}
+@media(max-width:480px){
+  .day-photo-thumb{width:80px;height:70px}
+  .day-title{font-size:14px}
+}
 
-  .day-card-header {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    min-height: 180px;
-  }
-  @media (max-width: 560px) {
-    .day-card-header { grid-template-columns: 1fr; }
-    .day-photo { height: 180px; }
-    .ht-header, .ht-row { grid-template-columns: 50px 80px 1fr; }
-    .ht-header > :last-child, .ht-row > :last-child { display: none; }
-  }
-  .day-photo {
-    position: relative;
-    overflow: hidden;
-    background: var(--ocean);
-  }
-  .day-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s;
-  }
-  .day-card:hover .day-photo img { transform: scale(1.04); }
-  .day-photo-fallback {
-    width: 100%; height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 60px;
-  }
-  .day-photo-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, transparent 60%);
-  }
-  .day-number-badge {
-    position: absolute;
-    top: 12px; left: 12px;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(6px);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 700; color: #fff;
-    font-family: 'Playfair Display', serif;
-  }
-  .day-star-badge {
-    position: absolute;
-    bottom: 10px; left: 12px;
-    background: rgba(255,200,0,0.9);
-    color: #333;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 20px;
-  }
+/* DAY BODY — the detailed content */
+.day-body{padding:0 20px 20px;border-top:1px solid #f0ebe3}
+.day-body p{margin:10px 0;font-size:14px;color:#333;line-height:1.65}
+.day-body ul{margin:8px 0 10px 20px}
+.day-body ul li{font-size:14px;color:#333;margin:5px 0;line-height:1.55}
+.day-body a{color:var(--ocean);text-decoration:none;border-bottom:1px dotted var(--ocean)}
+.day-body a:hover{border-bottom-style:solid}
+.day-body strong{color:#1a1a2e}
+.day-body em{color:#555}
+.day-body code{background:#f0ebe2;padding:1px 5px;border-radius:4px;font-size:13px}
+.time-block{background:var(--foam);border-left:3px solid var(--ocean);padding:8px 14px;margin:14px 0 6px;border-radius:0 8px 8px 0;font-size:14px;font-weight:500}
+.alert{background:#fff3e0;border-left:3px solid #ff8f00;padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px;color:#bf360c;line-height:1.55}
+.alert strong{color:#bf360c}
+.alert a{color:#bf360c}
 
-  .day-info {
-    padding: 22px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .day-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-  }
-  .day-date-label {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 500;
-  }
-  .day-island-chip {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 10px;
-    border-radius: 20px;
-  }
-  .chip-azoren { background: #e8f5e9; color: #2e7d32; }
-  .chip-madeira { background: #e3f2fd; color: #1565c0; }
-  .chip-transfer { background: #fce4ec; color: #880e4f; }
+/* RESERVATIONS */
+.res-list{display:flex;flex-direction:column;gap:10px}
+.res-card{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--r);padding:14px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.res-icon{font-size:22px;flex-shrink:0}
+.res-info{flex:1}
+.res-title{font-weight:600;font-size:14px}
+.res-meta{font-size:12px;color:var(--muted);margin-top:2px}
+.res-btn{padding:7px 14px;border-radius:8px;background:var(--ocean);color:#fff;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .15s;flex-shrink:0}
+.res-btn:hover{background:var(--ocean-l)}
 
-  .day-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-  .day-highlights-list { list-style: none; flex: 1; }
-  .day-highlights-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 13px;
-    color: #444;
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-  .day-highlights-list li .hi { flex-shrink: 0; font-size: 15px; }
+/* PACKING */
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.pack-card{background:#fff;border-radius:var(--r);padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.pack-card h4{font-size:13px;font-weight:700;color:var(--ocean);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.pack-item{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid #f5f0e8;font-size:13px;cursor:pointer}
+.pack-item:last-child{border-bottom:none}
+.pack-item input{width:15px;height:15px;accent-color:var(--ocean);flex-shrink:0}
+.pack-item.checked{color:var(--muted);text-decoration:line-through}
 
-  .day-footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: #fafaf8;
-    border-top: 1px solid #f0ebe3;
-    font-size: 12px;
-    flex-wrap: wrap;
-  }
-  .day-tip {
-    flex: 1;
-    color: var(--muted);
-    line-height: 1.4;
-    min-width: 0;
-  }
-  .day-tip.alert { color: #bf360c; }
-  .day-links { display: flex; gap: 8px; flex-shrink: 0; }
-  .day-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 5px 10px;
-    border-radius: 8px;
-    background: var(--ocean);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.15s;
-  }
-  .day-link:hover { background: var(--ocean-light); }
-  .day-link.secondary {
-    background: transparent;
-    color: var(--ocean);
-    border: 1px solid var(--ocean);
-  }
-  .day-link.secondary:hover { background: var(--foam); }
+/* TRAILS TABLE */
+.trails-table{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:20px}
+.trails-thead{display:grid;grid-template-columns:50px 1fr 100px 100px 1fr;background:var(--ocean);color:rgba(255,255,255,.65);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 16px;gap:8px}
+.trails-row{display:grid;grid-template-columns:50px 1fr 100px 100px 1fr;padding:11px 16px;border-bottom:1px solid #f0ebe3;align-items:start;font-size:13px;gap:8px}
+.trails-row:last-child{border-bottom:none}
+.trails-row:nth-child(even){background:#faf8f4}
+.ok{color:#2e7d32;font-weight:600}
+.warn{color:#bf360c;font-weight:600}
+@media(max-width:680px){
+  .trails-thead,.trails-row{grid-template-columns:40px 1fr 80px}
+  .trails-thead>:nth-child(4),.trails-thead>:nth-child(5),
+  .trails-row>:nth-child(4),.trails-row>:nth-child(5){display:none}
+}
 
-  /* ── PACKING LIST ── */
-  .packing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-  }
-  .packing-card {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-  .packing-card h4 {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--ocean);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .packing-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 0;
-    border-bottom: 1px solid #f5f0e8;
-    font-size: 13px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .packing-item:last-child { border-bottom: none; }
-  .packing-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--ocean); flex-shrink: 0; }
-  .packing-item.checked { color: var(--muted); text-decoration: line-through; }
-
-  /* ── RESERVATIONS ── */
-  .reservations-list { display: flex; flex-direction: column; gap: 12px; }
-  .res-card {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-  .res-icon { font-size: 24px; flex-shrink: 0; }
-  .res-info { flex: 1; }
-  .res-title { font-weight: 600; font-size: 14px; }
-  .res-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .res-action {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 7px 14px;
-    border-radius: 8px;
-    background: var(--ocean);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.15s;
-    flex-shrink: 0;
-  }
-  .res-action:hover { background: var(--ocean-light); }
-  .res-done { background: #e8f5e9; color: #2e7d32; cursor: default; }
-
-  /* ── FOOTER ── */
-  .footer {
-    background: var(--ocean);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 32px 16px;
-    font-size: 12px;
-    line-height: 1.8;
-  }
-  .footer strong { color: rgba(255,255,255,0.85); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .fade-in { animation: fadeUp 0.6s ease forwards; opacity: 0; }
-  .fade-in:nth-child(1) { animation-delay: 0.1s; }
-  .fade-in:nth-child(2) { animation-delay: 0.2s; }
-  .fade-in:nth-child(3) { animation-delay: 0.3s; }
-  .fade-in:nth-child(4) { animation-delay: 0.4s; }
-  .fade-in:nth-child(5) { animation-delay: 0.5s; }
-
-  /* ── PRINT ── */
-  @media print {
-    .sticky-nav, .scroll-cta { display: none; }
-    .day-card { break-inside: avoid; }
-  }
+/* FOOTER */
+footer{background:var(--ocean);color:rgba(255,255,255,.45);text-align:center;padding:28px 16px;font-size:12px;line-height:1.9}
+footer strong{color:rgba(255,255,255,.8)}
+footer a{color:rgba(255,255,255,.45)}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div class="hero-dots"></div>
+  <div class="hero-bg"></div><div class="hero-dots"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Reisplan zomervakantie 2026</span>
-    <h1 class="hero-title">Azoren<br><span>&</span> Madeira</h1>
-    <p class="hero-subtitle">Zondag 2 augustus – zaterdag 16 augustus 2026</p>
+    <div class="hero-eye">Reisplan · Zomervakantie 2026</div>
+    <h1 class="hero-title">Azoren<br><span>&amp;</span> Madeira</h1>
+    <p class="hero-sub">Zondag 2 augustus – zaterdag 16 augustus 2026</p>
     <div class="hero-pills">
-      <div class="pill"><span class="pill-icon">🌋</span> São Miguel · 6 dagen</div>
-      <div class="pill"><span class="pill-icon">🏔️</span> Madeira · 9 dagen</div>
-      <div class="pill"><span class="pill-icon">🥾</span> 9 wandelingen</div>
-      <div class="pill"><span class="pill-icon">♨️</span> 4 thermale badvaren</div>
-      <div class="pill"><span class="pill-icon">📍</span> 2 huurauto's</div>
+      <span class="pill">🌋 São Miguel · 6 dagen</span>
+      <span class="pill">🏔️ Madeira · 9 dagen</span>
+      <span class="pill">🥾 9 wandelingen</span>
+      <span class="pill">♨️ 4 thermale badplaatsen</span>
+      <span class="pill">🚗 2 huurauto's</span>
     </div>
-    <div class="scroll-cta">
-      <span>Scroll om te ontdekken</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </div>
+    <div class="scroll-hint">↓ scroll om te ontdekken ↓</div>
   </div>
-  <div class="hero-waves">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" fill="#f2ede6"/>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px">
+      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,30 1440,40 L1440,80 L0,80Z" fill="#f0ebe2"/>
     </svg>
   </div>
 </section>
 
-<!-- STICKY NAV -->
-<nav class="sticky-nav">
+<!-- NAV -->
+<nav class="nav">
   <div class="nav-inner">
-    <button class="nav-btn active" onclick="scrollTo('overview')">📊 Overzicht</button>
+    <button class="nav-btn active" onclick="navTo('overview',this)">📊 Overzicht</button>
     <div class="nav-sep"></div>
-    <button class="nav-btn" onclick="scrollTo('azoren')">🌋 São Miguel</button>
-    <button class="nav-btn" onclick="scrollTo('madeira')">🏔️ Madeira</button>
+    <button class="nav-btn" onclick="navTo('azoren',this)">🌋 São Miguel</button>
+    <button class="nav-btn" onclick="navTo('madeira',this)">🏔️ Madeira</button>
     <div class="nav-sep"></div>
-    <button class="nav-btn" onclick="scrollTo('reservations')">🎫 Reserveringen</button>
-    <button class="nav-btn" onclick="scrollTo('packing')">🎒 Paklijst</button>
+    <button class="nav-btn" onclick="navTo('routes',this)">🥾 Routes</button>
+    <button class="nav-btn" onclick="navTo('reservations',this)">🎫 Reserveren</button>
+    <button class="nav-btn" onclick="navTo('packing',this)">🎒 Paklijst</button>
   </div>
 </nav>
 
 <!-- OVERVIEW -->
 <div id="overview" class="section">
   <div class="section-label">Op een rij</div>
-
-  <div class="overview-grid">
-    <div class="stat-card fade-in">
-      <div class="stat-icon">📅</div>
-      <div class="stat-value">16</div>
-      <div class="stat-label">Dagen totaal</div>
-    </div>
-    <div class="stat-card fade-in">
-      <div class="stat-icon">🌋</div>
-      <div class="stat-value">6</div>
-      <div class="stat-label">Dagen São Miguel, Azoren</div>
-    </div>
-    <div class="stat-card fade-in">
-      <div class="stat-icon">🏔️</div>
-      <div class="stat-value">9</div>
-      <div class="stat-label">Dagen Madeira</div>
-    </div>
-    <div class="stat-card fade-in">
-      <div class="stat-icon">🥾</div>
-      <div class="stat-value">9</div>
-      <div class="stat-label">Wandelingen gepland</div>
-    </div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-icon">📅</div><div class="stat-val">16</div><div class="stat-lbl">Dagen totaal</div></div>
+    <div class="stat-card"><div class="stat-icon">🌋</div><div class="stat-val">6</div><div class="stat-lbl">Dagen São Miguel</div></div>
+    <div class="stat-card"><div class="stat-icon">🏔️</div><div class="stat-val">9</div><div class="stat-lbl">Dagen Madeira</div></div>
+    <div class="stat-card"><div class="stat-icon">🥾</div><div class="stat-val">9</div><div class="stat-lbl">Wandelingen</div></div>
+    <div class="stat-card"><div class="stat-icon">♨️</div><div class="stat-val">4</div><div class="stat-lbl">Thermale badplaatsen</div></div>
   </div>
 
-  <div class="section-label" style="margin-top:40px">Hoogtepunten per dag</div>
-  <div class="highlights-table">
-    <div class="ht-header">
-      <div>Dag</div><div>Datum</div><div>Hoogtepunt</div><div>Type</div>
-    </div>
-    <a class="ht-row" href="#dag1"><div class="ht-day">1</div><div class="ht-date">Zo 2 aug</div><div class="ht-main"><strong>Ponta Delgada</strong> — stadspoorten, ananasplantage</div><div><span class="ht-badge badge-city">🏙️ Aankomst</span></div></a>
-    <a class="ht-row" href="#dag2"><div class="ht-day">2</div><div class="ht-date">Ma 3 aug</div><div class="ht-main"><strong>Sete Cidades</strong> — panorama over tweelingmeren</div><div><span class="ht-badge badge-hike">🥾 Wandeling</span></div></a>
-    <a class="ht-row" href="#dag3"><div class="ht-day">3</div><div class="ht-date">Di 4 aug</div><div class="ht-main"><strong>Lagoa do Fogo</strong> + Caldeira Velha thermaal bad</div><div><span class="ht-badge badge-thermal">♨️ Thermaal</span></div></a>
-    <a class="ht-row" href="#dag4"><div class="ht-day">4</div><div class="ht-date">Wo 5 aug</div><div class="ht-main"><strong>Furnas</strong> — cozido in vulkaangrond, Poça da Dona Beija</div><div><span class="ht-badge badge-thermal">♨️ Thermaal</span></div></a>
-    <a class="ht-row" href="#dag5"><div class="ht-day">5</div><div class="ht-date">Do 6 aug</div><div class="ht-main"><strong>Salto do Prego</strong> — waterval & verlaten dorp Sanguinho</div><div><span class="ht-badge badge-hike">🥾 Wandeling</span></div></a>
-    <a class="ht-row" href="#dag6"><div class="ht-day">6</div><div class="ht-date">Vr 7 aug</div><div class="ht-main"><strong>Gorreana</strong> theeplantage + PRC 29 caldeiras</div><div><span class="ht-badge badge-nature">🌿 Natuur</span></div></a>
-    <a class="ht-row" href="#dag7"><div class="ht-day">7</div><div class="ht-date">Za 8 aug</div><div class="ht-main"><strong>Gruta do Carvão</strong> → vlucht PDL–FNC</div><div><span class="ht-badge badge-flight">✈️ Vlucht</span></div></a>
-    <a class="ht-row" href="#dag8"><div class="ht-day">8</div><div class="ht-date">Vr 8 aug</div><div class="ht-main"><strong>Machico</strong> — oudste dorp Madeira, zandstrand</div><div><span class="ht-badge badge-city">🏙️ Aankomst</span></div></a>
-    <a class="ht-row" href="#dag9"><div class="ht-day">9</div><div class="ht-date">Za 9 aug</div><div class="ht-main"><strong>PR8 São Lourenço</strong> — #1 wandeling Madeira & Portugal</div><div><span class="ht-badge badge-hike">⭐ #1 Madeira</span></div></a>
-    <a class="ht-row" href="#dag10"><div class="ht-day">10</div><div class="ht-date">Zo 10 aug</div><div class="ht-main"><strong>Cabo Girão</strong> skywalk → aankomst Porto Moniz</div><div><span class="ht-badge badge-drive">🚗 Scenic drive</span></div></a>
-    <a class="ht-row" href="#dag11"><div class="ht-day">11</div><div class="ht-date">Ma 11 aug</div><div class="ht-main"><strong>PR6 25 Fontes</strong> + rotspoelen Porto Moniz</div><div><span class="ht-badge badge-swim">🏊 Zwemmen</span></div></a>
-    <a class="ht-row" href="#dag12"><div class="ht-day">12</div><div class="ht-date">Di 12 aug</div><div class="ht-main"><strong>Fanal</strong> mistige tilvossen + zwart strand Seixal</div><div><span class="ht-badge badge-nature">🌿 Natuur</span></div></a>
-    <a class="ht-row" href="#dag13"><div class="ht-day">13</div><div class="ht-date">Wo 13 aug</div><div class="ht-main"><strong>Pico do Arieiro</strong> boven de wolken → Funchal</div><div><span class="ht-badge badge-drive">⛰️ Bergen</span></div></a>
-    <a class="ht-row" href="#dag14"><div class="ht-day">14</div><div class="ht-date">Do 14 aug</div><div class="ht-main"><strong>PR1.2 Pico Ruivo</strong> — hoogste punt Madeira 1.862 m</div><div><span class="ht-badge badge-hike">⭐ #2 Madeira</span></div></a>
-    <a class="ht-row" href="#dag15"><div class="ht-day">15</div><div class="ht-date">Vr 15 aug</div><div class="ht-main"><strong>Funchal</strong> — markt, Zona Velha, kabelbaan Monte</div><div><span class="ht-badge badge-city">🏙️ Stad</span></div></a>
-    <a class="ht-row" href="#dag16"><div class="ht-day">16</div><div class="ht-date">Za 16 aug</div><div class="ht-main"><strong>Vertrek</strong> — laatste souvenirs, FNC</div><div><span class="ht-badge badge-flight">✈️ Vertrek</span></div></a>
+  <div class="section-label">Hoogtepunten per dag</div>
+  <div class="hl-table">
+    <div class="hl-thead"><div>Dag</div><div>Datum</div><div>Hoogtepunt</div><div>Type</div></div>
+    <a class="hl-row" href="#dag1" onclick="openDay(1)"><div class="hl-day">1</div><div class="hl-date">Zo 2 aug</div><div class="hl-main"><strong>Ponta Delgada</strong> — stadspoorten, ananasplantage, diner bij Terras</div><div><span class="badge b-city">🏙️ Aankomst</span></div></a>
+    <a class="hl-row" href="#dag2" onclick="openDay(2)"><div class="hl-day">2</div><div class="hl-date">Ma 3 aug</div><div class="hl-main"><strong>Sete Cidades</strong> — panorama tweelingmeren · Boca do Inferno</div><div><span class="badge b-hike">🥾 Wandeling</span></div></a>
+    <a class="hl-row" href="#dag3" onclick="openDay(3)"><div class="hl-day">3</div><div class="hl-date">Di 4 aug</div><div class="hl-main"><strong>Lagoa do Fogo</strong> — PRC 2 SMI + Caldeira Velha</div><div><span class="badge b-therm">♨️ Thermaal</span></div></a>
+    <a class="hl-row" href="#dag4" onclick="openDay(4)"><div class="hl-day">4</div><div class="hl-date">Wo 5 aug</div><div class="hl-main"><strong>Furnas</strong> — cozido in vulkaangrond · Poça da Dona Beija</div><div><span class="badge b-therm">♨️ Thermaal</span></div></a>
+    <a class="hl-row" href="#dag5" onclick="openDay(5)"><div class="hl-day">5</div><div class="hl-date">Do 6 aug</div><div class="hl-main"><strong>Salto do Prego</strong> — 4,8★ waterval & verlaten dorp Sanguinho</div><div><span class="badge b-hike">🥾 Wandeling</span></div></a>
+    <a class="hl-row" href="#dag6" onclick="openDay(6)"><div class="hl-day">6</div><div class="hl-date">Vr 7 aug</div><div class="hl-main"><strong>Gorreana</strong> theeplantage + PRC 29 caldeiras (of Lagoa do Congro)</div><div><span class="badge b-nat">🌿 Natuur</span></div></a>
+    <a class="hl-row" href="#dag7" onclick="openDay(7)"><div class="hl-day">7</div><div class="hl-date">Za 8 aug</div><div class="hl-main"><strong>Gruta do Carvão</strong> lavatunnel → vlucht PDL–FNC</div><div><span class="badge b-fly">✈️ Vlucht</span></div></a>
+    <a class="hl-row" href="#dag8" onclick="openDay(8)"><div class="hl-day">8</div><div class="hl-date">Vr 8 aug</div><div class="hl-main"><strong>Machico</strong> — oudste dorp Madeira, zandstrand, espetada</div><div><span class="badge b-city">🏙️ Aankomst</span></div></a>
+    <a class="hl-row" href="#dag9" onclick="openDay(9)"><div class="hl-day">9</div><div class="hl-date">Za 9 aug</div><div class="hl-main"><strong>PR8 São Lourenço</strong> ⭐ — #1 wandeling Madeira &amp; Portugal</div><div><span class="badge b-hike">🥾 #1 Madeira</span></div></a>
+    <a class="hl-row" href="#dag10" onclick="openDay(10)"><div class="hl-day">10</div><div class="hl-date">Zo 10 aug</div><div class="hl-main"><strong>Cabo Girão</strong> skywalk · Bruidsluier-waterval · Porto Moniz</div><div><span class="badge b-drive">🚗 Scenic drive</span></div></a>
+    <a class="hl-row" href="#dag11" onclick="openDay(11)"><div class="hl-day">11</div><div class="hl-date">Ma 11 aug</div><div class="hl-main"><strong>PR6 25 Fontes</strong> + zwemmen vulkanische rotspoelen Porto Moniz</div><div><span class="badge b-swim">🏊 Zwemmen</span></div></a>
+    <a class="hl-row" href="#dag12" onclick="openDay(12)"><div class="hl-day">12</div><div class="hl-date">Di 12 aug</div><div class="hl-main"><strong>Fanal</strong> mistige til-bossen · Seixal zwart zandstrand</div><div><span class="badge b-nat">🌿 Natuur</span></div></a>
+    <a class="hl-row" href="#dag13" onclick="openDay(13)"><div class="hl-day">13</div><div class="hl-date">Wo 13 aug</div><div class="hl-main"><strong>Pico do Arieiro</strong> 1.818m boven de wolken → Funchal</div><div><span class="badge b-drive">⛰️ Bergen</span></div></a>
+    <a class="hl-row" href="#dag14" onclick="openDay(14)"><div class="hl-day">14</div><div class="hl-date">Do 14 aug</div><div class="hl-main"><strong>PR1.2 Pico Ruivo</strong> ⭐ — hoogste punt Madeira 1.862m</div><div><span class="badge b-hike">🥾 #2 Madeira</span></div></a>
+    <a class="hl-row" href="#dag15" onclick="openDay(15)"><div class="hl-day">15</div><div class="hl-date">Vr 15 aug</div><div class="hl-main"><strong>Funchal</strong> — Lavradores markt · Zona Velha · kabelbaan Monte</div><div><span class="badge b-city">🏙️ Stad</span></div></a>
+    <a class="hl-row" href="#dag16" onclick="openDay(16)"><div class="hl-day">16</div><div class="hl-date">Za 16 aug</div><div class="hl-main"><strong>Vertrek</strong> — laatste souvenirs, FNC</div><div><span class="badge b-fly">✈️ Vertrek</span></div></a>
   </div>
 </div>
 
-<!-- AZOREN DAYS -->
-<div id="azoren" class="section" style="padding-top:0">
+<!-- DAY CARDS (São Miguel + Madeira) -->
+
+<div class="island-section" id="azoren">
   <div class="island-header">
-    <div>
-      <div class="island-header-label">🌋 São Miguel, Azoren</div>
-      <div class="island-header-sub">Zondag 2 – zaterdag 8 augustus · Uitvalsbasis: Ponta Delgada · Huurauto</div>
+    <h2>🌋 São Miguel, Azoren</h2>
+    <div class="island-sub">Zo 2 – za 8 augustus · Uitvalsbasis: Ponta Delgada · Huurauto</div>
+    <div class="island-info-box">
+      <p>Het weer op de Azoren verandert snel — wolken hangen vaak rond de kraterranden. Check vóór elke uitstap de live webcams op <a href="https://www.spotazores.com/" target="_blank">Spot Azores</a>. Bij mist: wissel de dag met een andere.</p>
     </div>
   </div>
 
-  <div id="dag1" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag1.jpg" alt="Ponta Delgada" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🏙️</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">1</div>
+  <div class="day-card" id="dag1">
+    <div class="day-card-header" onclick="toggleDay(1)" style="border-left: 4px solid #1a4a7a">
+      <div class="day-photo-thumb">
+        <img src="photos/dag1.jpg" alt="Dag 1" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Zo 2 augustus</span>
-            <span class="day-island-chip chip-azoren">São Miguel</span>
-          </div>
-          <div class="day-title">Aankomst & Ponta Delgada</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🏛️</span> Portas da Cidade — iconische zwart-witte stadspoorten van basalt</li>
-            <li><span class="hi">⛪</span> Igreja Matriz de São Sebastião — Manuelijns portaal</li>
-            <li><span class="hi">🍍</span> Ananasplantage A. Arruda — gratis toegang & proeverij tot 20:00</li>
-            <li><span class="hi">🍽️</span> Diner bij Terras (R. Hintze Ribeiro 29) — verse vis & huisgemaakte pasta</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 1</span>
+          <span class="day-date">Zo 2 aug</span>
+          <span class="day-chip chip-azoren">São Miguel</span>
+          
         </div>
+        <div class="day-title">🏛️ Aankomst & Ponta Delgada</div>
       </div>
+      <div class="day-toggle" id="toggle1">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Rustige aankomstdag. Huurauto ophalen, inchecken, stad te voet verkennen.</div>
-      <div class="day-links">
-        <a class="day-link secondary" href="https://www.spotazores.com/" target="_blank">🌤️ Webcam</a>
-      </div>
+    <div class="day-body" id="body1" style="display:none">
+      <p>Je zult moe zijn van de vlucht, dus dit is een rustige aankomstdag: huurauto ophalen, inchecken, en Ponta Delgada te voet verkennen.</p>
+<p><strong>Wandeling door de oude stad</strong></p>
+<ul>
+<li><strong>(1)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Portas%20da%20Cidade&query_place_id=ChIJCfeCgTbVXAsRKNpwMcnCsOw" target="_blank">Portas da Cidade (stadspoorten)</a> — de iconische zwart-witte poorten van vulkanisch basalt</li>
+<li><strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Igreja%20Matriz%20de%20S%C3%A3o%20Sebasti%C3%A3o&query_place_id=ChIJBRUCG80qQwsRzC6WOS9j4oc" target="_blank">Igreja Matriz de São Sebastião</a> — hoofdkerk met Manuelijns portaal en rijk versierd houten plafond</li>
+<li><strong>(3)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Forte%20de%20S%C3%A3o%20Br%C3%A1s&query_place_id=ChIJgTbEELcqQwsRjAB3-dJ-BF4" target="_blank">Forte de São Brás</a> — klein militair museum (€3, dagelijks geopend 10:00–18:00). Goede uitwijkmogelijkheid bij regen.</li>
+</ul>
+<p><strong>Optie laat in de middag (15 min rijden):</strong></p>
+<ul>
+<li><strong>(4)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Planta%C3%A7%C3%A3o%20Ananases%20A%20Arruda&query_place_id=ChIJBRUCG80qQwsRyw_FttnjCJ8" target="_blank">Plantação Ananases A. Arruda</a> — Azoriaanse ananasplantage. Gratis toegang, gratis proeverij, open tot 20:00. Makkelijk en typisch Azoriaans.</li>
+</ul>
+<p><strong>Koffie / diner:</strong></p>
+<ul>
+<li><strong>(5)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Louvre%20Michaelense&query_place_id=ChIJOW8P_rUqQwsRCO68QGnYG5M" target="_blank">Louvre Michaelense</a> — historisch café-bistro, geopend tot 22:30. Prima keuze voor de aankomstavond.</li>
+<li><strong>Of: <a href="https://www.google.com/maps/search/?api=1&query=Terras%20Restaurante%20Brunch%20Ponta%20Delgada&query_place_id=ChIJqWpCvBMrQwsRzOjUrZnLTMo" target="_blank">Terras</a></strong> (R. Hintze Ribeiro 29, open tot ~22:00, normaal woensdag gesloten — <strong>bevestig dit vooraf</strong> via hun <a href="https://www.instagram.com/terras.azores/" target="_blank">Instagram</a> of e-mail terras.azores@gmail.com) — aanbevolen door local Rui: verse vis, huisgemaakte ravioli, verrassend goede prijs-kwaliteit. Dag 1 is zondag, dus geen probleem. Reserveer vooraf.</li>
+</ul>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag2" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag2.jpg" alt="Sete Cidades" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🌊</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">2</div>
+  <div class="day-card" id="dag2">
+    <div class="day-card-header" onclick="toggleDay(2)" style="border-left: 4px solid #2e7d32">
+      <div class="day-photo-thumb">
+        <img src="photos/dag2.jpg" alt="Dag 2" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Ma 3 augustus</span>
-            <span class="day-island-chip chip-azoren">São Miguel</span>
-          </div>
-          <div class="day-title">Sete Cidades & het westen</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🥾</span> Boca do Inferno lus — 3,5 km · ~55 min · panorama over tweelingmeren</li>
-            <li><span class="hi">🍽️</span> Lunch bij Lagoa Azul Restaurant — buffet ~€18</li>
-            <li><span class="hi">👑</span> Miradouro da Vista do Rei — het Koningsuitzicht met verlaten hotel</li>
-            <li><span class="hi">🌅</span> Zonsondergang bij Farol da Ferraria — spectaculair kustpad</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 2</span>
+          <span class="day-date">Ma 3 aug</span>
+          <span class="day-chip chip-azoren">São Miguel</span>
+          
         </div>
+        <div class="day-title">🌊 Sete Cidades & het westen</div>
       </div>
+      <div class="day-toggle" id="toggle2">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Bewaar voor een heldere dag. Check webcam vóór vertrek naar de kraterrand.</div>
-      <div class="day-links">
-        <a class="day-link" href="https://www.komoot.com/smarttour/1263297" target="_blank">🥾 Komoot route</a>
-        <a class="day-link secondary" href="https://www.alltrails.com/trail/portugal/azores/miradouro-da-boca-do-inferno-via-trilho-canario-sete-cidades" target="_blank">AllTrails</a>
-      </div>
+    <div class="day-body" id="body2" style="display:none">
+      <p>De klassieke Azoren-ansichtkaartdag. De hele westelijke route is ongeveer 1 uur rijden in totaal. Bewaar dit voor een redelijk heldere dag.</p>
+<div class="time-block"><strong>10:00 — Vertrek uit Ponta Delgada, ~35 min rijden naar Lagoa do Canário</strong></div>
+<ul>
+<li><strong>Optionele tussenstop (~10 min): <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20do%20Pico%20do%20Carv%C3%A3o&query_place_id=ChIJpYyI08otQwsRm-S7fOdkiCc" target="_blank">Miradouro do Pico do Carvão</a></strong> — centraal op de bergkam, een van de weinige plekken op São Miguel waar je gelijktijdig de noord- én zuidkust ziet. Gratis, geen wandeling nodig, gewoon uitstappen en kijken.</li>
+</ul>
+<div class="time-block"><strong>Wandeling: Lagoa do Canário → uitkijkpunt Boca do Inferno (lus)</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/1263297" target="_blank">Lake Canário – Boca do Inferno viewpoint loop from Lagoa do Canário</a></strong></li>
+<li>AllTrails: <strong><a href="https://www.alltrails.com/trail/portugal/azores/miradouro-da-boca-do-inferno-via-trilho-canario-sete-cidades" target="_blank">Boca do Inferno Viewpoint via Canário – Sete Cidades Trail</a></strong> · 4,6★ · 913 reviews</li>
+<li>~2,6–3,5 km · ~55 min–1u30 · Makkelijk-Matig · 40–140 m hoogteverschil</li>
+<li>Levert het iconische uitzicht op de tweelingmeren met minimale inspanning. De volledige PR4 (15 km) is te lang voor onze opzet — deze korte lus bereikt hetzelfde panoramische uitzichtpunt.</li>
+<li>Start: <strong>(1)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Parque%20estacionamento%20Lagoa%20do%20Can%C3%A1rio&query_place_id=ChIJa9oxwDMvQwsRfVqICofNFoU" target="_blank">Parkeerplaats Lagoa do Canário</a></li>
+<li>Hoogtepunt: <strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Grota%20do%20Inferno&query_place_id=ChIJD22XHQAvQwsRWr4_1LHWVkY" target="_blank">Miradouro da Grota do Inferno</a></li>
+</ul>
+<div class="time-block"><strong>12:30 — Naar beneden rijden naar (3) <a href="https://www.google.com/maps/search/?api=1&query=Sete%20Cidades&query_place_id=ChIJl_D1OtAxQwsRtlCh-wtpeoQ" target="_blank">Sete Cidades dorp</a></strong> (~15 min)</div>
+<ul>
+<li>Lunch bij <strong>(3)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Lagoa%20Azul%20Restaurant&query_place_id=ChIJYWvC7s8xQwsR6pD_dboKGsA" target="_blank">Lagoa Azul Restaurant</a> in het dorp — buffet met traditionele Azoriaanse gerechten (~€18)</li>
+<li>Wandel langs de oever van het meer in het dorp</li>
+<li>Rij omhoog naar <strong>(4)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Vista%20do%20Rei&query_place_id=ChIJc_4zOTAuQwsRxpkemDY1UhU" target="_blank">Miradouro da Vista do Rei</a> — het Konings­uitzicht, met het beroemde verlaten hotel</li>
+</ul>
+<div class="time-block"><strong>15:30 — Naar de kust rijden</strong> (~20 min)</div>
+<ul>
+<li><strong>(5)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Ponta%20do%20Escalvado&query_place_id=ChIJWRghynowQwsRzHwGSRmxGWk" target="_blank">Miradouro da Ponta do Escalvado</a> — weids kustuitzicht op de vier Mosteiros-eilandjes</li>
+<li><strong>(6)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Mosteiros%20Beach&query_place_id=ChIJwdsil_MwQwsRqx9TWcttC34" target="_blank">Strand van Mosteiros</a> — wandel door het dorp en over het dramatische zwarte zandstrand (zwemmen niet nodig — alleen om te zien)</li>
+</ul>
+<div class="time-block"><strong>17:00 — Zonsondergang bij (7) <a href="https://www.google.com/maps/search/?api=1&query=Farol%20da%20Ferraria&query_place_id=ChIJz8uG8y0xQwsRz1-VZGRlXC0" target="_blank">Farol da Ferraria (vuurtoren van Ferraria)</a></strong></div>
+<ul>
+<li>Wandel over het kustpad en bekijk de zonsondergang vanaf de vuurtoren. Spectaculair.</li>
+<li><strong>Optie thermaal bad — (7) <a href="https://www.google.com/maps/search/?api=1&query=Termas%20da%20Ferraria&query_place_id=ChIJkUr873UwQwsRQIT_oMBKMO0" target="_blank">Termas da Ferraria</a></strong>: een beroemde plek waar een warmwaterbron uitkomt in de oceaan in een natuurlijke rotspoel — totaal uniek. ⚠️ <strong>Belangrijke update:</strong> sinds 2025 is door een rotsverschuiving de toegangsweg afgesloten, dus het natuurlijke oceaanbad is momenteel gratis maar je moet ~1 km steil naar beneden lopen (en weer terug omhoog) vanaf de parkeerplaats bovenop de klif. Het betaalde spa-bad erboven is mogelijk ook getroffen — controleer dit dichter bij de datum. Als het bad open is en je wilt de wandeling maken, is het een onvergetelijke ervaring; anders is het uitzicht vanaf de vuurtoren alleen al de stop waard.</li>
+<li>Optionele extra wandeling als je nog energie hebt: <strong><a href="https://www.komoot.com/smarttour/e1388792163" target="_blank">Pico das Camarinhas e Ponta da Ferraria — PRC 43 SMI</a></strong> · 4,7 km · ~1u30 · Makkelijk · start rond <a href="https://www.google.com/maps/search/?api=1&query=Pico%20das%20Camarinhas&query_place_id=ChIJY0kx93QwQwsR7fqVaOWaNyY" target="_blank">Pico das Camarinhas</a></li>
+</ul>
+<p><strong>Terugrijden naar Ponta Delgada:</strong> ~30 min</p>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag3" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag3.jpg" alt="Lagoa do Fogo" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🌋</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">3</div>
+  <div class="day-card" id="dag3">
+    <div class="day-card-header" onclick="toggleDay(3)" style="border-left: 4px solid #bf360c">
+      <div class="day-photo-thumb">
+        <img src="photos/dag3.jpg" alt="Dag 3" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Di 4 augustus</span>
-            <span class="day-island-chip chip-azoren">São Miguel</span>
-          </div>
-          <div class="day-title">Lagoa do Fogo & thermale bossen</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🥾</span> PRC 2 SMI — 12,4 km · ~3u45 · populairste wandeling Azoren</li>
-            <li><span class="hi">♨️</span> Caldeira Velha — thermale poel met dampende waterval in jungle · €10</li>
-            <li><span class="hi">🏖️</span> Optioneel: Ilhéu de Vila Franca do Campo snorkellagune</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 3</span>
+          <span class="day-date">Di 4 aug</span>
+          <span class="day-chip chip-azoren">São Miguel</span>
+          
         </div>
+        <div class="day-title">🌋 Lagoa do Fogo & het centrale noorden</div>
       </div>
+      <div class="day-toggle" id="toggle3">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip alert">⚠️ Gedeeltelijke sluiting seit mei 2026: pad langs het meer gesloten. Afdaling nog mogelijk. Check visitazores.com.</div>
-      <div class="day-links">
-        <a class="day-link" href="https://parquesnaturais.azores.gov.pt/bilheteira/caldeiravelha/?lang=en" target="_blank">🎫 Boek Caldeira Velha</a>
-        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1388812656" target="_blank">🥾 Route</a>
-      </div>
+    <div class="day-body" id="body3" style="display:none">
+      <p>Het andere grote kratermeer, met een wildere uitstraling dan Sete Cidades. De klassieke volledige PRC2-wandeling (12 km / 3u45) zit aan de bovengrens van je tijdsbudget maar is goed te doen. Als je een kortere optie wilt, heb ik een alternatief gegeven.</p>
+<div class="time-block"><strong>10:00 — Vertrek hotel, ~30 min rijden naar het startpunt bij Praia</strong></div>
+<p><strong>Wandeloptie A (aanbevolen, volledige beloning): Praia → Lagoa do Fogo (PRC 2 SMI, heen en terug)</strong></p>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1388812656" target="_blank">Lagoa do Fogo — trail on the Island of São Miguel (PRC 2 SMI)</a></strong></li>
+<li>12,4 km · ~3u45 · Matig · 380 m hoogteverschil</li>
+<li>Dit is de populairste wandeling van de Azoren op Komoot. Klimt langs oude waterkrachtruïnes en een <em>levada</em> (waterloop) voordat het uitzicht op het meer zich opent.</li>
+<li>Start: <strong>(1)</strong> <a href="https://www.google.com/maps/search/?api=1&query=PRC02%20SMI%20Lagoa%20do%20Fogo&query_place_id=ChIJrU9wfoYnXQsRM8reNEX4LfM" target="_blank">Beginpunt PRC02 SMI Lagoa do Fogo</a></li>
+<li>⚠️ <strong>Gedeeltelijke sluiting seit mei 2026 (AllTrails):</strong> het pad langs het meer zelf is gesloten wegens overstroming; de afdaling <em>naar</em> het meer is nog steeds toegankelijk en levert het uitzicht op. Controleer de actuele status op <a href="https://trails.visitazores.com/en/trails-azores/sao-miguel/lagoa-do-fogo" target="_blank">trails.visitazores.com</a> vóór vertrek. Als de wandeling volledig gesloten is, schakel dan over op <strong>Wandeloptie B</strong> (uitzichtpunt op de kraterrand, geen wandelvergunning nodig).</li>
+<li>Let op: dit is de <em>enige</em> legale toegang tot het meer zelf. De noordelijke kraterrand is gesloten vanwege broedende vogels.</li>
+<li>Neem water en snacks mee — er zijn geen voorzieningen onderweg.</li>
+</ul>
+<p><strong>Wandeloptie B (korter, alleen uitzichtpunt)</strong></p>
+<ul>
+<li>Rij gewoon omhoog naar het uitzichtpunt op de zuidelijke kraterrand en wandel een stukje langs de rand als het zicht goed is. (Zoek "Miradouro da Lagoa do Fogo" in Google Maps wanneer je daar bent — er zijn meerdere parkeerplekken langs de rand.)</li>
+</ul>
+<div class="time-block"><strong>Lunch:</strong> Neem er een mee (geen voorzieningen op de wandeling), of eet later in <strong>Ribeira Grande</strong> — <strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Restaurante%20O%20Silva&query_place_id=ChIJuaqqqibXXAsRsXC8fTYJQ1Y" target="_blank">Restaurante O Silva</a> voor Azoriaanse vis</div>
+<p><strong>Middag (na de wandeling):</strong></p>
+<ul>
+<li><strong>(3)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Caldeira%20Velha&query_place_id=ChIJIY7knL7XXAsRPSvliPHnf8o" target="_blank">Caldeira Velha</a> — geothermische thermale baden en een dampende waterval in een Jurassic-Park-achtige jungle. <strong>Neem zwemkleding en een donkergekleurde handdoek mee</strong> (het ijzerrijke water kan vlekken geven). Vier baden van verschillende temperaturen, plus een koeler bad onder een kleine waterval. €10 entree. <strong><a href="https://parquesnaturais.azores.gov.pt/bilheteira/caldeiravelha/?lang=en" target="_blank">Reserveer online vooraf</a></strong> — er is een streng systeem van 100 personen en tijdsloten van 1,5 uur, vaak uitverkocht. ⚠️ Let op: online kun je niet op dezelfde dag boeken — koop dan ter plaatse (alleen als er plek is). Tip: boek het eerste tijdslot van de dag op een doordeweekse dag voor de minste drukte, maar een tijdslot laat in de middag werkt hier perfect na de ochtendwandeling.</li>
+<li>Rijd door de oude stad van <strong>(4)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Ribeira%20Grande&query_place_id=ChIJjTB99cvZXAsRoD-Q5L3rAAQ" target="_blank">Ribeira Grande</a> — fraaie rivierbruggen en kerken bekleed met azulejo-tegels</li>
+</ul>
+<p><strong>Optionele extra stop: (5) <a href="https://www.google.com/maps/search/?api=1&query=Ilh%C3%A9u%20de%20Vila%20Franca%20do%20Campo&query_place_id=ChIJWSLTMw0mXQsRsfDnrLyBLAI" target="_blank">Ilhéu de Vila Franca do Campo</a></strong> (~20 min zuidelijker, richting Ponta Delgada)</p>
+<ul>
+<li>Vulkanisch eilandje met een natuurlijke zwemlagune — door local Rui "the holy grail of swimming spots on São Miguel" genoemd. Kristalhelder water, snorkelen, gecontroleerde toegang (max 400/dag). Seizoensgebonden (juni–oktober), korte veerbootrit (~5 min) vanuit Vila Franca do Campo.</li>
+<li>⚠️ <strong>Boek tickets de avond van tevoren online</strong> — op drukke zomerdagen al vroeg uitverkocht. Alleen toevoegen als je energie over hebt na Caldeira Velha.</li>
+</ul>
+<p><strong>Terugrijden naar Ponta Delgada:</strong> ~25 min</p>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag4" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag4.jpg" alt="Caldeiras Furnas" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">💨</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">4</div>
+  <div class="day-card" id="dag4">
+    <div class="day-card-header" onclick="toggleDay(4)" style="border-left: 4px solid #4a148c">
+      <div class="day-photo-thumb">
+        <img src="photos/dag4.jpg" alt="Dag 4" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Wo 5 augustus</span>
-            <span class="day-island-chip chip-azoren">São Miguel</span>
-          </div>
-          <div class="day-title">Furnas & het geothermische oosten</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🫕</span> Cozido das Furnas — stoofpot 6 uur gekookt in vulkaangrond</li>
-            <li><span class="hi">🌿</span> Parque Terra Nostra of Parque da Grená — botanische tuin · €10</li>
-            <li><span class="hi">💨</span> Caldeiras das Furnas — borrelende fumarolen midden in het dorp</li>
-            <li><span class="hi">🌙</span> Poça da Dona Beija — 5 bossen van 39°C tot 23:00 · €10</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 4</span>
+          <span class="day-date">Wo 5 aug</span>
+          <span class="day-chip chip-azoren">São Miguel</span>
+          
         </div>
+        <div class="day-title">♨️ Furnas & het geothermische oosten</div>
       </div>
+      <div class="day-toggle" id="toggle4">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Reserveer Tony's Restaurant (cozido) én Poça da Dona Beija vooraf. Donkere handdoek meenemen.</div>
-      <div class="day-links">
-        <a class="day-link" href="https://www.komoot.com/smarttour/e1388704462" target="_blank">🥾 Furnas lus</a>
-      </div>
+    <div class="day-body" id="body4" style="display:none">
+      <p>De meest "buitenaardse" dag — borrelende modder, dampende aarde, traditionele cozido-stoofpot. ~1 uur rijden in elke richting.</p>
+<div class="time-block"><strong>10:00 — Vertrek hotel, ~1u rijden naar de Lagoa das Furnas</strong></div>
+<div class="time-block"><strong>11:00 — Lagoa das Furnas + de kookcaldeiras</strong></div>
+<ul>
+<li><strong>(1)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Caldeiras%20da%20Lagoa%20das%20Furnas&query_place_id=ChIJTSlEKBshXQsR-VHIKGWmPUE" target="_blank">Antigo Pomar das Caldeiras da Lagoa das Furnas</a> — de kookgaten waar koks de cozido-potten in de geothermische bodem laten zakken. <strong>Kom rond 11:30 aan</strong> om het uitgraven voor de lunch te zien (de lokale bevolking haalt de stoofpotten rond 12:00–12:30 omhoog). €3 per persoon entree.</li>
+</ul>
+<div class="time-block"><strong>Wandeling: Lus rond Lagoa das Furnas (PRC 6 SMI)</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1388704462" target="_blank">Lagoa das Furnas — circular route on the Island of São Miguel (PRC 6 SMI)</a></strong></li>
+<li>9,6 km · ~2u40 · Matig · grotendeels vlak langs het meer</li>
+<li>Een vlakke lus rond het meer, langs de kookcaldeiras, de kapel en de botanische tuin van José do Canto.</li>
+<li>Kortere variant: alleen het paadje door het José do Canto-park (~5 km, 1u30, €4 entree) dat naar een kleine waterval leidt.</li>
+</ul>
+<div class="time-block"><strong>13:30 — Lunch: Cozido das Furnas</strong></div>
+<ul>
+<li>De stoofpot gekookt in vulkanische aarde. <strong>Reserveer vooraf — sterk aanbevolen.</strong></li>
+<li><strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Restaurante%20Tony%27s&query_place_id=ChIJq6qqqkcgXQsRYWzGz3kalMQ" target="_blank">Restaurante Tony's</a> in het dorp Furnas — de klassieke plek</li>
+</ul>
+<div class="time-block"><strong>15:30 — Wandeling door het dorp Furnas</strong></div>
+<ul>
+<li><strong>(3)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Parque%20Terra%20Nostra&query_place_id=ChIJDTWRhkUgXQsRH2Ivii7cgVY" target="_blank">Parque Terra Nostra</a> — 18e-eeuwse botanische tuin met reuzenvarens, eeuwenoude bomen, camelia's en lommerrijke wandelpaden. €10 entree voor de tuinen. Open tot 16:30, dus ga er meteen na de lunch heen. Reken op ~1 uur om het terrein te bekijken. (Het ijzerrijke gele thermale bad is hier de bekende trekpleister; we slaan het over ten gunste van Poça da Dona Beija later, maar je loopt er door de tuinen wel langs.)</li>
+<li><strong>Of als alternatief: <a href="https://www.google.com/maps/search/?api=1&query=Parque%20da%20Gren%C3%A1&query_place_id=ChIJ_Y7Q2KohXQsRkvcdn8RSTV8" target="_blank">Parque da Grená</a></strong> — vlak naast Terra Nostra, open 9:00–19:00, ~€10 entree. Dichter en wilder bos, minder bekend en rustiger. Hoogtepunt is een waterval bereikbaar via 600 treden, plus een jacuzzi in het bos. Local Rui: <em>"Paid entry, zero regrets."</em> (4.5/5). Reken op 1,5–2 uur.</li>
+<li><strong>(4)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Caldeiras%20das%20Furnas&query_place_id=ChIJjxlMLTMhXQsR0pWKcES95rw" target="_blank">Caldeiras das Furnas</a> — fumarolen midden in het dorp Furnas, plus de beroemde mineraalwaterkranen waar je verschillende borrelende bronnen kunt proeven. Gratis, 24 uur per dag open.</li>
+</ul>
+<div class="time-block"><strong>17:00 — (5) <a href="https://www.google.com/maps/search/?api=1&query=Po%C3%A7a%20da%20Dona%20Beija&query_place_id=ChIJl3T_1E8gXQsRd2tDf71HffU" target="_blank">Poça da Dona Beija</a> (thermale baden)</strong></div>
+<ul>
+<li>De grootste thermaal-bad-ervaring van de reis — <strong>5 baden van 39°C in een sfeervolle bos-omgeving, open tot 23:00</strong>. Door elke reisgids gerangschikt als een van de leukste dingen om te doen op São Miguel. €10 voor 1,5 uur. <strong>Reserveer online vooraf — geen kaartverkoop ter plaatse.</strong></li>
+<li><strong>Neem zwemkleding en een donkergekleurde handdoek mee</strong> (ijzer in het water geeft vlekken op lichte stof). Munten zijn handig voor warme douches en kluisjes.</li>
+<li>Als je liever eerst in Furnas wilt eten: de baden zijn lang open — onder de sterrenhemel een bad nemen is spectaculair.</li>
+</ul>
+<div class="time-block"><strong>18:45 — Terug naar de hoofdweg via (6) <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20do%20Pico%20do%20Ferro&query_place_id=ChIJPaopYPYgXQsR4St_AScjujE" target="_blank">Miradouro do Pico do Ferro</a></strong> — het beste uitzicht <em>naar beneden</em> over de vallei en het meer van Furnas, prachtig in het avondlicht. 5 min van de weg af.</div>
+<p><strong>Terugrijden naar Ponta Delgada:</strong> ~1 uur</p>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag5" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag5.jpg" alt="Salto do Prego" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">💧</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">5</div>
+  <div class="day-card" id="dag5">
+    <div class="day-card-header" onclick="toggleDay(5)" style="border-left: 4px solid #006064">
+      <div class="day-photo-thumb">
+        <img src="photos/dag5.jpg" alt="Dag 5" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Do 6 augustus</span>
-            <span class="day-island-chip chip-azoren">São Miguel</span>
-          </div>
-          <div class="day-title">Oostkust & Salto do Prego</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🥾</span> PRC 9 SMI — 4 km · 1u30 · 4,8★ hoogst gewaardeerde watervalwandeling</li>
-            <li><span class="hi">🏘️</span> Verlaten dorp Sanguinho — herboren met een klein bartje</li>
-            <li><span class="hi">🌺</span> Miradouro da Ponta do Sossego — hortensia-tuinen</li>
-            <li><span class="hi">💦</span> Parque Natural da Ribeira dos Caldeirões — watervallen & molens</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 5</span>
+          <span class="day-date">Do 6 aug</span>
+          <span class="day-chip chip-azoren">São Miguel</span>
+          
         </div>
+        <div class="day-title">💧 Oostkust & Salto do Prego</div>
       </div>
+      <div class="day-toggle" id="toggle5">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Verst punt van het eiland (~1u15 rijden). Vroeg vertrekken. Prachtigste kustroute terug via het noorden.</div>
-      <div class="day-links">
-        <a class="day-link" href="https://www.komoot.com/smarttour/e1390348288" target="_blank">🥾 Route</a>
-        <a class="day-link secondary" href="https://trails.visitazores.com/en/trails-azores/sao-miguel/sanguinho" target="_blank">Status</a>
-      </div>
+    <div class="day-body" id="body5" style="display:none">
+      <p>Het verre oosten is het wildste, minst bezochte deel van het eiland. Veel gidsen (waaronder Riksja Travel) markeren deze route als hoogtepunt. ~1u15 rijden in elke richting naar het startpunt, maar de kustroute terug is onderdeel van de ervaring.</p>
+<div class="time-block"><strong>10:00 — Naar het oosten rijden</strong> (~1u15 naar Faial da Terra)</div>
+<ul>
+<li>Stop onderweg bij <strong>(1)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20de%20Santa%20Iria&query_place_id=ChIJxVvtoNzZXAsR1P7oR-WhOt0" target="_blank">Miradouro de Santa Iria</a> — uitkijkpunt op de klif over theevelden die naar de zee aflopen (~50 min vanuit Ponta Delgada via de noordkustweg)</li>
+</ul>
+<div class="time-block"><strong>11:30 — Wandeling: lus Salto do Prego & Sanguinho (PRC 9 SMI)</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1390348288" target="_blank">Salto do Prego e Sanguinho — circular route on the Island of São Miguel (PRC 9 SMI)</a></strong></li>
+<li>Officiële trailpagina + actuele status: <strong><a href="https://trails.visitazores.com/en/trails-azores/sao-miguel/sanguinho" target="_blank">visitazores.com – PRC 9 SMI</a></strong></li>
+<li>4,0 km · ~1u30 · Makkelijk-matig · 250 m hoogteverschil</li>
+<li>De meest iconische watervalwandeling van São Miguel. Weelderige jungle, het "verloren dorp" Sanguinho (verlaten in de jaren '50, langzaam aan het herleven — er is nu zelfs een klein bartje in het dorp!), en de Salto do Prego-waterval als keerpunt.</li>
+<li>Start: <strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=PRC09%20SMI%20Salto%20do%20Prego%20trailhead&query_place_id=ChIJ3QdJCgAhXQsRi0ANmH6NRkQ" target="_blank">PRC09 SMI – startpunt Sanguinho / Salto do Prego, Faial da Terra</a></li>
+</ul>
+<div class="time-block"><strong>14:00 — Lunch in (3) <a href="https://www.google.com/maps/search/?api=1&query=Povoa%C3%A7%C3%A3o&query_place_id=ChIJn9rFmA0fXQsRkD-Q5L3rAAQ" target="_blank">Povoação</a></strong> (5 min rijden)</div>
+<div class="time-block"><strong>15:30 — Lus terug langs de noordoostkust</strong></div>
+<ul>
+<li><strong>(4)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Ponta%20da%20Madrugada&query_place_id=ChIJS9zAiFkcXQsRhMOmLmS6FyA" target="_blank">Miradouro da Ponta da Madrugada</a> — verzorgd uitkijkpunt met hortensia's, zee-uitzicht en vriendelijke katten</li>
+<li><strong>(5)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Ponta%20do%20Sossego&query_place_id=ChIJpX8njFQcXQsRcGPWj_9RyEs" target="_blank">Miradouro da Ponta do Sossego</a> — zustertje-uitkijkpunt, met nog mooiere tuinen en picknickplekken</li>
+<li><strong>(6)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Ponta%20do%20Arnel&query_place_id=ChIJ5X92DnUdXQsRg7Ccqx169dI" target="_blank">Miradouro da Ponta do Arnel</a> — dramatische klif met een steile wandeling naar beneden naar de oudste vuurtoren van de Azoren (naar beneden rijden wordt door de lokale autoriteiten afgeraden — wandel het als je benen het toelaten)</li>
+<li><strong>(7)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Parque%20Natural%20da%20Ribeira%20dos%20Caldeir%C3%B5es&query_place_id=ChIJn2ALZ2_gXAsRfPqyun_6Qus" target="_blank">Parque Natural da Ribeira dos Caldeirões</a> — watervallen, oude watermolens, paden afgezoomd met hortensia's. Een wandeling van 30 min. Gratis, 24 uur per dag open.</li>
+</ul>
+<p><strong>Terugrijden naar Ponta Delgada:</strong> ~1 uur via de noordkust</p>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag6" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag6.jpg" alt="Gorreana theeplantage" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🍃</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">6</div>
+  <div class="day-card" id="dag6">
+    <div class="day-card-header" onclick="toggleDay(6)" style="border-left: 4px solid #33691e">
+      <div class="day-photo-thumb">
+        <img src="photos/dag6.jpg" alt="Dag 6" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Vr 7 augustus</span>
-            <span class="day-island-chip chip-azoren">São Miguel</span>
-          </div>
-          <div class="day-title">Noordkust & theeplantages</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🍵</span> Gorreana — enige theeplantage van Europa, gratis rondleiding & proeverij</li>
-            <li><span class="hi">🍃</span> Porto Formoso — authentieke tweede theeplantage</li>
-            <li><span class="hi">🥾</span> Optie A: PRC 29 SMI caldeiras — 8,2 km · 2u24 (check status)</li>
-            <li><span class="hi">🏞️</span> Optie B: Lagoa do Congro — verborgen kratermeer, bijna geen toeristen</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 6</span>
+          <span class="day-date">Vr 7 aug</span>
+          <span class="day-chip chip-azoren">São Miguel</span>
+          
         </div>
+        <div class="day-title">🍃 Noordkust, thee & Salto do Cabrito</div>
       </div>
+      <div class="day-toggle" id="toggle6">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip alert">⚠️ PRC 29 watervalgedeelte gesloten seit okt. 2025. Caldeiras-deel nog open. Check visitazores.com vóór vertrek.</div>
-      <div class="day-links">
-        <a class="day-link secondary" href="https://trails.visitazores.com/pt-pt/trilhos-dos-acores/sao-miguel/caldeiras-da-ribeira-grande-salto-do-cabrito" target="_blank">Status PRC 29</a>
-      </div>
+    <div class="day-body" id="body6" style="display:none">
+      <p>Een rustigere dag — die heb je wel verdiend. Noordkust, theeplantages, en zelf je tempo bepalen 's middags.</p>
+<div class="time-block"><strong>10:00 — ~40 min rijden naar Gorreana</strong></div>
+<div class="time-block"><strong>(1) <a href="https://www.google.com/maps/search/?api=1&query=Gorreana%20Tea%20Factory&query_place_id=ChIJHXPNCC_ZXAsRop-XoC_ZYYg" target="_blank">Theefabriek Gorreana</a></strong> — de enige theeplantage van Europa, sinds 1883 actief. Gratis fabrieksrondleiding, gratis kop thee, wandeling door de theevelden. Dagelijks open.</div>
+<div class="time-block"><strong>12:00 — (2) <a href="https://www.google.com/maps/search/?api=1&query=Porto%20Formoso%20Tea%20Factory&query_place_id=ChIJE6gYl__YXAsR3PxwsXE8s88" target="_blank">Theefabriek Porto Formoso</a></strong> — kleinere, tweede theeplantage 5 min verderop. Authentieker gevoel; korte film over de geschiedenis van de plek + gratis kop thee.</div>
+<div class="time-block"><strong>13:00 — Lunchopties:</strong></div>
+<ul>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Restaurante%20O%20Silva&query_place_id=ChIJuaqqqibXXAsRsXC8fTYJQ1Y" target="_blank">Restaurante O Silva</a> in Ribeira Grande voor Azoriaanse klassiekers, OF</li>
+<li><strong>(3)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Restaurante%20Associa%C3%A7%C3%A3o%20Agr%C3%ADcola&query_place_id=ChIJ2VSABKHWXAsRIrbODPhOHqU" target="_blank">Restaurante Associação Agrícola de São Miguel</a> — bekend om zijn biefstuk (het restaurant van de rundveecoöperatie van het eiland). Reserveer vooraf, zeer populair.</li>
+</ul>
+<div class="time-block"><strong>Middag — kies één op basis van energie:</strong></div>
+<div class="time-block"><strong>Optie A — (4b) Wandeling Caldeiras & Salto do Cabrito (PRC 29 SMI), actief</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1388690821" target="_blank">Caldeiras da Ribeira Grande e Salto do Cabrito — circular route on the Island of São Miguel (PRC 29 SMI)</a></strong></li>
+<li>8,2 km · ~2u24 · Matig · 236 m hoogteverschil · 4,5★ · ~1.776 recensies</li>
+<li>⚠️ <strong>Gedeeltelijke sluiting sinds oktober 2025:</strong> het gedeelte richting de Salto do Cabrito-waterval is <strong>onbepaald gesloten</strong> — toegang verboden. Controleer de actuele status op <a href="https://trails.visitazores.com/pt-pt/trilhos-dos-acores/sao-miguel/caldeiras-da-ribeira-grande-salto-do-cabrito" target="_blank">visitazores.com</a> vóór vertrek. Het begingedeelte langs de geothermische caldeiras blijft toegankelijk en is al de moeite waard. Combineerbaar met een dompeling in het thermale bad bij de caldeiras (~€6/uur).</li>
+<li>Geen tunnels, breed gemarkeerd pad — toegankelijk en comfortabel.</li>
+<li>Start: <strong>(4b)</strong> <a href="https://www.google.com/maps/search/?api=1&query=PRC%2029%20SMI%20Caldeiras%20da%20Ribeira%20Grande&query_place_id=ChIJ75m-BNLXXAsRu0oslFZ9Lno" target="_blank">PRC 29 SMI trailhead — Caldeiras da Ribeira Grande</a> — ~30 min rijden ten noorden van Ponta Delgada via Ribeira Grande. Gratis parkeren.</li>
+</ul>
+<div class="time-block"><strong>Optie B — (4a) <a href="https://www.google.com/maps/search/?api=1&query=Lagoa%20do%20Congro&query_place_id=ChIJ2VptUCInXQsRwlCbQ0e1huM" target="_blank">Lagoa do Congro</a>, rustig</strong></div>
+<ul>
+<li>Een verborgen, onheilspellend groen kratermeer, te bereiken via een wandeling van 15–30 min naar beneden door het bos. Stil, magisch, bijna geen toeristen.</li>
+<li>Let op: de weg naar de parkeerplaats heeft kuilen — rij langzaam.</li>
+</ul>
+<p><strong>Optie C (rust): Vrije middag in Ponta Delgada</strong></p>
+<ul>
+<li>Koffie terug bij <a href="https://www.google.com/maps/search/?api=1&query=Louvre%20Michaelense&query_place_id=ChIJOW8P_rUqQwsRCO68QGnYG5M" target="_blank">Louvre Michaelense</a> (vrijdag open)</li>
+<li>Wandel langs de jachthaven, doe wat souvenirshoppen, dineer bij <a href="https://www.google.com/maps/search/?api=1&query=A%20Tasca&query_place_id=ChIJgXv_CsoqQwsRxyxX6XfRAD4" target="_blank">A Tasca</a></li>
+</ul>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag7" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo" style="background:#1a2a4a">
-        <img src="photos/dag7.jpg" alt="Vertrekdag" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
-        <div class="day-number-badge">7</div>
+  <div class="day-card" id="dag7">
+    <div class="day-card-header" onclick="toggleDay(7)" style="border-left: 4px solid #37474f">
+      <div class="day-photo-thumb">
+        <img src="photos/dag7.jpg" alt="Dag 7" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Za 8 augustus</span>
-            <span class="day-island-chip chip-transfer">São Miguel → Madeira</span>
-          </div>
-          <div class="day-title">Vertrekdag</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🌋</span> Gruta do Carvão — langste lavatunnel van São Miguel · ~€8 · 10:00–12:30</li>
-            <li><span class="hi">🛒</span> Mercado da Graça — laatste thee, kaas of ananas meenemen</li>
-            <li><span class="hi">✈️</span> Vlucht PDL → FNC, aankomst Funchal 12:25</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 7</span>
+          <span class="day-date">Za 8 aug</span>
+          <span class="day-chip chip-transfer">São Miguel → Madeira</span>
+          
         </div>
+        <div class="day-title">✈️ Vertrek</div>
       </div>
+      <div class="day-toggle" id="toggle7">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Lever de huurauto in bij luchthaven PDL (10 min rijden). Nieuwe huurauto ophalen op FNC.</div>
+    <div class="day-body" id="body7" style="display:none">
+      <p>Afhankelijk van je vluchttijd:</p>
+<p><strong>Beschikbare ochtend:</strong></p>
+<ul>
+<li><strong>(1)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Gruta%20do%20Carv%C3%A3o&query_place_id=ChIJx7aiKMYqQwsRc-nDfseH_jA" target="_blank">Gruta do Carvão</a> — de langste lavatunnel van het eiland, 10 min van het stadscentrum. Rondleiding (~45 min, ~€8). Zaterdag open 10:00–12:30 en 14:00–18:00. Makkelijk en een goede uitwijkmogelijkheid bij regen. De korte rondleiding is meer dan de moeite waard.</li>
+<li>Of nog een laatste koffie + wandeling langs de boulevard van Ponta Delgada, terug naar <strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Mercado%20da%20Gra%C3%A7a&query_place_id=ChIJwXF9mMoqQwsRalWxvXa90dQ" target="_blank">Mercado da Graça</a> (zaterdag open 7:00–14:00) voor laatste Azoriaanse thee, kaas of ananas om mee naar huis te nemen</li>
+</ul>
+<p><strong>Lever de huurauto in op luchthaven PDL</strong> (10 min vanuit het stadscentrum).</p>
+<div class="alert">✈️ <strong>Doorvlucht naar Madeira:</strong> vandaag (zaterdag 8 aug) vlieg je in de loop van de ochtend van Ponta Delgada (PDL) naar Funchal (FNC), aankomst om 12:25. Het Madeira-deel begint hieronder met dag 8.</div>
+<p>---</p>
     </div>
   </div>
-</div>
+</div><!-- /azoren -->
 
-<!-- MADEIRA DAYS -->
-<div id="madeira" class="section" style="padding-top:0">
+<div class="island-section" id="madeira">
   <div class="island-header">
-    <div>
-      <div class="island-header-label">🏔️ Madeira</div>
-      <div class="island-header-sub">Vrijdag 8 – zaterdag 16 augustus · Hotels: Santa Cruz · Porto Moniz · Funchal</div>
+    <h2>🏔️ Madeira</h2>
+    <div class="island-sub">Vr 8 – za 16 augustus · Hotels: Santa Cruz · Porto Moniz · Funchal</div>
+    <div class="island-info-box warning">
+      <strong>🎫 Nieuwe wandelregelgeving 2026:</strong> Alle officiële PR-paden vereisen vooraf een tijdslot via <a href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica</a> · €4,50 p.p. (PR1 = €10,50). Minstens 1 dag van tevoren boeken.<br><br>
+      <strong>🌤️ Webcams:</strong> Check <a href="https://beyondmadeira.com/live-webcams" target="_blank">Beyond Madeira webcams</a> vóór elke rit naar de hooglanden.
     </div>
   </div>
 
-  <div style="background:#fff3cd;border-radius:12px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#856404;border-left:3px solid #ffc107;">
-    <strong>🎫 Nieuwe regelgeving Madeira (2026):</strong> Alle officiële PR-paden vereisen een tijdslot via <a href="https://simplifica.madeira.gov.pt/" target="_blank" style="color:#1a4a7a;font-weight:600">SIMplifica.madeira.gov.pt</a> · €4,50 p.p. (PR1 = €10,50). Reserveer minstens 1 dag van tevoren — populaire slots zijn snel vol.
-  </div>
-
-  <div id="dag8" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag8.jpg" alt="Machico baai" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🏝️</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">8</div>
+  <div class="day-card" id="dag8">
+    <div class="day-card-header" onclick="toggleDay(8)" style="border-left: 4px solid #1565c0">
+      <div class="day-photo-thumb">
+        <img src="photos/dag8.jpg" alt="Dag 8" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Vr 8 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">Aankomst & Santa Cruz</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">✈️</span> Aankomst FNC 12:25 — huurauto ophalen, inchecken Santa Cruz</li>
-            <li><span class="hi">🏖️</span> Machico — oudste dorp Madeira, goudkleurig zandstrand, vissershaventje</li>
-            <li><span class="hi">🍢</span> Espetada-diner — vleesspies aan laurierstok op houtskool</li>
-            <li><span class="hi">🍞</span> Proef bolo do caco — platbrood met knoflookboter</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 8</span>
+          <span class="day-date">Vr 8 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          
         </div>
+        <div class="day-title">🏝️ Aankomst & Santa Cruz</div>
       </div>
+      <div class="day-toggle" id="toggle8">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Hotel ligt vlakbij de luchthaven. Rustige aankomst — morgen vroeg beginnen voor de PR8!</div>
-    </div>
-  </div>
-
-  <div id="dag9" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag9.jpg" alt="Ponta de São Lourenço" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🦎</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">9</div>
-        <div class="day-star-badge">⭐ #1 Madeira & Portugal</div>
-      </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Za 9 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">PR8 Ponta de São Lourenço</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🥾</span> PR8 — 6,75 km · ~2u · 4,7★ · 22.800+ reviews</li>
-            <li><span class="hi">🌋</span> Dramatische kliffen, vulkanisch oranje-rood-zwart landschap</li>
-            <li><span class="hi">☕</span> Casa do Sardinha café bij het eindpunt — open 10:00–16:00</li>
-            <li><span class="hi">🏖️</span> Prainha — zwart zandstrand voor afkoeling na de wandeling</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="day-footer">
-      <div class="day-tip">🎫 SIMplifica · €4,50 p.p. Wees om 09:30 op de parkeerplaats — na 10u vol. Geen schaduw op het pad!</div>
-      <div class="day-links">
-        <a class="day-link" href="https://simplifica.madeira.gov.pt/" target="_blank">🎫 Reserveer</a>
-        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1375832832" target="_blank">🥾 Route</a>
-      </div>
+    <div class="day-body" id="body8" style="display:none">
+      <p>Aankomst op luchthaven Funchal (FNC) om 12:25. Huurauto ophalen, ~10 min rijden naar Santa Cruz (het hotel ligt vlakbij de luchthaven — handig voor deze korte aankomstdag).</p>
+<div class="time-block"><strong>Middag — rustig opstartmoment:</strong></div>
+<ul>
+<li>Inchecken in jullie hotel in <a href="https://www.google.com/maps/search/?api=1&query=Santa%20Cruz%20Madeira&query_place_id=ChIJIysABEpiYAwRZv1jDMr4YpE" target="_blank">Santa Cruz</a> <strong>(1)</strong></li>
+<li>Korte wandeling langs de boulevard van Santa Cruz of een drankje aan zee</li>
+</ul>
+<div class="time-block"><strong>Late middag / avond — naar <a href="https://www.google.com/maps/search/?api=1&query=Machico%20Madeira&query_place_id=ChIJNWG5TApjYAwRsip0tQK8Kos" target="_blank">Machico</a> (2)</strong> (~10 min rijden):</div>
+<ul>
+<li>Het oudste dorp van Madeira — kleine baai met goudkleurig zand (een van de weinige zandstranden van het eiland), vissershaventje, Manuelijns kerkje</li>
+<li>Eet <em>espetada</em> (vleesspiezen aan een laurierstok, op houtskool gegrild) — typisch Madeirees</li>
+<li>Probeer ook <em>bolo do caco</em> — platbrood met knoflookboter, wordt overal als voorgerecht geserveerd</li>
+</ul>
+<div class="time-block"><strong>Tip:</strong> vul de huurauto vanavond niet op — er zit een tankstation langs de N101 vlakbij het hotel, vol tanken kan ook morgenvroeg op weg naar de wandeling.</div>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag10" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag10.jpg" alt="Cabo Girão" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🏔️</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">10</div>
+  <div class="day-card" id="dag9">
+    <div class="day-card-header" onclick="toggleDay(9)" style="border-left: 4px solid #e65100">
+      <div class="day-photo-thumb">
+        <img src="photos/dag9.jpg" alt="Dag 9" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Zo 10 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">Zuidkust scenic drive → Porto Moniz</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🎣</span> Câmara de Lobos — Churchill's vissersdorp, poncha proeven</li>
-            <li><span class="hi">😮</span> Cabo Girão Skywalk — glazen platform 580 m hoogte · €5</li>
-            <li><span class="hi">💧</span> Véu da Noiva — Bruidsluier waterval langs de noordkust</li>
-            <li><span class="hi">🏊</span> Porto Moniz — eerste avond bij de vulkanische rotspoelen</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 9</span>
+          <span class="day-date">Za 9 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          <span class="star-badge">⭐ #1 Madeira</span>
         </div>
+        <div class="day-title">🦎 PR8 Vereda da Ponta de São Lourenço</div>
       </div>
+      <div class="day-toggle" id="toggle9">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Scenic route via Encumeada-pas voegt 2–3 uur toe maar is indrukwekkend. Bij mist: tunnelroute.</div>
+    <div class="day-body" id="body9" style="display:none">
+      <p>De spectaculairste kustwandeling van Madeira — over een smalle, woestijnachtige rotsvinger die als een drakenstaart de oceaan in steekt. Compleet anders dan de rest van het groene eiland.</p>
+<div class="time-block"><strong>🎫 Reserveer vooraf:</strong> <a href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica</a> — €4,50 p.p., kies een ochtendtijdslot (bijv. 09:00–11:00 of 10:00–12:00).</div>
+<div class="time-block"><strong>10:00 — Vertrek hotel Santa Cruz</strong> (~25 min rijden naar de parkeerplaats)</div>
+<div class="time-block"><strong>Wandeling: Vereda da Ponta de São Lourenço (PR8)</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1375832832" target="_blank">Vereda da Ponta de São Lourenço — PR8 on the Island of Madeira</a></strong></li>
+<li>6,75 km · ~2u · Matig · 230 m hoogteverschil</li>
+<li>4,7★ met 22.800+ recensies — een van de populairste wandelingen van het eiland</li>
+<li>Heen-en-weer route langs dramatische kliffen, vulkanische rotsformaties in oranje, rood, en zwart, met op het einde een uitzicht over twee eilandjes (Ilhéu da Cevada en Ilhéu do Farol)</li>
+<li>Start: <strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=PR8%20Ponta%20Sao%20Lourenco%20parking&query_place_id=ChIJdzeVxP99YAwR0BewJOJX_18" target="_blank">PR8 parkeerplaats</a> — gratis maar <strong>vol vanaf 09:00 in het hoogseizoen</strong>. Om 10:00 staat er vaak al een rij langs de weg geparkeerd. Zorg dat je tegen 09:30 op de parkeerplaats bent.</li>
+<li>Keerpunt: <strong>(3)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Casa%20do%20Sardinha%20Ponta%20Sao%20Louren%C3%A7o&query_place_id=ChIJtYOoXpd9YAwR0tJvws3G3CY" target="_blank">Cafetaria Casa do Sardinha</a> — gezellig café in het uiteinde van het schiereiland, dagelijks open 10–16. Munten meenemen voor het toilet (€1).</li>
+<li>Geen schaduw onderweg, geen drinkwater op het pad. <strong>Neem 1,5 L water p.p. mee, zonnehoed, zonnebrand, stevige schoenen.</strong></li>
+</ul>
+<div class="time-block"><strong>13:30 — Lunch in <a href="https://www.google.com/maps/search/?api=1&query=Cani%C3%A7al%20Madeira&query_place_id=ChIJAaENQVpjYAwRgyCtEzUtv_I" target="_blank">Caniçal</a></strong> (10 min van de parkeerplaats)</div>
+<ul>
+<li>Vissershaventje met simpele tasca's; verse vis is hier letterlijk uit zee</li>
+</ul>
+<div class="time-block"><strong>Middag — terug richting hotel via:</strong></div>
+<ul>
+<li><strong><a href="https://www.google.com/maps/search/?api=1&query=Prainha%20beach%20Madeira&query_place_id=ChIJExrUxq58YAwRWpTtBxudcJ8" target="_blank">Prainha</a></strong> — een van de zeer weinige natuurlijke zwarte zandstrandjes van Madeira (5 min van de PR8-parkeerplaats). Mooie afkoeling na de wandeling.</li>
+<li>Of relaxed terug naar Santa Cruz voor een latere middag aan het zwembad van het hotel</li>
+</ul>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag11" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag11.jpg" alt="25 Fontes" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">💦</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">11</div>
+  <div class="day-card" id="dag10">
+    <div class="day-card-header" onclick="toggleDay(10)" style="border-left: 4px solid #00695c">
+      <div class="day-photo-thumb">
+        <img src="photos/dag10.jpg" alt="Dag 10" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Ma 11 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">PR6 Levada das 25 Fontes</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🥾</span> PR6 — 8 km · ~2u55 · Matig–Zwaar · 4,7★ Komoot / 4,5★ AllTrails</li>
-            <li><span class="hi">🌊</span> 25 watervalletjes tegelijk uit de rotswand — magisch eindpunt</li>
-            <li><span class="hi">🔦</span> 800 m tunnel — neem een hoofdlamp mee!</li>
-            <li><span class="hi">🏊</span> Middag: naturele rotspoelen Porto Moniz · €3</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 10</span>
+          <span class="day-date">Zo 10 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          
         </div>
+        <div class="day-title">🚗 Verhuisdag Santa Cruz → Porto Moniz</div>
       </div>
+      <div class="day-toggle" id="toggle10">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">🎫 SIMplifica · €4,50 p.p. Kies een ochtendslot. Stevige schoenen verplicht — steile trappen.</div>
-      <div class="day-links">
-        <a class="day-link" href="https://simplifica.madeira.gov.pt/" target="_blank">🎫 Reserveer</a>
-        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1375818326" target="_blank">🥾 Route</a>
-      </div>
+    <div class="day-body" id="body10" style="display:none">
+      <p>Vandaag verhuizen jullie naar Porto Moniz aan de noordwestkust. De rit duurt direct via de snelweg ~1u20, maar de scenic route via de zuidkust en hooglanden voegt 2–3 uur toe en is een dag op zichzelf.</p>
+<div class="time-block"><strong>10:00 — Uitchecken in Santa Cruz, vertrek</strong></div>
+<div class="time-block"><strong>11:00 — (2) <a href="https://www.google.com/maps/search/?api=1&query=C%C3%A2mara%20de%20Lobos&query_place_id=ChIJyR0p1JleYAwR0D-Q5L3rAAQ" target="_blank">Câmara de Lobos</a></strong></div>
+<ul>
+<li>Schilderachtig vissersdorpje, ooit favoriet van Winston Churchill (er zijn schilderingen die hij hier maakte). Kleurrijke vissersbootjes, kleine baai, beste plek om <em>poncha</em> te proberen — het lokale Madeirese drankje van rietsuiker-rum, honing en citroen.</li>
+</ul>
+<div class="time-block"><strong>12:30 — (3) <a href="https://www.google.com/maps/search/?api=1&query=Cabo%20Gir%C3%A3o&query_place_id=ChIJM4MGcC1fYAwRpDwTa-2e1Ak" target="_blank">Cabo Girão Skywalk</a></strong></div>
+<ul>
+<li>Glazen uitkijkplatform op een van de hoogste zeekliffen van Europa (580 m). €5 p.p. om op het glas te staan, gratis voor het uitzicht ernaast. <strong>Open 09:00–20:00.</strong> Maagje los voor wie hoogtevrees heeft.</li>
+<li>Reservering vooraf via SIMplifica wordt aangeraden in het hoogseizoen, maar ter plekke kopen lukt meestal ook.</li>
+</ul>
+<div class="time-block"><strong>13:30 — Lunch in <a href="https://www.google.com/maps/search/?api=1&query=Ribeira%20Brava%20Madeira&query_place_id=ChIJP4nwPQpZYAwRpQT3iMD8F3Y" target="_blank">Ribeira Brava</a></strong> of in <strong>(4) <a href="https://www.google.com/maps/search/?api=1&query=Ponta%20do%20Sol%20Madeira&query_place_id=ChIJ9ZNr2FhXYAwRXFkpnOOotnU" target="_blank">Ponta do Sol</a></strong></div>
+<ul>
+<li>Ponta do Sol is een knus dorpje met een kiezelstrand en goed eten — ideale lunchstop</li>
+</ul>
+<div class="time-block"><strong>15:30 — Rij door over de <a href="https://www.google.com/maps/search/?api=1&query=Encumeada%20pass%20Madeira&query_place_id=ChIJQwE6kHdbYAwRgsiOc3yM7gc" target="_blank">Encumeada-pas</a></strong> (de oude bergweg over het centrale plateau)</div>
+<ul>
+<li>Stop bij <strong><a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Encumeada&query_place_id=ChIJPX9Ndi9bYAwR4oJsSH1ziRE" target="_blank">Miradouro do Encumeada</a></strong> voor uitzicht over zowel noord- als zuidkust tegelijk</li>
+<li>Indrukwekkend dramatisch landschap; let wel op het weer — bij mist kun je beter de tunnelroute terug</li>
+</ul>
+<div class="time-block"><strong>16:30 — Tussenstop: <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20do%20V%C3%A9u%20da%20Noiva&query_place_id=ChIJGY18v2VFYAwRUGJSjtpUsX0" target="_blank">Miradouro do Véu da Noiva</a></strong> (~10 min, gratis)</div>
+<ul>
+<li>De "Bruidsluier"-waterval — een van de meest gefotografeerde plekken van Madeira. Het water stort van de vegetatierijke helling recht richting de oceaan. Aanbevolen door Beyond Madeira als klassieke stop op de noordkustroute. Er is een klein souvenirwinkeltje en toilet ter plekke. Na regen is de waterval indrukwekkender.</li>
+</ul>
+<div class="time-block"><strong>17:00 — Aankomst in (5) <a href="https://www.google.com/maps/search/?api=1&query=Porto%20Moniz%20Madeira&query_place_id=ChIJWe6SLqtPYAwREECQ5L3rAAQ" target="_blank">Porto Moniz</a>, inchecken hotel</strong></div>
+<div class="time-block"><strong>Avond:</strong></div>
+<ul>
+<li>Korte wandeling naar de <a href="https://www.google.com/maps/search/?api=1&query=Porto%20Moniz%20Natural%20Pools&query_place_id=ChIJJw94bTZJYAwRfPk3g8xkNWU" target="_blank">natuurzwembaden van Porto Moniz</a> (zonder zwemmen, alleen om te zien hoe ze eruit zien)</li>
+<li>Diner aan de boulevard — verse vis met uitzicht op de oceaan</li>
+</ul>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag12" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag12.jpg" alt="Seixal strand" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🌲</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">12</div>
+  <div class="day-card" id="dag11">
+    <div class="day-card-header" onclick="toggleDay(11)" style="border-left: 4px solid #1b5e20">
+      <div class="day-photo-thumb">
+        <img src="photos/dag11.jpg" alt="Dag 11" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Di 12 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">Noordwestkust — Seixal & Fanal</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🗿</span> Miradouro Ilhéus da Ribeira da Janela — 4,8★ basaltrotsen uit zee</li>
-            <li><span class="hi">🏊</span> Seixal naturele poelen — ruwer dan Porto Moniz · €2,50</li>
-            <li><span class="hi">🌫️</span> Fanal — eeuwenoude til-bomen (600+ jaar) in mystieke mist</li>
-            <li><span class="hi">🥾</span> PR14 Levada dos Cedros (optie A of B) · 4,5★</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 11</span>
+          <span class="day-date">Ma 11 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          
         </div>
+        <div class="day-title">💦 PR6 Levada das 25 Fontes</div>
       </div>
+      <div class="day-toggle" id="toggle11">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Fanal is het mooist mét mist — geeft een mythische sfeer. Bij heldere lucht minder bijzonder.</div>
-      <div class="day-links">
-        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1376293809" target="_blank">🥾 PR14 route</a>
-      </div>
+    <div class="day-body" id="body11" style="display:none">
+      <p>De beroemdste <em>levada</em>-wandeling van Madeira, die jullie noemden — door laurissilva-oerwoud naar een poel waar vijfentwintig watervalletjes tegelijk uit de rotswand stromen.</p>
+<div class="time-block"><strong>🎫 Reserveer vooraf:</strong> <a href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica</a> — €4,50 p.p., <strong>kies een ochtendtijdslot</strong> (bijv. 09:00–11:00). Het pad is smal en wordt na 11:00 erg druk.</div>
+<div class="time-block"><strong>10:00 — Vertrek Porto Moniz</strong> (~45 min rijden naar Rabaçal — over de Paul da Serra-hoogvlakte op 1.300 m hoogte, vaak boven de wolken)</div>
+<div class="time-block"><strong>Wandeling: PR6 Levada das 25 Fontes</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1375818326" target="_blank">PR 6 - Levada das 25 Fontes Trail</a></strong></li>
+<li>8 km · ~2u55 · <strong>Matig–Zwaar</strong> · 400 m hoogteverschil</li>
+<li>4,7★ met 33.400+ recensies (Komoot: Matig; AllTrails: Zwaar — steile trappen vlak voor het café, stevige schoenen verplicht)</li>
+<li>Start: <strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Rabacal%20parking%2025%20Fontes&query_place_id=ChIJsYVSSAlRYAwR1OWE1BLIdss" target="_blank">Rabaçal parkeerplaats (ER105)</a> op 1.288 m hoogte</li>
+<li>Eerste deel: zigzaggende asfaltweg naar beneden naar Casa do Rabaçal (~1,5 km, kun je ook met een shuttlebus doen voor €3 p.p. vanaf 11:00 — handig voor de terugweg)</li>
+<li>Vandaar volg je de levada (smal waterloopje) door dicht laurisilva-bos</li>
+<li>Hoogtepunt <strong>(3)</strong>: de <a href="https://www.google.com/maps/search/?api=1&query=Lagoa%20das%2025%20Fontes&query_place_id=ChIJKah6lj1QYAwRpr-6twdigik" target="_blank">25 Fontes-meertje</a> met de waterval-cascade</li>
+<li>Optioneel een extra tak naar de <strong><a href="https://www.google.com/maps/search/?api=1&query=Cascata%20do%20Risco" target="_blank">Risco-waterval</a></strong> (PR6.1, +30 min)</li>
+<li><strong>Belangrijk:</strong> neem een zaklamp/hoofdlamp mee — er is op het einde een 800m lange tunnel</li>
+<li>Stevige schoenen (kan modderig zijn), waterdichte jas (microklimaat in het bos verandert snel)</li>
+</ul>
+<div class="time-block"><strong>14:30 — Lunch onderweg terug:</strong></div>
+<ul>
+<li>Stop bij <strong><a href="https://www.google.com/maps/search/?api=1&query=Restaurante%20Encumeada&query_place_id=ChIJZcireJ5bYAwRUiAQwG0AtrQ" target="_blank">Restaurante Encumeada</a></strong> voor een eenvoudige lunch met uitzicht, of</li>
+<li>Door naar Porto Moniz voor een latere lunch op het terras met uitzicht op de baden</li>
+</ul>
+<div class="time-block"><strong>16:00 — Terug in Porto Moniz</strong> — relax bij de <strong>(4) <a href="https://www.google.com/maps/search/?api=1&query=Porto%20Moniz%20Natural%20Pools&query_place_id=ChIJJw94bTZJYAwRfPk3g8xkNWU" target="_blank">natuurzwembaden</a></strong></div>
+<ul>
+<li>Vulkanische rotspoelen die door de oceaan gevuld worden — het hoogtepunt van Porto Moniz</li>
+<li>€3 p.p. entree (lockers, douches, toezicht); de "wilde" oostelijke baden langs de boulevard zijn gratis</li>
+<li><strong>Neem zwemkleding + waterschoenen mee</strong> (lavasteen kan scherp zijn)</li>
+<li>Open 09:00–19:00 in augustus; bij hoge golven gesloten — check de webcam vooraf</li>
+</ul>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag13" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag13.jpg" alt="Pico do Arieiro" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">⛰️</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">13</div>
+  <div class="day-card" id="dag12">
+    <div class="day-card-header" onclick="toggleDay(12)" style="border-left: 4px solid #4e342e">
+      <div class="day-photo-thumb">
+        <img src="photos/dag12.jpg" alt="Dag 12" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Wo 13 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">Hooglanden → Funchal</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🏔️</span> Pico do Arieiro — 1.818 m, boven de wolken, bereikbaar per auto</li>
-            <li><span class="hi">🍰</span> Curral das Freiras — kraterval, kastanjecake, licor de castanha</li>
-            <li><span class="hi">👁️</span> Miradouro Eira do Serrado — 4,8★, 360° panorama over de vallei</li>
-            <li><span class="hi">🏨</span> Inchecken hotel Funchal — avond in de Zona Velha</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 12</span>
+          <span class="day-date">Di 12 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          
         </div>
+        <div class="day-title">🌲 Noordwestkust — Seixal & Fanal</div>
       </div>
+      <div class="day-toggle" id="toggle12">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Check de webcam vóór Pico do Arieiro — bij dichte mist is er nul uitzicht. Neem een extra laag mee.</div>
+    <div class="day-body" id="body12" style="display:none">
+      <p>Een rustigere dag waarin jullie het minder bekende noordwesten verkennen. Geen lange wandeling vandaag — meer rondrijden, kort wandelen, zwemmen, fotografieën.</p>
+<div class="time-block"><strong>10:00 — Vertrek</strong></div>
+<div class="time-block"><strong>10:30 — Eventueel een tweede ronde bij (1) <a href="https://www.google.com/maps/search/?api=1&query=Porto%20Moniz%20Natural%20Pools&query_place_id=ChIJJw94bTZJYAwRfPk3g8xkNWU" target="_blank">Porto Moniz natuurzwembaden</a></strong></div>
+<ul>
+<li>Als gisteren niet lekker zwommen: 's ochtends is er minder wind, mooier licht voor foto's</li>
+</ul>
+<div class="time-block"><strong>11:00 — (2) <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20Ilheus%20da%20Ribeira%20da%20Janela&query_place_id=ChIJtfI6gBxPYAwRFaqYOmLeibA" target="_blank">Miradouro Ilhéus da Ribeira da Janela</a></strong> (~20 min, gratis, 5 min rijden van Porto Moniz)</div>
+<ul>
+<li>Spectaculair uitkijkpunt over de zeestapels van Ribeira da Janela — dramatische basaltrots­formaties die vanuit de Atlantische Oceaan omhoogsteken. Bereikbaar via een trapje en een korte klifftunnel naar een uitkijkbalkon. 4,8★ met 2.300+ recensies — door Beyond Madeira beschreven als "one of the best hidden spots of Madeira". Gratis parkeren, toilet en klein café aanwezig.</li>
+</ul>
+<div class="time-block"><strong>12:00 — Rij naar (3) <a href="https://www.google.com/maps/search/?api=1&query=Piscinas%20Naturais%20do%20Seixal&query_place_id=ChIJta-ycXhPYAwR1INTJ7D35cc" target="_blank">Piscinas Naturais do Seixal</a></strong> (~25 min)</div>
+<ul>
+<li>Ruwere, kleinere natuurzwembaden dan Porto Moniz — door velen mooier gevonden, en €2,50 entree</li>
+<li>Spectaculair in combinatie met het naastgelegen <a href="https://www.google.com/maps/search/?api=1&query=Praia%20da%20Laje%20Seixal&query_place_id=ChIJY1RPWp1PYAwRCVd09Opc8t4" target="_blank">zwart zandstrand van Seixal</a></li>
+<li>Gratis parkeren is beperkt; €4 betaalde parking is dichterbij</li>
+<li>Open 10:00–18:00</li>
+</ul>
+<div class="time-block"><strong>13:30 — Lunch in <a href="https://www.google.com/maps/search/?api=1&query=S%C3%A3o%20Vicente%20Madeira&query_place_id=ChIJ0Wv1YDhbYAwRPXp2nngpoIA" target="_blank">São Vicente</a> (4)</strong> (~15 min vanaf Seixal)</div>
+<ul>
+<li>Authentiek bergdorpje met een prachtig rondje rondom Capelinha de Nossa Senhora de Fátima</li>
+</ul>
+<div class="time-block"><strong>15:00 — Rij omhoog naar (3) <a href="https://www.google.com/maps/search/?api=1&query=Fanal%20Forest%20Madeira&query_place_id=ChIJCecqzXxPYAwR8GHuxUuHLN4" target="_blank">Fanal</a></strong> (~30 min, klimt naar 1.150 m)</div>
+<ul>
+<li>Sprookjesachtig hooglandbos met <strong>eeuwenoude knoestige til-bomen</strong> (sommige zijn 600+ jaar oud) — vaak gehuld in mist</li>
+<li>UNESCO-werelderfgoed (onderdeel van Laurissilva)</li>
+<li><strong>Tip:</strong> Fanal is op zijn mooist juist <em>met</em> mist — geeft een mythische sfeer. Check Spot Madeira webcam: bij heldere lucht is het minder bijzonder.</li>
+<li>Geen entree, gratis parkeren</li>
+</ul>
+<div class="time-block"><strong>Wandeling: PR14 Levada dos Cedros</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1376293809" target="_blank">Levada dos Cedros e Fanal — circular route PR14 on the Island of Madeira</a></strong></li>
+<li>⚠️ De volledige rondroute op deze Komoot-pagina is 12 km / 4u12 — <strong>te lang voor onze 3,5u-limiet</strong>. Twee opties die wél passen:</li>
+<li><strong>Optie A — alleen PR14 (lineair, niet rond):</strong> 5,8 km enkele richting / ~3u, langs de levada door het mistige laurierwoud richting Curral Falso. Niet rond, dus terug op je schreden of een taxi/auto regelen.</li>
+<li><strong>Optie B — kortere lus van ~1u:</strong> parkeer bij de Fanal-weide en wandel een rustig rondje over het hoogveen langs de eeuwenoude knoestige bomen, zonder op de PR14 te gaan. Gratis, geen reservering nodig.</li>
+<li>🎫 PR14 valt onder de nieuwe regelgeving sinds 1 jan 2026: <strong>reserveer vooraf via <a href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica</a> — €4,50 p.p.</strong> (alleen nodig voor optie A, niet voor het rondje rond de weide).</li>
+<li><strong>Pak mee:</strong> waterdichte schoenen (vaak modderig), regenjas, mogelijk een hoofdlamp als je tot in de tunnels van de levada wilt</li>
+</ul>
+<div class="time-block"><strong>17:30 — Terug naar Porto Moniz</strong> via de noordkustweg (de oude weg langs de zee, niet de tunnel) — spectaculaire watervallen vallen letterlijk <em>op</em> de weg in de winter; in augustus minder maar nog wel beleefbaar</div>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag14" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag14.jpg" alt="Pico Ruivo" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🏔️</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">14</div>
-        <div class="day-star-badge">⭐ #2 Madeira</div>
+  <div class="day-card" id="dag13">
+    <div class="day-card-header" onclick="toggleDay(13)" style="border-left: 4px solid #546e7a">
+      <div class="day-photo-thumb">
+        <img src="photos/dag13.jpg" alt="Dag 13" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Do 14 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">PR1.2 Pico Ruivo — hoogste top</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🥾</span> PR1.2 — 5,6 km · ~2u · 4,7★ · 1.862 m hoogte</li>
-            <li><span class="hi">☕</span> Abrigo do Pico Ruivo — café halverwege met zelfgemaakte taart</li>
-            <li><span class="hi">🏘️</span> Santana — traditionele rietdakenhuisjes gratis te bewonderen</li>
-            <li><span class="hi">🌿</span> Ribeiro Frio — schilderachtige bosroute terug naar Funchal</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 13</span>
+          <span class="day-date">Wo 13 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          
         </div>
+        <div class="day-title">⛰️ Verhuisdag Porto Moniz → Funchal via Pico do Arieiro</div>
       </div>
+      <div class="day-toggle" id="toggle13">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">🎫 SIMplifica · €4,50 p.p. Laagjes meenemen: boven kan het 10°C kouder zijn. Geen schaduw onderweg.</div>
-      <div class="day-links">
-        <a class="day-link" href="https://simplifica.madeira.gov.pt/" target="_blank">🎫 Reserveer</a>
-        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1375721060" target="_blank">🥾 Route</a>
-      </div>
+    <div class="day-body" id="body13" style="display:none">
+      <p>Vandaag verhuizen naar Funchal. We gebruiken de bergroute over het centrale hoogland — en plannen de stop bij Pico do Arieiro vandaag, zodat morgens PR1.2 op een ander startpunt begint en je de stress van een nieuwe locatie zoeken vermijdt.</p>
+<div class="time-block"><strong>10:00 — Uitchecken Porto Moniz, vertrek</strong></div>
+<div class="time-block"><strong>11:30 — Stop bij (2) <a href="https://www.google.com/maps/search/?api=1&query=Encumeada%20viewpoint&query_place_id=ChIJPX9Ndi9bYAwR4oJsSH1ziRE" target="_blank">Miradouro do Encumeada</a></strong> of <strong><a href="https://www.google.com/maps/search/?api=1&query=Bica%20da%20Cana%20Madeira&query_place_id=ChIJofm5b_1aYAwRmZeZmY9m0Mc" target="_blank">Bica da Cana</a></strong></div>
+<ul>
+<li>Hoogvlakte-uitzichten over noord- en zuidkust</li>
+</ul>
+<div class="time-block"><strong>13:00 — Lunch onderweg:</strong></div>
+<ul>
+<li><strong><a href="https://www.google.com/maps/search/?api=1&query=Restaurante%20Encumeada&query_place_id=ChIJZcireJ5bYAwRUiAQwG0AtrQ" target="_blank">Restaurante Encumeada</a></strong> voor traditioneel Madeirees, of</li>
+<li>Als je tot Funchal wilt rijden: lunch in <strong><a href="https://www.google.com/maps/search/?api=1&query=Curral%20das%20Freiras&query_place_id=ChIJB9H2CC9cYAwROu8QFC50dzs" target="_blank">Curral das Freiras</a></strong> ("Vallei van de nonnen") — adembenemend gelegen dorp in een ringkrater, hier is de specialiteit <em>bolo de castanha</em> (kastanjecake) en <em>licor de castanha</em></li>
+<li><strong>Combineer met: <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Eira%20do%20Serrado&query_place_id=ChIJbVSXilleYAwRkqH1r3OVNKw" target="_blank">Miradouro da Eira do Serrado</a></strong> — 10 min rijden boven Curral das Freiras, op 1.094 m hoogte. 360° panorama over de vallei van de nonnen en het omringende bergmassief — een van de meest indrukwekkende binnenlanduitzichten van Madeira. 4,8★ met 4.700+ recensies. Gratis, kleine café en souvenirwinkel aanwezig. Ga vroeg — wolken trekken snel samen. <strong>Neem een extra laag mee</strong> (merkbaar koeler dan aan de kust).</li>
+</ul>
+<div class="time-block"><strong>15:00 — Rij omhoog naar (3) <a href="https://www.google.com/maps/search/?api=1&query=Pico%20do%20Arieiro%20viewpoint&query_place_id=ChIJ78kCw-5dYAwRNRY5OR9YGt4" target="_blank">Miradouro Pico do Arieiro</a></strong></div>
+<ul>
+<li>Op 1.818 m, <strong>derde hoogste punt van Madeira</strong> — bereikbaar met de auto</li>
+<li>Bovenop de wolken (vaak letterlijk) — een van de iconische uitzichten van het eiland</li>
+<li>Gratis entree tot het uitzichtpunt zelf; €3 voor toegang tot het korte wandelpad richting de tunnels</li>
+<li><strong>Check de webcam vooraf</strong> — bij dichte mist nul zicht, dan beter overslaan</li>
+<li>Café/winkel/toilet bovenop</li>
+</ul>
+<div class="time-block"><strong>16:30 — Doorrijden naar Funchal</strong> (~30 min naar beneden via een bochtige bergweg)</div>
+<div class="time-block"><strong>17:30 — Inchecken hotel Funchal</strong></div>
+<div class="time-block"><strong>Avond — kies één:</strong></div>
+<ul>
+<li>Diner in <strong><a href="https://www.google.com/maps/search/?api=1&query=Zona%20Hist%C3%B3rica%20do%20Funchal&query_place_id=ChIJTY-yZA9gYAwRaQ6GA77XWAE" target="_blank">Zona Velha</a></strong> (oude stad) — straten met beschilderde deuren, talloze tasca's en restaurants</li>
+<li>Drankje langs de jachthaven met uitzicht op de cruiseschepen</li>
+</ul>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag15" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag15.jpg" alt="Funchal kabelbaan" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">🎭</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">15</div>
+  <div class="day-card" id="dag14">
+    <div class="day-card-header" onclick="toggleDay(14)" style="border-left: 4px solid #1a237e">
+      <div class="day-photo-thumb">
+        <img src="photos/dag14.jpg" alt="Dag 14" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Vr 15 augustus</span>
-            <span class="day-island-chip chip-madeira">Madeira</span>
-          </div>
-          <div class="day-title">Funchal stad</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🛒</span> Mercado dos Lavradores — boerenmarkt 07:00–19:00 (let op fruit-prijzen boven!)</li>
-            <li><span class="hi">🎨</span> Zona Velha — Art of Open Doors, smalle straatjes</li>
-            <li><span class="hi">🚡</span> Kabelbaan Monte · €18 → carro de cesto terug · €30</li>
-            <li><span class="hi">🌸</span> Jardim Monte Palace — tropische tuin · €15</li>
-            <li><span class="hi">🌅</span> Miradouro das Neves — beste zonsondergangsplek, geen touristenbussen</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 14</span>
+          <span class="day-date">Do 14 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          <span class="star-badge">⭐ #2 Madeira</span>
         </div>
+        <div class="day-title">🏔️ PR1.2 Pico Ruivo</div>
       </div>
+      <div class="day-toggle" id="toggle14">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip alert">⚠️ 15 augustus = nationale feestdag. Winkels dicht, restaurants open. Diner vooraf reserveren!</div>
+    <div class="day-body" id="body14" style="display:none">
+      <p>De wandeling naar het hoogste punt van Madeira (1.862 m), die jullie noemden. Veel makkelijker dan PR1 (de beruchte tochten van Pico do Arieiro naar Pico Ruivo) — hier rij je naar Achada do Teixeira en wandel je vandaar 5,6 km heen en terug naar de top.</p>
+<div class="time-block"><strong>🎫 Reserveer vooraf:</strong> <a href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica</a> — €4,50 p.p. voor PR1.2.</div>
+<div class="time-block"><strong>10:00 — Vertrek hotel Funchal</strong> (~1u15 rijden naar Achada do Teixeira)</div>
+<div class="time-block"><strong>11:30 — Wandeling: PR1.2 Vereda do Pico Ruivo</strong></div>
+<ul>
+<li>Komoot: <strong><a href="https://www.komoot.com/smarttour/e1375721060" target="_blank">Pico Ruivo and Achada do Teixeira — PR1.2 route on Madeira Island</a></strong> (zoek anders direct op "PR 1.2 Pico Ruivo Trail" in de Komoot-app)</li>
+<li>5,6 km heen-en-terug · ~2u · Matig · 340 m hoogteverschil</li>
+<li>4,7★ met 19.000+ recensies</li>
+<li>Start: <strong>(2)</strong> <a href="https://www.google.com/maps/search/?api=1&query=PR%201.2%20Vereda%20do%20Pico%20Ruivo&query_place_id=ChIJ-Q3pYYJdYAwRZSaARrzWM3s" target="_blank">PR 1.2 Vereda do Pico Ruivo trailhead, Achada do Teixeira</a></li>
+<li>Goed onderhouden geplaveid pad de eerste 2,1 km, dan trappen naar de top</li>
+<li>Bovenop <strong>(3)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Pico%20Ruivo&query_place_id=ChIJcfi6UJZdYAwRvPMueMrobKE" target="_blank">Pico Ruivo</a> — bij helder weer zie je de hele bergketen, soms zelfs Porto Santo</li>
+<li>Klein gezellig café halverwege (<a href="https://www.google.com/maps/search/?api=1&query=Casa%20do%20Abrigo%20Pico%20Ruivo&query_place_id=ChIJVQFG3BNdYAwR93VR-GGArgw" target="_blank">Abrigo do Pico Ruivo</a>) voor warme drank en zelfgemaakte taart</li>
+<li><strong>Pak het volgende mee:</strong> laagjes (boven kan het 10°C kouder zijn), windjas, water, snacks. Geen schaduw.</li>
+<li><strong>Tip:</strong> ga rond 11–12u — dan is de vroege ochtendmist meestal opgetrokken, en is de wind aan zijn rustigst</li>
+</ul>
+<div class="time-block"><strong>14:30 — Lunch in (4) <a href="https://www.google.com/maps/search/?api=1&query=Santana%20Madeira&query_place_id=ChIJj2OTFgVnYAwRd0gTmjbmIN0" target="_blank">Santana</a></strong> (~25 min naar beneden)</div>
+<ul>
+<li>Beroemd om de <strong>traditionele driehoekige rietdaken-huisjes</strong> ("casas de colmo") — een paar zijn als museum-replica's te bezichtigen aan het hoofdplein, gratis</li>
+<li>Lunch bij een van de tasca's aan de hoofdstraat — <em>espetada</em> op laurierstok is hier een specialiteit</li>
+</ul>
+<div class="time-block"><strong>16:00 — Terug naar Funchal</strong> via <a href="https://www.google.com/maps/search/?api=1&query=Ribeiro%20Frio%20Madeira&query_place_id=ChIJ7TAarzZnYAwR-MVQfPaWCFQ" target="_blank">Ribeiro Frio</a> (~1u rijden, schilderachtige route door bossen)</div>
+<ul>
+<li>Optionele korte stop: kort levada-paadje naar <strong><a href="https://www.google.com/maps/search/?api=1&query=Vereda%20dos%20Balc%C3%B5es" target="_blank">Vereda dos Balcões viewpoint</a></strong> (PR11) — slechts 1,5 km heen-en-terug, ~30 min, lieflijk uitzichtpunt over de Ribeira da Metade-vallei</li>
+</ul>
+<p>---</p>
     </div>
   </div>
 
-  <div id="dag16" class="day-card">
-    <div class="day-card-header">
-      <div class="day-photo">
-        <img src="photos/dag16.jpg" alt="Funchal panorama" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">👋</div>'">
-        <div class="day-photo-overlay"></div>
-        <div class="day-number-badge">16</div>
+  <div class="day-card" id="dag15">
+    <div class="day-card-header" onclick="toggleDay(15)" style="border-left: 4px solid #880e4f">
+      <div class="day-photo-thumb">
+        <img src="photos/dag15.jpg" alt="Dag 15" loading="lazy">
       </div>
-      <div class="day-info">
-        <div>
-          <div class="day-meta">
-            <span class="day-date-label">Za 16 augustus</span>
-            <span class="day-island-chip chip-transfer">Vertrekdag</span>
-          </div>
-          <div class="day-title">Tot ziens, Madeira</div>
-          <ul class="day-highlights-list">
-            <li><span class="hi">🛍️</span> Laatste souvenirs — madeirawijn, bolo de mel, poncha in flesje</li>
-            <li><span class="hi">✈️</span> Huurauto inleveren bij FNC — reken 25 min + verkeer</li>
-          </ul>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 15</span>
+          <span class="day-date">Vr 15 aug</span>
+          <span class="day-chip chip-madeira">Madeira</span>
+          
         </div>
+        <div class="day-title">🎭 Funchal stad</div>
       </div>
+      <div class="day-toggle" id="toggle15">▸</div>
     </div>
-    <div class="day-footer">
-      <div class="day-tip">Goede vlucht! 🛫</div>
+    <div class="day-body" id="body15" style="display:none">
+      <p>Lichtere dag in en rond Funchal — markt, oude stad, kabelbaan, tropische tuin. Geen wandeling, wel veel sfeer.</p>
+<div class="alert">⚠️ <strong>Let op:</strong> 15 augustus is <em>Assunção de Nossa Senhora</em> (Maria-Tenhemelopneming), een nationale feestdag in Portugal. Veel winkels zijn dicht; restaurants en de kabelbaan blijven meestal wel open, maar reserveer voor het diner. Bij Monte is een belangrijke processie en festiviteit op deze dag — kan extra druk zijn maar ook bijzonder om te zien.</div>
+<div class="time-block"><strong>10:00 — Te voet of met taxi naar (1) <a href="https://www.google.com/maps/search/?api=1&query=Mercado%20dos%20Lavradores&query_place_id=ChIJz3kecQ9gYAwRYw5WU4wAWY0" target="_blank">Mercado dos Lavradores</a></strong></div>
+<ul>
+<li>Beroemde overdekte boerenmarkt, dagelijks open behalve zondag (15 aug = vrijdag, dus open 07:00–19:00)</li>
+<li>Beneden: zwarte degenvis (espada), tonijn, lokale groente</li>
+<li>Boven: tropisch fruit (passievrucht, banaan, anona, tabaibo, custardappel) — <strong>let op: bovenste etage kunnen verkopers belachelijke prijzen rekenen</strong> (€40 voor wat fruit komt voor). Vraag de prijs <em>voordat</em> je iets pakt, of koop alleen bij de marktkraam met geprijsd fruit.</li>
+</ul>
+<div class="time-block"><strong>11:00 — Wandel naar (2) <a href="https://www.google.com/maps/search/?api=1&query=Zona%20Hist%C3%B3rica%20do%20Funchal&query_place_id=ChIJTY-yZA9gYAwRaQ6GA77XWAE" target="_blank">Zona Velha</a></strong></div>
+<ul>
+<li>De oude stad: smalle straatjes, beschilderde deuren (het "Art of Open Doors"-project) — perfect voor fotografie</li>
+<li>Lunch hier, of bewaar honger voor verder</li>
+</ul>
+<div class="time-block"><strong>13:00 — (3) <a href="https://www.google.com/maps/search/?api=1&query=Funchal%20Cable%20Car&query_place_id=ChIJ2XMyaQVgYAwRrSdow8Jn1hc" target="_blank">Funchal Cable Car (Teleférico)</a></strong> naar Monte</div>
+<ul>
+<li>15 minuten kabelbaanrit naar 550 m hoogte, ongelooflijk uitzicht over Funchal en de oceaan</li>
+<li>€18 p.p. enkel, €25 retour. Open 08:45–17:45.</li>
+<li><strong>Tip:</strong> koop een enkeltje omhoog en kom terug via... de carros de cesto (rieten sleeën): twee carreiros sturen je in een mandstoel met houten glijders 2 km naar beneden over de straat. Iconisch (sinds de 19e eeuw), kindachtig leuk, ~€30 p.p. voor 10 minuten.</li>
+</ul>
+<div class="time-block"><strong>14:00 — (4) <a href="https://www.google.com/maps/search/?api=1&query=Jardim%20Monte%20Palace%20Madeira&query_place_id=ChIJZzh5QV5hYAwRq2LFs5H6Maw" target="_blank">Jardim Monte Palace</a></strong></div>
+<ul>
+<li>Tropische tuin op een steile heuvel — Japanse paviljoenen, oosterse bruggen, kunstinstallaties, zelfs een ondergrondse grot met enorme kristallen</li>
+<li>€15 p.p., open 09:30–18:00</li>
+<li>Reken op 2 uur</li>
+</ul>
+<div class="time-block"><strong>17:00 — Terug naar Funchal</strong> met de kabelbaan (of taxi)</div>
+<div class="time-block"><strong>Vooravond — terug langs de jachthaven, of bezoek aan een Madeira-wijnhuis:</strong></div>
+<ul>
+<li><strong><a href="https://www.google.com/maps/search/?api=1&query=Blandys%20Wine%20Lodge%20Funchal&query_place_id=ChIJD2eCbAhgYAwRZ1wExjwHVQw" target="_blank">Blandy's Wine Lodge</a></strong> — eeuwenoude kelders in het centrum, rondleidingen + proeverij vanaf €18</li>
+</ul>
+<div class="time-block"><strong>17:30 — Zonsondergang bij <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20das%20Neves%20Funchal&query_place_id=ChIJAwyQUi5gYAwRozCO-0PBBAw" target="_blank">Miradouro das Neves</a></strong> (lokale favoriet, gratis)</div>
+<ul>
+<li>Rustig uitkijkpunt boven Funchal met ongehinderd panorama over de hele baai — door Beyond Madeira beschreven als de beste plek om de dag mee af te sluiten. Locals gaan hier 's avonds zitten met een drankje terwijl de stad langzaam oplicht. Gratis parkeren, geen touristenbussen. Let op: sommige bezoekers melden dat stroomkabels gedeeltelijk in beeld staan bij foto's.</li>
+</ul>
+<div class="time-block"><strong>19:30 — Diner in (5) <a href="https://www.google.com/maps/search/?api=1&query=C%C3%A2mara%20de%20Lobos&query_place_id=ChIJyR0p1JleYAwR0D-Q5L3rAAQ" target="_blank">Câmara de Lobos</a></strong> voor zonsondergang</div>
+<ul>
+<li>~15 min rijden vanaf Funchal — hetzelfde dorpje als dag 10, maar nu specifiek voor de zonsondergang vanaf het haventje</li>
+<li>Of in Funchal aan de jachthaven</li>
+</ul>
+<p>---</p>
     </div>
+  </div>
+
+  <div class="day-card" id="dag16">
+    <div class="day-card-header" onclick="toggleDay(16)" style="border-left: 4px solid #37474f">
+      <div class="day-photo-thumb">
+        <img src="photos/dag16.jpg" alt="Dag 16" loading="lazy">
+      </div>
+      <div class="day-header-info">
+        <div class="day-meta-row">
+          <span class="day-num">Dag 16</span>
+          <span class="day-date">Za 16 aug</span>
+          <span class="day-chip chip-transfer">Madeira</span>
+          
+        </div>
+        <div class="day-title">👋 Vertrek</div>
+      </div>
+      <div class="day-toggle" id="toggle16">▸</div>
+    </div>
+    <div class="day-body" id="body16" style="display:none">
+      <p>Geen activiteiten gepland — neem het rustig.</p>
+<ul>
+<li>Hotel uitchecken</li>
+<li>Eventueel laatste boodschappen (madeirawijn, <em>bolo de mel</em> honingkoek, <em>poncha</em> in flesjes als handbagage)</li>
+<li>Huurauto inleveren bij <strong>luchthaven Funchal (FNC)</strong> — ~25 min vanaf het centrum, verkeer kan langzaam zijn 's ochtends, dus reken ruim</li>
+<li>Goede vlucht!</li>
+</ul>
+<p>---</p>
+    </div>
+  </div>
+</div><!-- /madeira -->
+
+
+<!-- ROUTES COMPARISON -->
+<div id="routes" class="section">
+  <div class="section-label">Komoot vs. AllTrails vergelijking</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Alle wandelingen vergeleken op beide platforms — rating, moeilijkheidsgraad en actuele status.</p>
+  
+  <div style="font-weight:600;font-size:13px;color:var(--ocean);margin:0 0 8px">🌋 São Miguel</div>
+  <div class="trails-table">
+    <div class="trails-thead"><div>Dag</div><div>Route</div><div>Komoot</div><div>AllTrails</div><div>Verschil</div></div>
+    <div class="trails-row"><div><strong>2</strong></div><div>Boca do Inferno lus</div><div>4,5★ · Makkelijk · 3,5km</div><div>4,6★ · Matig · 2,6km</div><div class="ok">✅ Kleine routevariatie</div></div>
+    <div class="trails-row"><div><strong>3</strong></div><div>PRC 2 SMI Lagoa do Fogo</div><div>4,4★ · Matig · 12km</div><div>4,4★ · Matig · 11km</div><div class="warn">⚠️ Gedeeltelijke sluiting mei 2026</div></div>
+    <div class="trails-row"><div><strong>4</strong></div><div>PRC 6 SMI Furnas</div><div>4,5★ · Matig · 9,6km</div><div>4,4★ · Makkelijk · 6,3km</div><div class="ok">✅ Geen conflict</div></div>
+    <div class="trails-row"><div><strong>5</strong></div><div>PRC 9 SMI Salto do Prego</div><div>4,8★ · Matig · 4km</div><div>4,8★ · Matig · 3,7km</div><div class="ok">✅ Volledige overeenstemming</div></div>
+    <div class="trails-row"><div><strong>6</strong></div><div>PRC 29 SMI Cabrito</div><div>4,5★ · Matig · 8,2km</div><div>Niet prominent</div><div class="warn">⚠️ Sluiting okt. 2025</div></div>
+  </div>
+
+  <div style="font-weight:600;font-size:13px;color:var(--ocean);margin:16px 0 8px">🏔️ Madeira</div>
+  <div class="trails-table">
+    <div class="trails-thead"><div>Dag</div><div>Route</div><div>Komoot</div><div>AllTrails</div><div>Verschil</div></div>
+    <div class="trails-row"><div><strong>9</strong></div><div>PR8 São Lourenço</div><div>4,7★ · Matig · 6,75km</div><div>4,7★ · Matig · 6,6km</div><div class="ok">✅ Volledige overeenstemming</div></div>
+    <div class="trails-row"><div><strong>11</strong></div><div>PR6 Levada 25 Fontes</div><div>4,7★ · <strong>Matig</strong></div><div>4,5★ · <strong>Zwaar</strong></div><div class="warn">⚠️ Moeilijkheid verschilt → Matig–Zwaar</div></div>
+    <div class="trails-row"><div><strong>12</strong></div><div>PR14 Fanal / Cedros</div><div>4,5★ · Makkelijk</div><div>4,5★ · Makkelijk</div><div class="ok">✅ Overeenstemming</div></div>
+    <div class="trails-row"><div><strong>14</strong></div><div>PR1.2 Pico Ruivo</div><div>4,7★ · Zwaar · 5,6km</div><div>4,7★ · Matig–Zwaar</div><div class="ok">✅ Nagenoeg gelijk</div></div>
   </div>
 </div>
 
 <!-- RESERVATIONS -->
 <div id="reservations" class="section">
   <div class="section-label">Vooraf boeken</div>
-  <div class="reservations-list">
-    <div class="res-card">
-      <div class="res-icon">♨️</div>
-      <div class="res-info">
-        <div class="res-title">Caldeira Velha — Dag 3</div>
-        <div class="res-meta">Tijdsloten van 1,5 uur · €10 p.p. · Niet op dezelfde dag boekbaar</div>
-      </div>
-      <a class="res-action" href="https://parquesnaturais.azores.gov.pt/bilheteira/caldeiravelha/?lang=en" target="_blank">Boek →</a>
-    </div>
-    <div class="res-card">
-      <div class="res-icon">🫕</div>
-      <div class="res-info">
-        <div class="res-title">Tony's Restaurant Furnas (cozido) — Dag 4</div>
-        <div class="res-meta">Reserveer de cozido-lunch vooraf — populair en snel volgeboekt</div>
-      </div>
-      <a class="res-action" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Tony%27s+Furnas" target="_blank">Google Maps →</a>
-    </div>
-    <div class="res-card">
-      <div class="res-icon">🌙</div>
-      <div class="res-info">
-        <div class="res-title">Poça da Dona Beija — Dag 4</div>
-        <div class="res-meta">Alleen online · €10 (voor 17:30) of €16 (na 18:00) · Geen kassa ter plaatse</div>
-      </div>
-      <a class="res-action" href="https://www.google.com/search?q=poça+da+dona+beija+tickets" target="_blank">Zoek tickets →</a>
-    </div>
-    <div class="res-card">
-      <div class="res-icon">🥾</div>
-      <div class="res-info">
-        <div class="res-title">PR8 São Lourenço — Dag 9</div>
-        <div class="res-meta">SIMplifica · €4,50 p.p. · Ochtendslot · Minstens 1 dag van tevoren</div>
-      </div>
-      <a class="res-action" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a>
-    </div>
-    <div class="res-card">
-      <div class="res-icon">🥾</div>
-      <div class="res-info">
-        <div class="res-title">PR6 Levada das 25 Fontes — Dag 11</div>
-        <div class="res-meta">SIMplifica · €4,50 p.p. · Ochtendslot voor minste drukte op smal pad</div>
-      </div>
-      <a class="res-action" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a>
-    </div>
-    <div class="res-card">
-      <div class="res-icon">🏔️</div>
-      <div class="res-info">
-        <div class="res-title">PR1.2 Pico Ruivo — Dag 14</div>
-        <div class="res-meta">SIMplifica · €4,50 p.p. · Ochtend- of vroege middagslot</div>
-      </div>
-      <a class="res-action" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a>
-    </div>
+  <div class="res-list">
+    <div class="res-card"><div class="res-icon">♨️</div><div class="res-info"><div class="res-title">Caldeira Velha — Dag 3</div><div class="res-meta">Tijdsloten 1,5u · €10 p.p. · Niet op dezelfde dag boekbaar online</div></div><a class="res-btn" href="https://parquesnaturais.azores.gov.pt/bilheteira/caldeiravelha/?lang=en" target="_blank">Boek →</a></div>
+    <div class="res-card"><div class="res-icon">🫕</div><div class="res-info"><div class="res-title">Tony's Restaurant Furnas (cozido) — Dag 4</div><div class="res-meta">Reserveer de lunch vooraf — snel volgeboekt in augustus</div></div><a class="res-btn" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Tony%27s+Furnas" target="_blank">Google Maps →</a></div>
+    <div class="res-card"><div class="res-icon">🌙</div><div class="res-info"><div class="res-title">Poça da Dona Beija — Dag 4</div><div class="res-meta">Alleen online · €10 (voor 17:30) of €16 (na 18:00) · Geen kassa ter plaatse</div></div><a class="res-btn" href="https://www.google.com/search?q=po%C3%A7a+da+dona+beija+tickets" target="_blank">Zoek tickets →</a></div>
+    <div class="res-card"><div class="res-icon">🥾</div><div class="res-info"><div class="res-title">PR8 São Lourenço — Dag 9</div><div class="res-meta">SIMplifica · €4,50 p.p. · Ochtendslot · min. 1 dag vooraf</div></div><a class="res-btn" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a></div>
+    <div class="res-card"><div class="res-icon">🥾</div><div class="res-info"><div class="res-title">PR6 Levada das 25 Fontes — Dag 11</div><div class="res-meta">SIMplifica · €4,50 p.p. · Ochtendslot voor minste drukte</div></div><a class="res-btn" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a></div>
+    <div class="res-card"><div class="res-icon">🏔️</div><div class="res-info"><div class="res-title">PR1.2 Pico Ruivo — Dag 14</div><div class="res-meta">SIMplifica · €4,50 p.p. · Ochtend- of vroege middagslot</div></div><a class="res-btn" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a></div>
   </div>
 </div>
 
-<!-- PACKING LIST -->
+<!-- PACKING -->
 <div id="packing" class="section">
   <div class="section-label">Paklijst</div>
-  <div class="packing-grid">
-    <div class="packing-card">
-      <h4>👟 Kleding & schoenen</h4>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Stevige wandelschoenen</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Waterschoenen / slippers</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Lichte regenjas</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Fleece of warme laag (bergen)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Windjas</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Zwemkleding (2×)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Donkere handdoek (thermaal bad)</label>
+  <div class="pack-grid">
+    <div class="pack-card"><h4>👟 Kleding</h4>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Stevige wandelschoenen</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Waterschoenen / slippers</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Lichte regenjas</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Fleece / warme laag (bergen)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Windjas</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Zwemkleding (2×)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Donkere handdoek (thermaal bad)</label>
     </div>
-    <div class="packing-card">
-      <h4>🎒 Uitrusting</h4>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Hoofdlamp / zaklamp (tunnel PR6!)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Drinkfles (1,5 L p.p.)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Snacks voor wandeldagen</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Zonnecreme + zonnebril + hoed</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Powerbank</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Munten voor toiletten (€1)</label>
+    <div class="pack-card"><h4>🎒 Uitrusting</h4>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Hoofdlamp (tunnel PR6!)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Drinkfles 1,5 L p.p.</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Snacks voor wandeldagen</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Zonnecreme + hoed + bril</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Powerbank</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Munten voor toiletten (€1)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Contant geld (kleinere plekken)</label>
     </div>
-    <div class="packing-card">
-      <h4>📱 Apps & documenten</h4>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> SIMplifica account aanmaken</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Caldeira Velha boeken (dag 3)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Poça da Dona Beija boeken (dag 4)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Tony's Restaurant reserveren (dag 4)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Komoot app installeren</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> AllTrails app installeren</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Spot Azores webcam bookmarken</label>
+    <div class="pack-card"><h4>📱 Apps & reserveringen</h4>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> SIMplifica account aanmaken</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Caldeira Velha boeken (dag 3)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Poça da Dona Beija boeken (dag 4)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Tony's Restaurant reserveren</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> PR8 SIMplifica (dag 9)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> PR6 SIMplifica (dag 11)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> PR1.2 SIMplifica (dag 14)</label>
     </div>
-    <div class="packing-card">
-      <h4>🍽️ Eten & proeven</h4>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Cozido das Furnas (dag 4)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Espetada op laurierstok (Madeira)</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Bolo do caco — knoflookbrood</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Lapas grelhadas — gegrilde limpets</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Poncha — rum met honing & citroen</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Madeira-wijn proeven</label>
-      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Azoriaanse ananas</label>
+    <div class="pack-card"><h4>🍽️ Proeven op de lijst</h4>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Cozido das Furnas (dag 4)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Espetada op laurierstok</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Bolo do caco (knoflookbrood)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Lapas grelhadas (limpets)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Poncha (rum, honing, citroen)</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Madeira-wijn</label>
+      <label class="pack-item"><input type="checkbox" onchange="chk(this)"> Azoriaanse ananas 🍍</label>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <strong>Azoren & Madeira — Zomervakantie 2026</strong><br>
-  2 augustus – 16 augustus · Versie 1.11<br><br>
-  🌋 São Miguel · Ponta Delgada &nbsp;|&nbsp; 🏔️ Madeira · Santa Cruz · Porto Moniz · Funchal<br>
-  Webcams: <a href="https://www.spotazores.com/" style="color:rgba(255,255,255,0.5)" target="_blank">spotazores.com</a> &nbsp;|&nbsp;
-  <a href="https://beyondmadeira.com/live-webcams" style="color:rgba(255,255,255,0.5)" target="_blank">beyondmadeira.com/live-webcams</a>
+<footer>
+  <strong>Azoren &amp; Madeira — Zomervakantie 2026</strong><br>
+  2 augustus – 16 augustus · Versie 1.11 · São Miguel · Porto Moniz · Funchal<br>
+  Webcams: <a href="https://www.spotazores.com/" target="_blank">spotazores.com</a> &nbsp;·&nbsp;
+  <a href="https://beyondmadeira.com/live-webcams" target="_blank">beyondmadeira.com/live-webcams</a>
 </footer>
 
 <script>
-function scrollTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+function toggleDay(n) {
+  const body = document.getElementById('body' + n);
+  const tog = document.getElementById('toggle' + n);
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  tog.classList.toggle('open', !open);
+}
+function openDay(n) {
+  const body = document.getElementById('body' + n);
+  const tog = document.getElementById('toggle' + n);
+  if (body && body.style.display === 'none') {
+    body.style.display = 'block';
+    tog.classList.add('open');
+  }
+}
+function navTo(id, btn) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
-
-function toggleCheck(el) {
-  el.closest('.packing-item').classList.toggle('checked', el.checked);
-  saveChecks();
-}
-
-function saveChecks() {
-  const checks = [...document.querySelectorAll('.packing-item input')].map(i => i.checked);
-  try { localStorage.setItem('reisplan_checks', JSON.stringify(checks)); } catch(e) {}
-}
-
-function loadChecks() {
+function chk(el) {
+  el.closest('.pack-item').classList.toggle('checked', el.checked);
   try {
-    const saved = JSON.parse(localStorage.getItem('reisplan_checks') || '[]');
-    document.querySelectorAll('.packing-item input').forEach((el, i) => {
-      if (saved[i]) {
-        el.checked = true;
-        el.closest('.packing-item').classList.add('checked');
-      }
-    });
+    const checks = [...document.querySelectorAll('.pack-item input')].map(i => i.checked);
+    localStorage.setItem('rp_checks', JSON.stringify(checks));
   } catch(e) {}
 }
-
+// Restore checkboxes
+try {
+  const saved = JSON.parse(localStorage.getItem('rp_checks') || '[]');
+  document.querySelectorAll('.pack-item input').forEach((el,i) => {
+    if (saved[i]) { el.checked = true; el.closest('.pack-item').classList.add('checked'); }
+  });
+} catch(e) {}
 // Active nav on scroll
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-      if (id === 'overview') document.querySelectorAll('.nav-btn')[0].classList.add('active');
-      else if (id === 'azoren') document.querySelectorAll('.nav-btn')[1].classList.add('active');
-      else if (id === 'madeira') document.querySelectorAll('.nav-btn')[2].classList.add('active');
-      else if (id === 'reservations') document.querySelectorAll('.nav-btn')[3].classList.add('active');
-      else if (id === 'packing') document.querySelectorAll('.nav-btn')[4].classList.add('active');
+const sections = ['overview','azoren','madeira','routes','reservations','packing'];
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      const idx = sections.indexOf(id);
+      if (idx >= 0) {
+        document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i === idx));
+      }
     }
   });
-}, { threshold: 0.2 });
-
-['overview','azoren','madeira','reservations','packing'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) observer.observe(el);
-});
-
-loadChecks();
+}, {threshold: 0.25});
+sections.forEach(id => { const el = document.getElementById(id); if(el) io.observe(el); });
 </script>
-
 </body>
 </html>
