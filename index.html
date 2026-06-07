@@ -159,6 +159,19 @@ footer{background:var(--ocean);color:rgba(255,255,255,.45);text-align:center;pad
 footer strong{color:rgba(255,255,255,.8)}
 footer a{color:rgba(255,255,255,.45)}
 </style>
+
+  <!-- Leaflet.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <style>
+    .day-map { height: 340px; border-radius: 0 0 var(--r) var(--r); margin-top: 16px; border-top: 1px solid #f0ebe3; z-index: 1; }
+    .leaflet-popup-content { font-family: "DM Sans", sans-serif; font-size: 13px; line-height: 1.5; min-width: 160px; }
+    .leaflet-popup-content strong { color: #0a3d62; }
+    .leaflet-popup-content .pop-type { font-size: 11px; color: #6b7c93; margin-top: 2px; }
+    .map-legend { position: absolute; bottom: 14px; right: 10px; z-index: 1000; background: rgba(255,255,255,0.92); border-radius: 8px; padding: 8px 12px; font-size: 11px; line-height: 1.8; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .map-legend span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+  </style>
+
 </head>
 <body>
 
@@ -277,7 +290,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li><strong>Of: <a href="https://www.google.com/maps/search/?api=1&query=Terras%20Restaurante%20Brunch%20Ponta%20Delgada&query_place_id=ChIJqWpCvBMrQwsRzOjUrZnLTMo" target="_blank">Terras</a></strong> (R. Hintze Ribeiro 29, open tot ~22:00, normaal woensdag gesloten — <strong>bevestig dit vooraf</strong> via hun <a href="https://www.instagram.com/terras.azores/" target="_blank">Instagram</a> of e-mail terras.azores@gmail.com) — aanbevolen door local Rui: verse vis, huisgemaakte ravioli, verrassend goede prijs-kwaliteit. Dag 1 is zondag, dus geen probleem. Reserveer vooraf.</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag1" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag2">
@@ -330,7 +347,11 @@ footer a{color:rgba(255,255,255,.45)}
 </ul>
 <p><strong>Terugrijden naar Ponta Delgada:</strong> ~30 min</p>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag2" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag3">
@@ -379,7 +400,11 @@ footer a{color:rgba(255,255,255,.45)}
 </ul>
 <p><strong>Terugrijden naar Ponta Delgada:</strong> ~25 min</p>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag3" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag4">
@@ -432,7 +457,11 @@ footer a{color:rgba(255,255,255,.45)}
 <div class="time-block"><strong>18:45 — Terug naar de hoofdweg via (6) <a href="https://www.google.com/maps/search/?api=1&query=Miradouro%20do%20Pico%20do%20Ferro&query_place_id=ChIJPaopYPYgXQsR4St_AScjujE" target="_blank">Miradouro do Pico do Ferro</a></strong> — het beste uitzicht <em>naar beneden</em> over de vallei en het meer van Furnas, prachtig in het avondlicht. 5 min van de weg af.</div>
 <p><strong>Terugrijden naar Ponta Delgada:</strong> ~1 uur</p>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag4" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag5">
@@ -475,7 +504,11 @@ footer a{color:rgba(255,255,255,.45)}
 </ul>
 <p><strong>Terugrijden naar Ponta Delgada:</strong> ~1 uur via de noordkust</p>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag5" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag6">
@@ -524,7 +557,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Wandel langs de jachthaven, doe wat souvenirshoppen, dineer bij <a href="https://www.google.com/maps/search/?api=1&query=A%20Tasca&query_place_id=ChIJgXv_CsoqQwsRxyxX6XfRAD4" target="_blank">A Tasca</a></li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag6" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag7">
@@ -553,7 +590,11 @@ footer a{color:rgba(255,255,255,.45)}
 <p><strong>Lever de huurauto in op luchthaven PDL</strong> (10 min vanuit het stadscentrum).</p>
 <div class="alert">✈️ <strong>Doorvlucht naar Madeira:</strong> vandaag (zaterdag 8 aug) vlieg je in de loop van de ochtend van Ponta Delgada (PDL) naar Funchal (FNC), aankomst om 12:25. Het Madeira-deel begint hieronder met dag 8.</div>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag7" class="day-map"></div>
     </div>
+</div>
   </div>
 </div><!-- /azoren -->
 
@@ -598,7 +639,11 @@ footer a{color:rgba(255,255,255,.45)}
 </ul>
 <div class="time-block"><strong>Tip:</strong> vul de huurauto vanavond niet op — er zit een tankstation langs de N101 vlakbij het hotel, vol tanken kan ook morgenvroeg op weg naar de wandeling.</div>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag8" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag9">
@@ -641,7 +686,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Of relaxed terug naar Santa Cruz voor een latere middag aan het zwembad van het hotel</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag9" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag10">
@@ -692,7 +741,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Diner aan de boulevard — verse vis met uitzicht op de oceaan</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag10" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag11">
@@ -741,7 +794,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Open 09:00–19:00 in augustus; bij hoge golven gesloten — check de webcam vooraf</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag11" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag12">
@@ -800,7 +857,11 @@ footer a{color:rgba(255,255,255,.45)}
 </ul>
 <div class="time-block"><strong>17:30 — Terug naar Porto Moniz</strong> via de noordkustweg (de oude weg langs de zee, niet de tunnel) — spectaculaire watervallen vallen letterlijk <em>op</em> de weg in de winter; in augustus minder maar nog wel beleefbaar</div>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag12" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag13">
@@ -848,7 +909,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Drankje langs de jachthaven met uitzicht op de cruiseschepen</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag13" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag14">
@@ -893,7 +958,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Optionele korte stop: kort levada-paadje naar <strong><a href="https://www.google.com/maps/search/?api=1&query=Vereda%20dos%20Balc%C3%B5es" target="_blank">Vereda dos Balcões viewpoint</a></strong> (PR11) — slechts 1,5 km heen-en-terug, ~30 min, lieflijk uitzichtpunt over de Ribeira da Metade-vallei</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag14" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag15">
@@ -953,7 +1022,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Of in Funchal aan de jachthaven</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag15" class="day-map"></div>
     </div>
+</div>
   </div>
 
   <div class="day-card" id="dag16">
@@ -981,7 +1054,11 @@ footer a{color:rgba(255,255,255,.45)}
 <li>Goede vlucht!</li>
 </ul>
 <p>---</p>
+    
+    <div style="position:relative">
+      <div id="map-dag16" class="day-map"></div>
     </div>
+</div>
   </div>
 </div><!-- /madeira -->
 
@@ -1081,6 +1158,7 @@ function toggleDay(n) {
   const open = body.style.display !== 'none';
   body.style.display = open ? 'none' : 'block';
   tog.classList.toggle('open', !open);
+  if (!open) { setTimeout(function(){ initMap(n); }, 80); }
 }
 function openDay(n) {
   const body = document.getElementById('body' + n);
@@ -1088,6 +1166,7 @@ function openDay(n) {
   if (body && body.style.display === 'none') {
     body.style.display = 'block';
     tog.classList.add('open');
+    setTimeout(function(){ initMap(n); }, 80);
   }
 }
 function navTo(id, btn) {
@@ -1124,5 +1203,76 @@ const io = new IntersectionObserver(entries => {
 }, {threshold: 0.25});
 sections.forEach(id => { const el = document.getElementById(id); if(el) io.observe(el); });
 </script>
+<script>
+var DAY_DATA = {"1": {"center": [37.7412, -25.6756], "zoom": 14, "title": "Ponta Delgada", "route": false, "locations": [{"name": "Portas da Cidade", "lat": 37.7388, "lng": -25.6698, "type": "sight", "info": "Iconische 18e-eeuwse stadspoorten van vulkanisch basalt"}, {"name": "Igreja Matriz de São Sebastião", "lat": 37.739, "lng": -25.6694, "type": "sight", "info": "Hoofdkerk met Manuelijns portaal"}, {"name": "Forte de São Brás", "lat": 37.7374, "lng": -25.6647, "type": "sight", "info": "Militair museum · €3 · 10:00–18:00"}, {"name": "Ananasplantage A. Arruda", "lat": 37.7495, "lng": -25.6567, "type": "nature", "info": "Gratis toegang & proeverij · open tot 20:00"}, {"name": "Terras Restaurant", "lat": 37.7403, "lng": -25.6725, "type": "food", "info": "R. Hintze Ribeiro 29 · aanbevolen door local Rui"}]}, "2": {"center": [37.8167, -25.7833], "zoom": 12, "title": "Sete Cidades & westkust", "route": true, "locations": [{"name": "Miradouro do Pico do Carvão", "lat": 37.795, "lng": -25.7233, "type": "view", "info": "Optionele stop: beide kusten tegelijk zichtbaar"}, {"name": "Parkeerplaats Lagoa do Canário", "lat": 37.8274, "lng": -25.8086, "type": "start", "info": "Start wandeling Boca do Inferno lus"}, {"name": "Miradouro da Grota do Inferno", "lat": 37.83, "lng": -25.815, "type": "view", "info": "Panorama over tweelingmeren Sete Cidades"}, {"name": "Sete Cidades dorp + Lagoa Azul Restaurant", "lat": 37.8267, "lng": -25.7883, "type": "food", "info": "Lunch: buffet ~€18 · wandel langs de meren"}, {"name": "Miradouro da Vista do Rei", "lat": 37.8183, "lng": -25.7817, "type": "view", "info": "Het Koningsuitzicht met verlaten hotel"}, {"name": "Miradouro da Ponta do Escalvado", "lat": 37.8583, "lng": -25.84, "type": "view", "info": "Kustuitzicht op de Mosteiros-eilandjes"}, {"name": "Strand van Mosteiros", "lat": 37.8617, "lng": -25.8283, "type": "swim", "info": "Dramatisch zwart zandstrand"}, {"name": "Farol da Ferraria", "lat": 37.855, "lng": -25.8067, "type": "view", "info": "Zonsondergang vanaf de vuurtoren"}]}, "3": {"center": [37.77, -25.47], "zoom": 12, "title": "Lagoa do Fogo & Caldeira Velha", "route": true, "locations": [{"name": "Start PRC 2 SMI (Praia)", "lat": 37.735, "lng": -25.4567, "type": "start", "info": "Start wandeling · 12,4km · ~3u45 · Matig"}, {"name": "Lagoa do Fogo", "lat": 37.77, "lng": -25.4683, "type": "nature", "info": "⚠️ Pad langs meer gesloten seit mei 2026. Afdaling naar meer nog mogelijk."}, {"name": "Restaurante O Silva (Ribeira Grande)", "lat": 37.83, "lng": -25.5167, "type": "food", "info": "Lunch · Azoriaanse vis"}, {"name": "Caldeira Velha", "lat": 37.8033, "lng": -25.505, "type": "thermal", "info": "♨️ Thermale bossen & waterval · €10 · Reserveer vooraf!"}, {"name": "Ribeira Grande (stad)", "lat": 37.8283, "lng": -25.5167, "type": "sight", "info": "Fraaie rivierbruggen & azulejo-kerken"}, {"name": "Ilhéu de Vila Franca do Campo", "lat": 37.7083, "lng": -25.435, "type": "swim", "info": "Optioneel: snorkellagune · max 400/dag · boek vooraf"}]}, "4": {"center": [37.775, -25.325], "zoom": 13, "title": "Furnas", "route": true, "locations": [{"name": "Caldeiras da Lagoa das Furnas", "lat": 37.7633, "lng": -25.315, "type": "thermal", "info": "Kom 11:30 voor uitgraven cozido-potten · €3"}, {"name": "Lagoa das Furnas (PRC 6 SMI)", "lat": 37.7617, "lng": -25.3383, "type": "nature", "info": "Wandeling 9,6km · ~2u40 rond het kratermeer"}, {"name": "Restaurante Tony's", "lat": 37.7767, "lng": -25.32, "type": "food", "info": "🍽️ Cozido das Furnas · Reserveer vooraf!"}, {"name": "Parque Terra Nostra", "lat": 37.7733, "lng": -25.3183, "type": "sight", "info": "18e-eeuwse botanische tuin · €10 · open tot 16:30"}, {"name": "Parque da Grená", "lat": 37.775, "lng": -25.3167, "type": "nature", "info": "Alternatief: wilder bos, waterval, jacuzzi · €10"}, {"name": "Caldeiras das Furnas (fumarolen)", "lat": 37.7767, "lng": -25.3217, "type": "thermal", "info": "Borrelende fumarolen & mineraalwaterkranen · gratis"}, {"name": "Poça da Dona Beija", "lat": 37.775, "lng": -25.3133, "type": "thermal", "info": "♨️ 5 bossen van 39°C · open tot 23:00 · €10 · Reserveer vooraf!"}, {"name": "Miradouro do Pico do Ferro", "lat": 37.7767, "lng": -25.31, "type": "view", "info": "Beste uitzicht over vallei Furnas · schitterend in avondlicht"}]}, "5": {"center": [37.7417, -25.15], "zoom": 12, "title": "Oostkust & Salto do Prego", "route": true, "locations": [{"name": "Miradouro de Santa Iria", "lat": 37.8183, "lng": -25.2733, "type": "view", "info": "Uitkijkpunt: theevelden die naar zee aflopen"}, {"name": "PRC 9 SMI Startpunt (Faial da Terra)", "lat": 37.7283, "lng": -25.1267, "type": "start", "info": "Start Salto do Prego · 4km · ~1u30 · 4,8★"}, {"name": "Salto do Prego + Sanguinho", "lat": 37.735, "lng": -25.1183, "type": "nature", "info": "Waterval & verlaten dorp — nu met een klein bartje!"}, {"name": "Povoação (lunch)", "lat": 37.7483, "lng": -25.1533, "type": "food", "info": "Lunch · 5 min rijden van het startpunt"}, {"name": "Miradouro da Ponta da Madrugada", "lat": 37.7833, "lng": -25.1333, "type": "view", "info": "Hortensia's, zee-uitzicht, vriendelijke katten"}, {"name": "Miradouro da Ponta do Sossego", "lat": 37.7817, "lng": -25.1317, "type": "view", "info": "Mooiste tuinen van de oostkust"}, {"name": "Miradouro da Ponta do Arnel", "lat": 37.8017, "lng": -25.0967, "type": "view", "info": "Oudste vuurtoren van de Azoren"}, {"name": "Parque Natural da Ribeira dos Caldeirões", "lat": 37.84, "lng": -25.2167, "type": "nature", "info": "Watervallen, oude watermolens · gratis · 30 min wandeling"}]}, "6": {"center": [37.8417, -25.525], "zoom": 12, "title": "Noordkust & theeplantages", "route": true, "locations": [{"name": "Theefabriek Gorreana", "lat": 37.8383, "lng": -25.5117, "type": "sight", "info": "Enige theeplantage van Europa · gratis rondleiding & proeverij"}, {"name": "Theefabriek Porto Formoso", "lat": 37.8383, "lng": -25.52, "type": "sight", "info": "Authentieke 2e plantage · 5 min verderop"}, {"name": "Restaurante Associação Agrícola", "lat": 37.8283, "lng": -25.515, "type": "food", "info": "Lunch: beroemde biefstuk van de rundveecoöperatie · reserveer!"}, {"name": "PRC 29 SMI trailhead", "lat": 37.83, "lng": -25.5433, "type": "start", "info": "Optie A: caldeiras wandeling · ⚠️ watervaldeel gesloten seit okt. 2025"}, {"name": "Lagoa do Congro", "lat": 37.7817, "lng": -25.395, "type": "nature", "info": "Optie B: verborgen, onheilspellend groen kratermeer"}]}, "7": {"center": [37.7412, -25.6756], "zoom": 13, "title": "Vertrekdag Ponta Delgada", "route": false, "locations": [{"name": "Gruta do Carvão", "lat": 37.7483, "lng": -25.6617, "type": "sight", "info": "Langste lavatunnel van São Miguel · ~€8 · 10:00–12:30"}, {"name": "Mercado da Graça", "lat": 37.74, "lng": -25.6717, "type": "food", "info": "Za open 7:00–14:00 · laatste thee, kaas, ananas"}, {"name": "Luchthaven PDL", "lat": 37.7411, "lng": -25.6983, "type": "flight", "info": "✈️ Vlucht PDL → FNC · 10 min van centrum"}]}, "8": {"center": [32.6967, -16.8667], "zoom": 13, "title": "Aankomst Madeira — Santa Cruz & Machico", "route": false, "locations": [{"name": "Luchthaven FNC (aankomst)", "lat": 32.6978, "lng": -16.7744, "type": "flight", "info": "✈️ Aankomst 12:25 · huurauto ophalen"}, {"name": "Santa Cruz (hotel)", "lat": 32.6883, "lng": -16.79, "type": "hotel", "info": "Inchecken · vlakbij de luchthaven"}, {"name": "Machico", "lat": 32.7167, "lng": -16.7667, "type": "sight", "info": "Oudste dorp Madeira · goudkleurig zandstrand · espetada-diner"}]}, "9": {"center": [32.75, -16.7283], "zoom": 13, "title": "PR8 Ponta de São Lourenço", "route": true, "locations": [{"name": "PR8 Parkeerplaats", "lat": 32.7447, "lng": -16.7022, "type": "start", "info": "⚠️ Vol vanaf 09:00! Wees er om 09:30. 🎫 SIMplifica €4,50"}, {"name": "Ponta de São Lourenço", "lat": 32.7367, "lng": -16.6767, "type": "nature", "info": "#1 wandeling Madeira & Portugal · 6,75km · 4,7★ · 22.800+ reviews"}, {"name": "Casa do Sardinha (café)", "lat": 32.7333, "lng": -16.675, "type": "food", "info": "Keerpunt café · open 10:00–16:00 · munten voor toilet (€1)"}, {"name": "Prainha (zwart strand)", "lat": 32.7467, "lng": -16.7067, "type": "swim", "info": "Zeldzaam zwart zandstrand · 5 min van parkeerplaats"}, {"name": "Caniçal (lunch)", "lat": 32.7367, "lng": -16.7367, "type": "food", "info": "Vissershaventje · verse vis letterlijk uit zee"}]}, "10": {"center": [32.82, -17.16], "zoom": 11, "title": "Scenic drive: Santa Cruz → Porto Moniz", "route": true, "locations": [{"name": "Câmara de Lobos", "lat": 32.6467, "lng": -16.9783, "type": "sight", "info": "Churchill's favoriete vissersdorp · probeer de poncha"}, {"name": "Cabo Girão Skywalk", "lat": 32.6483, "lng": -17.0017, "type": "view", "info": "Glazen platform op 580m · €5 · open 09:00–20:00"}, {"name": "Ponta do Sol (lunch)", "lat": 32.675, "lng": -17.1033, "type": "food", "info": "Knus dorpje met kiezelstrand · ideale lunchstop"}, {"name": "Encumeada-pas + Miradouro", "lat": 32.745, "lng": -17.0217, "type": "view", "info": "Uitzicht over zowel noord- als zuidkust tegelijk"}, {"name": "Miradouro do Véu da Noiva", "lat": 32.8133, "lng": -17.0833, "type": "view", "info": "Bruidsluier-waterval · toilet & souvenirwinkeltje aanwezig"}, {"name": "Porto Moniz (hotel)", "lat": 32.8617, "lng": -17.1633, "type": "hotel", "info": "Inchecken · avond bij de vulkanische rotspoelen"}, {"name": "Natuurzwembaden Porto Moniz", "lat": 32.86, "lng": -17.1633, "type": "swim", "info": "Vulkanische rotspoelen · €3 · open 09:00–19:00"}]}, "11": {"center": [32.7717, -17.0983], "zoom": 12, "title": "PR6 Levada das 25 Fontes", "route": true, "locations": [{"name": "Rabaçal parkeerplaats (ER105)", "lat": 32.7567, "lng": -17.0617, "type": "start", "info": "Start PR6 · 1.288m hoogte · 🎫 SIMplifica €4,50"}, {"name": "Casa do Rabaçal", "lat": 32.7533, "lng": -17.0533, "type": "sight", "info": "Rustpunt halverwege · shuttle €3 voor de terugweg"}, {"name": "Lagoa das 25 Fontes", "lat": 32.745, "lng": -17.035, "type": "nature", "info": "25 watervalletjes tegelijk · het magische eindpunt · 8km · 4,7★"}, {"name": "Risco waterval (PR6.1)", "lat": 32.7483, "lng": -17.0383, "type": "nature", "info": "Optioneel: indrukwekkendste waterval van Madeira +30min"}, {"name": "Restaurante Encumeada", "lat": 32.7483, "lng": -17.02, "type": "food", "info": "Lunch met uitzicht op de terugweg"}, {"name": "Natuurzwembaden Porto Moniz", "lat": 32.86, "lng": -17.1633, "type": "swim", "info": "🏊 Middag zwemmen · €3 · check webcam vooraf"}]}, "12": {"center": [32.84, -17.12], "zoom": 12, "title": "Noordwestkust: Seixal & Fanal", "route": true, "locations": [{"name": "Miradouro Ilhéus da Ribeira da Janela", "lat": 32.8483, "lng": -17.1517, "type": "view", "info": "4,8★ basaltrotsen uit zee · gratis · klifftunnel naar balkon"}, {"name": "Piscinas Naturais do Seixal", "lat": 32.8167, "lng": -17.0983, "type": "swim", "info": "Ruwere poelen dan Porto Moniz · €2,50 · open 10:00–18:00"}, {"name": "Praia da Laje Seixal (zwart strand)", "lat": 32.815, "lng": -17.0967, "type": "swim", "info": "Spectaculair zwart zandstrand naast de poelen"}, {"name": "São Vicente (lunch)", "lat": 32.7983, "lng": -17.0317, "type": "food", "info": "Authentiek bergdorpje · ~15 min van Seixal"}, {"name": "Fanal Laurierwoud", "lat": 32.7883, "lng": -17.1067, "type": "nature", "info": "600+ jaar oude til-bomen · UNESCO · prachtigst in de mist"}]}, "13": {"center": [32.75, -17.05], "zoom": 11, "title": "Porto Moniz → Pico do Arieiro → Funchal", "route": true, "locations": [{"name": "Porto Moniz (vertrek)", "lat": 32.8617, "lng": -17.1633, "type": "hotel", "info": "Uitchecken · vertrek richting hooglanden"}, {"name": "Miradouro do Encumeada", "lat": 32.7483, "lng": -17.0183, "type": "view", "info": "Uitzicht over noord- en zuidkust tegelijk"}, {"name": "Curral das Freiras", "lat": 32.6967, "lng": -16.9867, "type": "sight", "info": "Kraterval \"Vallei van de nonnen\" · kastanjecake & licor de castanha"}, {"name": "Miradouro da Eira do Serrado", "lat": 32.695, "lng": -16.9817, "type": "view", "info": "4,8★ 360° panorama over de vallei · gratis · extra laag meenemen"}, {"name": "Pico do Arieiro", "lat": 32.7383, "lng": -16.9283, "type": "nature", "info": "1.818m · boven de wolken · check webcam vooraf · gratis uitzicht"}, {"name": "Hotel Funchal", "lat": 32.65, "lng": -16.9167, "type": "hotel", "info": "Inchecken Funchal · avond in Zona Velha"}]}, "14": {"center": [32.75, -16.95], "zoom": 12, "title": "PR1.2 Pico Ruivo", "route": true, "locations": [{"name": "Achada do Teixeira (start PR1.2)", "lat": 32.755, "lng": -16.9317, "type": "start", "info": "🎫 SIMplifica €4,50 · ~1u15 rijden vanuit Funchal"}, {"name": "Abrigo do Pico Ruivo (café)", "lat": 32.7567, "lng": -16.9467, "type": "food", "info": "Café halverwege · warme drank & zelfgemaakte taart"}, {"name": "Pico Ruivo top (1.862m)", "lat": 32.7583, "lng": -16.9533, "type": "nature", "info": "#2 wandeling Madeira · 5,6km · 4,7★ · hoogste punt van Madeira"}, {"name": "Santana (lunch)", "lat": 32.8, "lng": -16.8833, "type": "food", "info": "Traditionele rietdakenhuisjes · espetada op laurierstok"}, {"name": "Ribeiro Frio", "lat": 32.7367, "lng": -16.8783, "type": "nature", "info": "Schilderachtige bosroute terug naar Funchal"}, {"name": "Vereda dos Balcões (PR11)", "lat": 32.7367, "lng": -16.8783, "type": "view", "info": "Optioneel: 1,5km · ~30min · lieflijk uitzicht"}]}, "15": {"center": [32.65, -16.9167], "zoom": 14, "title": "Funchal stad", "route": true, "locations": [{"name": "Mercado dos Lavradores", "lat": 32.6467, "lng": -16.905, "type": "food", "info": "🛒 Boerenmarkt · open 07:00–19:00 · let op fruit-prijzen boven!"}, {"name": "Zona Velha (Alte Stadt)", "lat": 32.645, "lng": -16.9017, "type": "sight", "info": "Art of Open Doors · beschilderde deuren · perfect voor fotografie"}, {"name": "Funchal Cable Car (Teleférico)", "lat": 32.6517, "lng": -16.9083, "type": "sight", "info": "🚡 €18 enkel → carro de cesto terug €30 · open 08:45–17:45"}, {"name": "Jardim Monte Palace", "lat": 32.6633, "lng": -16.8983, "type": "nature", "info": "Tropische tuin · Japanse paviljoenen · €15 · open 09:30–18:00"}, {"name": "Miradouro das Neves", "lat": 32.6533, "lng": -16.9233, "type": "view", "info": "Beste zonsondergangsplek Funchal · gratis · geen touristenbussen"}, {"name": "Câmara de Lobos (diner)", "lat": 32.6467, "lng": -16.9783, "type": "food", "info": "Zonsondergang diner · 15 min van Funchal"}, {"name": "Blandy's Wine Lodge", "lat": 32.6483, "lng": -16.9117, "type": "sight", "info": "Madeira-wijn proeven · kelderrondleiding + proeverij €18+"}]}, "16": {"center": [32.65, -16.9167], "zoom": 13, "title": "Vertrekdag Funchal", "route": false, "locations": [{"name": "Hotel Funchal (uitchecken)", "lat": 32.65, "lng": -16.9167, "type": "hotel", "info": "Laatste ochtend · souvenirs inpakken"}, {"name": "Luchthaven Funchal FNC", "lat": 32.6978, "lng": -16.7744, "type": "flight", "info": "✈️ ~25 min rijden vanuit centrum · goede vlucht!"}]}};
+
+var maps = {};
+var TYPE_COLORS = {"start": "#2e7d32", "nature": "#00695c", "thermal": "#e65100", "swim": "#1565c0", "view": "#6a1b9a", "food": "#c62828", "sight": "#1a4a7a", "hotel": "#4e342e", "flight": "#37474f"};
+var TYPE_ICONS = {"start": "\ud83e\udd7e", "nature": "\ud83c\udf3f", "thermal": "\u2668\ufe0f", "swim": "\ud83c\udfca", "view": "\ud83d\udc41\ufe0f", "food": "\ud83c\udf7d\ufe0f", "sight": "\ud83c\udfdb\ufe0f", "hotel": "\ud83c\udfe8", "flight": "\u2708\ufe0f"};
+
+function makeIcon(type) {
+  var color = TYPE_COLORS[type] || '#1a4a7a';
+  var emoji = TYPE_ICONS[type] || '📍';
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">' +
+    '<path d="M16 0 C7.2 0 0 7.2 0 16 C0 28 16 40 16 40 C16 40 32 28 32 16 C32 7.2 24.8 0 16 0Z" fill="' + color + '"/>' +
+    '<circle cx="16" cy="16" r="10" fill="white" opacity="0.25"/>' +
+    '<text x="16" y="21" font-size="13" text-anchor="middle">' + emoji + '</text>' +
+    '</svg>';
+  return L.divIcon({
+    html: '<div style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35))">' + svg + '</div>',
+    iconSize: [32, 40], iconAnchor: [16, 40], popupAnchor: [0, -42], className: ''
+  });
+}
+
+function initMap(dagNum) {
+  if (maps[dagNum]) return;
+  var data = DAY_DATA[dagNum];
+  if (!data) return;
+  
+  var mapEl = document.getElementById('map-dag' + dagNum);
+  if (!mapEl) return;
+  
+  var map = L.map('map-dag' + dagNum, {
+    center: data.center, zoom: data.zoom,
+    zoomControl: true, attributionControl: true
+  });
+  maps[dagNum] = map;
+  
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>',
+    maxZoom: 19
+  }).addTo(map);
+  
+  var latlngs = [];
+  data.locations.forEach(function(loc, idx) {
+    var marker = L.marker([loc.lat, loc.lng], {icon: makeIcon(loc.type)}).addTo(map);
+    var numBadge = '<span style="background:#0a3d62;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-right:5px">' + (idx+1) + '</span>';
+    marker.bindPopup('<strong>' + numBadge + loc.name + '</strong><br><span style="font-size:12px;color:#555;line-height:1.5">' + loc.info + '</span>');
+    latlngs.push([loc.lat, loc.lng]);
+    
+    // Number labels on map
+    L.marker([loc.lat, loc.lng], {
+      icon: L.divIcon({
+        html: '<div style="background:#0a3d62;color:#fff;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;font-family:sans-serif;margin-left:18px;margin-top:-36px">' + (idx+1) + '</div>',
+        iconSize: [16,16], iconAnchor: [0,16], className: ''
+      })
+    }).addTo(map);
+  });
+  
+  // Draw route line if applicable
+  if (data.route && latlngs.length > 1) {
+    L.polyline(latlngs, {
+      color: '#0a3d62', weight: 2.5, opacity: 0.55,
+      dashArray: '6,8'
+    }).addTo(map);
+  }
+  
+  // Fit bounds
+  if (latlngs.length > 1) {
+    map.fitBounds(latlngs, {padding: [24, 24]});
+  }
+}
+</script>
+
 </body>
 </html>
