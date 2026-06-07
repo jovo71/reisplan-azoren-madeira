@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azoren & Madeira — Zomer 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #0a3d62;
+    --ocean-light: #1a6496;
+    --foam: #e8f4fd;
+    --lava: #c0392b;
+    --green: #1e8449;
+    --sand: #f5f0e8;
+    --text: #1a1a2e;
+    --muted: #6b7c93;
+    --white: #ffffff;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f2ede6;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    background: var(--ocean);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(26,100,150,0.6) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 20%, rgba(10,61,98,0.8) 0%, transparent 50%),
+      linear-gradient(180deg, #0a1628 0%, #0a3d62 40%, #1a6496 100%);
+  }
+  .hero-waves {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    overflow: hidden;
+  }
+  .hero-waves svg { width: 100%; height: 100%; }
+  .hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 24px 80px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 10vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  }
+  .hero-title span { color: #7ec8e3; }
+  .hero-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .pill-icon { font-size: 16px; }
+  .scroll-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .scroll-cta svg { width: 20px; height: 20px; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ── NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(242,237,230,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 0 16px;
+  }
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 10px 0;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-btn:hover, .nav-btn.active {
+    background: var(--ocean);
+    color: #fff;
+  }
+  .nav-sep {
+    width: 1px;
+    height: 18px;
+    background: rgba(0,0,0,0.12);
+    flex-shrink: 0;
+  }
+
+  /* ── LAYOUT ── */
+  .section { max-width: 860px; margin: 0 auto; padding: 48px 16px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+  }
+
+  /* ── OVERVIEW GRID ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .stat-icon { font-size: 28px; margin-bottom: 10px; }
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ocean);
+    line-height: 1;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* ── HIGHLIGHTS TABLE ── */
+  .highlights-table {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .ht-header {
+    display: grid;
+    grid-template-columns: 60px 90px 1fr 140px;
+    gap: 0;
+    background: var(--ocean);
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+  }
+  .ht-row {
+    display: grid;
+    grid-template-columns: 60px 90px 1fr 140px;
+    gap: 0;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f0ebe3;
+    align-items: center;
+    transition: background 0.15s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ht-row:last-child { border-bottom: none; }
+  .ht-row:hover { background: var(--foam); }
+  .ht-day { font-weight: 700; color: var(--ocean); font-size: 14px; }
+  .ht-date { font-size: 12px; color: var(--muted); }
+  .ht-main { font-size: 14px; }
+  .ht-main strong { color: var(--text); }
+  .ht-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-hike { background: #e8f5e9; color: #2e7d32; }
+  .badge-swim { background: #e3f2fd; color: #1565c0; }
+  .badge-city { background: #fce4ec; color: #880e4f; }
+  .badge-nature { background: #f3e5f5; color: #6a1b9a; }
+  .badge-thermal { background: #fff3e0; color: #e65100; }
+  .badge-drive { background: #e0f2f1; color: #00695c; }
+  .badge-flight { background: #f5f5f5; color: #424242; }
+
+  /* ── DAY CARDS ── */
+  .days-grid { display: flex; flex-direction: column; gap: 0; }
+  .island-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0 16px;
+  }
+  .island-header-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ocean);
+  }
+  .island-header-sub { font-size: 13px; color: var(--muted); }
+
+  .day-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .day-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+
+  .day-card-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 180px;
+  }
+  @media (max-width: 560px) {
+    .day-card-header { grid-template-columns: 1fr; }
+    .day-photo { height: 180px; }
+    .ht-header, .ht-row { grid-template-columns: 50px 80px 1fr; }
+    .ht-header > :last-child, .ht-row > :last-child { display: none; }
+  }
+  .day-photo {
+    position: relative;
+    overflow: hidden;
+    background: var(--ocean);
+  }
+  .day-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+  .day-card:hover .day-photo img { transform: scale(1.04); }
+  .day-photo-fallback {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+  }
+  .day-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, transparent 60%);
+  }
+  .day-number-badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff;
+    font-family: 'Playfair Display', serif;
+  }
+  .day-star-badge {
+    position: absolute;
+    bottom: 10px; left: 12px;
+    background: rgba(255,200,0,0.9);
+    color: #333;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+
+  .day-info {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .day-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .day-date-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .day-island-chip {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+  .chip-azoren { background: #e8f5e9; color: #2e7d32; }
+  .chip-madeira { background: #e3f2fd; color: #1565c0; }
+  .chip-transfer { background: #fce4ec; color: #880e4f; }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .day-highlights-list { list-style: none; flex: 1; }
+  .day-highlights-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .day-highlights-list li .hi { flex-shrink: 0; font-size: 15px; }
+
+  .day-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #fafaf8;
+    border-top: 1px solid #f0ebe3;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+  .day-tip {
+    flex: 1;
+    color: var(--muted);
+    line-height: 1.4;
+    min-width: 0;
+  }
+  .day-tip.alert { color: #bf360c; }
+  .day-links { display: flex; gap: 8px; flex-shrink: 0; }
+  .day-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: var(--ocean);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .day-link:hover { background: var(--ocean-light); }
+  .day-link.secondary {
+    background: transparent;
+    color: var(--ocean);
+    border: 1px solid var(--ocean);
+  }
+  .day-link.secondary:hover { background: var(--foam); }
+
+  /* ── PACKING LIST ── */
+  .packing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .packing-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .packing-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ocean);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .packing-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f5f0e8;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .packing-item:last-child { border-bottom: none; }
+  .packing-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--ocean); flex-shrink: 0; }
+  .packing-item.checked { color: var(--muted); text-decoration: line-through; }
+
+  /* ── RESERVATIONS ── */
+  .reservations-list { display: flex; flex-direction: column; gap: 12px; }
+  .res-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .res-icon { font-size: 24px; flex-shrink: 0; }
+  .res-info { flex: 1; }
+  .res-title { font-weight: 600; font-size: 14px; }
+  .res-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .res-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    background: var(--ocean);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .res-action:hover { background: var(--ocean-light); }
+  .res-done { background: #e8f5e9; color: #2e7d32; cursor: default; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ocean);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 16px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .footer strong { color: rgba(255,255,255,0.85); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.6s ease forwards; opacity: 0; }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.4s; }
+  .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+  /* ── PRINT ── */
+  @media print {
+    .sticky-nav, .scroll-cta { display: none; }
+    .day-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Reisplan zomervakantie 2026</span>
+    <h1 class="hero-title">Azoren<br><span>&</span> Madeira</h1>
+    <p class="hero-subtitle">Zondag 2 augustus – zaterdag 16 augustus 2026</p>
+    <div class="hero-pills">
+      <div class="pill"><span class="pill-icon">🌋</span> São Miguel · 6 dagen</div>
+      <div class="pill"><span class="pill-icon">🏔️</span> Madeira · 9 dagen</div>
+      <div class="pill"><span class="pill-icon">🥾</span> 9 wandelingen</div>
+      <div class="pill"><span class="pill-icon">♨️</span> 4 thermale badvaren</div>
+      <div class="pill"><span class="pill-icon">📍</span> 2 huurauto's</div>
+    </div>
+    <div class="scroll-cta">
+      <span>Scroll om te ontdekken</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </div>
+  <div class="hero-waves">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" fill="#f2ede6"/>
+    </svg>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="scrollTo('overview')">📊 Overzicht</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn" onclick="scrollTo('azoren')">🌋 São Miguel</button>
+    <button class="nav-btn" onclick="scrollTo('madeira')">🏔️ Madeira</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn" onclick="scrollTo('reservations')">🎫 Reserveringen</button>
+    <button class="nav-btn" onclick="scrollTo('packing')">🎒 Paklijst</button>
+  </div>
+</nav>
+
+<!-- OVERVIEW -->
+<div id="overview" class="section">
+  <div class="section-label">Op een rij</div>
+
+  <div class="overview-grid">
+    <div class="stat-card fade-in">
+      <div class="stat-icon">📅</div>
+      <div class="stat-value">16</div>
+      <div class="stat-label">Dagen totaal</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-icon">🌋</div>
+      <div class="stat-value">6</div>
+      <div class="stat-label">Dagen São Miguel, Azoren</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-icon">🏔️</div>
+      <div class="stat-value">9</div>
+      <div class="stat-label">Dagen Madeira</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-icon">🥾</div>
+      <div class="stat-value">9</div>
+      <div class="stat-label">Wandelingen gepland</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:40px">Hoogtepunten per dag</div>
+  <div class="highlights-table">
+    <div class="ht-header">
+      <div>Dag</div><div>Datum</div><div>Hoogtepunt</div><div>Type</div>
+    </div>
+    <a class="ht-row" href="#dag1"><div class="ht-day">1</div><div class="ht-date">Zo 2 aug</div><div class="ht-main"><strong>Ponta Delgada</strong> — stadspoorten, ananasplantage</div><div><span class="ht-badge badge-city">🏙️ Aankomst</span></div></a>
+    <a class="ht-row" href="#dag2"><div class="ht-day">2</div><div class="ht-date">Ma 3 aug</div><div class="ht-main"><strong>Sete Cidades</strong> — panorama over tweelingmeren</div><div><span class="ht-badge badge-hike">🥾 Wandeling</span></div></a>
+    <a class="ht-row" href="#dag3"><div class="ht-day">3</div><div class="ht-date">Di 4 aug</div><div class="ht-main"><strong>Lagoa do Fogo</strong> + Caldeira Velha thermaal bad</div><div><span class="ht-badge badge-thermal">♨️ Thermaal</span></div></a>
+    <a class="ht-row" href="#dag4"><div class="ht-day">4</div><div class="ht-date">Wo 5 aug</div><div class="ht-main"><strong>Furnas</strong> — cozido in vulkaangrond, Poça da Dona Beija</div><div><span class="ht-badge badge-thermal">♨️ Thermaal</span></div></a>
+    <a class="ht-row" href="#dag5"><div class="ht-day">5</div><div class="ht-date">Do 6 aug</div><div class="ht-main"><strong>Salto do Prego</strong> — waterval & verlaten dorp Sanguinho</div><div><span class="ht-badge badge-hike">🥾 Wandeling</span></div></a>
+    <a class="ht-row" href="#dag6"><div class="ht-day">6</div><div class="ht-date">Vr 7 aug</div><div class="ht-main"><strong>Gorreana</strong> theeplantage + PRC 29 caldeiras</div><div><span class="ht-badge badge-nature">🌿 Natuur</span></div></a>
+    <a class="ht-row" href="#dag7"><div class="ht-day">7</div><div class="ht-date">Za 8 aug</div><div class="ht-main"><strong>Gruta do Carvão</strong> → vlucht PDL–FNC</div><div><span class="ht-badge badge-flight">✈️ Vlucht</span></div></a>
+    <a class="ht-row" href="#dag8"><div class="ht-day">8</div><div class="ht-date">Vr 8 aug</div><div class="ht-main"><strong>Machico</strong> — oudste dorp Madeira, zandstrand</div><div><span class="ht-badge badge-city">🏙️ Aankomst</span></div></a>
+    <a class="ht-row" href="#dag9"><div class="ht-day">9</div><div class="ht-date">Za 9 aug</div><div class="ht-main"><strong>PR8 São Lourenço</strong> — #1 wandeling Madeira & Portugal</div><div><span class="ht-badge badge-hike">⭐ #1 Madeira</span></div></a>
+    <a class="ht-row" href="#dag10"><div class="ht-day">10</div><div class="ht-date">Zo 10 aug</div><div class="ht-main"><strong>Cabo Girão</strong> skywalk → aankomst Porto Moniz</div><div><span class="ht-badge badge-drive">🚗 Scenic drive</span></div></a>
+    <a class="ht-row" href="#dag11"><div class="ht-day">11</div><div class="ht-date">Ma 11 aug</div><div class="ht-main"><strong>PR6 25 Fontes</strong> + rotspoelen Porto Moniz</div><div><span class="ht-badge badge-swim">🏊 Zwemmen</span></div></a>
+    <a class="ht-row" href="#dag12"><div class="ht-day">12</div><div class="ht-date">Di 12 aug</div><div class="ht-main"><strong>Fanal</strong> mistige tilvossen + zwart strand Seixal</div><div><span class="ht-badge badge-nature">🌿 Natuur</span></div></a>
+    <a class="ht-row" href="#dag13"><div class="ht-day">13</div><div class="ht-date">Wo 13 aug</div><div class="ht-main"><strong>Pico do Arieiro</strong> boven de wolken → Funchal</div><div><span class="ht-badge badge-drive">⛰️ Bergen</span></div></a>
+    <a class="ht-row" href="#dag14"><div class="ht-day">14</div><div class="ht-date">Do 14 aug</div><div class="ht-main"><strong>PR1.2 Pico Ruivo</strong> — hoogste punt Madeira 1.862 m</div><div><span class="ht-badge badge-hike">⭐ #2 Madeira</span></div></a>
+    <a class="ht-row" href="#dag15"><div class="ht-day">15</div><div class="ht-date">Vr 15 aug</div><div class="ht-main"><strong>Funchal</strong> — markt, Zona Velha, kabelbaan Monte</div><div><span class="ht-badge badge-city">🏙️ Stad</span></div></a>
+    <a class="ht-row" href="#dag16"><div class="ht-day">16</div><div class="ht-date">Za 16 aug</div><div class="ht-main"><strong>Vertrek</strong> — laatste souvenirs, FNC</div><div><span class="ht-badge badge-flight">✈️ Vertrek</span></div></a>
+  </div>
+</div>
+
+<!-- AZOREN DAYS -->
+<div id="azoren" class="section" style="padding-top:0">
+  <div class="island-header">
+    <div>
+      <div class="island-header-label">🌋 São Miguel, Azoren</div>
+      <div class="island-header-sub">Zondag 2 – zaterdag 8 augustus · Uitvalsbasis: Ponta Delgada · Huurauto</div>
+    </div>
+  </div>
+
+  <div id="dag1" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEyYTVlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmU1YjhhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzViOWRjOSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNWI5ZGM5Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhM2EyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmU1YjhhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM1YjlkYzkiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTNhMmEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+b77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+UG9udGEgRGVsZ2FkYTwvdGV4dD4KPC9zdmc+" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ponta_Delgada_Wikivoyage_Banner.jpg/800px-Ponta_Delgada_Wikivoyage_Banner.jpg" alt="Ponta Delgada" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEyYTVlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmU1YjhhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzViOWRjOSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNWI5ZGM5Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhM2EyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmU1YjhhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM1YjlkYzkiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTNhMmEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+b77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+UG9udGEgRGVsZ2FkYTwvdGV4dD4KPC9zdmc+'">🏙️</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">1</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Zo 2 augustus</span>
+            <span class="day-island-chip chip-azoren">São Miguel</span>
+          </div>
+          <div class="day-title">Aankomst & Ponta Delgada</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🏛️</span> Portas da Cidade — iconische zwart-witte stadspoorten van basalt</li>
+            <li><span class="hi">⛪</span> Igreja Matriz de São Sebastião — Manuelijns portaal</li>
+            <li><span class="hi">🍍</span> Ananasplantage A. Arruda — gratis toegang & proeverij tot 20:00</li>
+            <li><span class="hi">🍽️</span> Diner bij Terras (R. Hintze Ribeiro 29) — verse vis & huisgemaakte pasta</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Rustige aankomstdag. Huurauto ophalen, inchecken, stad te voet verkennen.</div>
+      <div class="day-links">
+        <a class="day-link secondary" href="https://www.spotazores.com/" target="_blank">🌤️ Webcam</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag2" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGQzYjZlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE2YjRhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGE1ZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTVlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMmExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE2YjRhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhNWUiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTJhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4yKPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+U2V0ZSBDaWRhZGVzPC90ZXh0Pgo8L3N2Zz4=" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Sete_Cidades%2C_S%C3%A3o_Miguel%2C_Azores%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg/800px-Sete_Cidades%2C_S%C3%A3o_Miguel%2C_Azores%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg" alt="Sete Cidades" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGQzYjZlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE2YjRhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGE1ZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTVlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMmExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE2YjRhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhNWUiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTJhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4yKPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+U2V0ZSBDaWRhZGVzPC90ZXh0Pgo8L3N2Zz4='">🌊</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">2</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Ma 3 augustus</span>
+            <span class="day-island-chip chip-azoren">São Miguel</span>
+          </div>
+          <div class="day-title">Sete Cidades & het westen</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🥾</span> Boca do Inferno lus — 3,5 km · ~55 min · panorama over tweelingmeren</li>
+            <li><span class="hi">🍽️</span> Lunch bij Lagoa Azul Restaurant — buffet ~€18</li>
+            <li><span class="hi">👑</span> Miradouro da Vista do Rei — het Koningsuitzicht met verlaten hotel</li>
+            <li><span class="hi">🌅</span> Zonsondergang bij Farol da Ferraria — spectaculair kustpad</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Bewaar voor een heldere dag. Check webcam vóór vertrek naar de kraterrand.</div>
+      <div class="day-links">
+        <a class="day-link" href="https://www.komoot.com/smarttour/1263297" target="_blank">🥾 Komoot route</a>
+        <a class="day-link secondary" href="https://www.alltrails.com/trail/portugal/azores/miradouro-da-boca-do-inferno-via-trilho-canario-sete-cidades" target="_blank">AllTrails</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag3" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGIxYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjYzAzOTJiIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNDUxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI0NTEzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkNGExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjYzAzOTJiIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM4YjQ1MTMiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDRhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4yLPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+TGFnb2EgZG8gRm9nbzwvdGV4dD4KPC9zdmc+" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Lagoa_do_Fogo_-_panoramio.jpg/800px-Lagoa_do_Fogo_-_panoramio.jpg" alt="Lagoa do Fogo" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGIxYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjYzAzOTJiIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNDUxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI0NTEzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkNGExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjYzAzOTJiIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM4YjQ1MTMiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDRhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4yLPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+TGFnb2EgZG8gRm9nbzwvdGV4dD4KPC9zdmc+'">🌋</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">3</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Di 4 augustus</span>
+            <span class="day-island-chip chip-azoren">São Miguel</span>
+          </div>
+          <div class="day-title">Lagoa do Fogo & thermale bossen</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🥾</span> PRC 2 SMI — 12,4 km · ~3u45 · populairste wandeling Azoren</li>
+            <li><span class="hi">♨️</span> Caldeira Velha — thermale poel met dampende waterval in jungle · €10</li>
+            <li><span class="hi">🏖️</span> Optioneel: Ilhéu de Vila Franca do Campo snorkellagune</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip alert">⚠️ Gedeeltelijke sluiting seit mei 2026: pad langs het meer gesloten. Afdaling nog mogelijk. Check visitazores.com.</div>
+      <div class="day-links">
+        <a class="day-link" href="https://parquesnaturais.azores.gov.pt/bilheteira/caldeiravelha/?lang=en" target="_blank">🎫 Boek Caldeira Velha</a>
+        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1388812656" target="_blank">🥾 Route</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag4" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEwYTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjNGExYTZlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNDUxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI0NTEzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMmExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjNGExYTZlIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM4YjQ1MTMiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTJhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7imajvuI88L3RleHQ+CiAgPCEtLSBMYWJlbCAtLT4KICA8cmVjdCB4PSIyODAiIHk9IjI4OC4wIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9InJnYmEoMCwwLDAsMC4zNSkiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjMxNC4wIiBmb250LXNpemU9IjE2IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBvcGFjaXR5PSIwLjk1Ij5GdXJuYXM8L3RleHQ+Cjwvc3ZnPg==" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Furnas_caldeiras_2.jpg/800px-Furnas_caldeiras_2.jpg" alt="Caldeiras Furnas" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEwYTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjNGExYTZlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNDUxMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI0NTEzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMmExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjNGExYTZlIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM4YjQ1MTMiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTJhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7imajvuI88L3RleHQ+CiAgPCEtLSBMYWJlbCAtLT4KICA8cmVjdCB4PSIyODAiIHk9IjI4OC4wIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9InJnYmEoMCwwLDAsMC4zNSkiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjMxNC4wIiBmb250LXNpemU9IjE2IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBvcGFjaXR5PSIwLjk1Ij5GdXJuYXM8L3RleHQ+Cjwvc3ZnPg=='">💨</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">4</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Wo 5 augustus</span>
+            <span class="day-island-chip chip-azoren">São Miguel</span>
+          </div>
+          <div class="day-title">Furnas & het geothermische oosten</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🫕</span> Cozido das Furnas — stoofpot 6 uur gekookt in vulkaangrond</li>
+            <li><span class="hi">🌿</span> Parque Terra Nostra of Parque da Grená — botanische tuin · €10</li>
+            <li><span class="hi">💨</span> Caldeiras das Furnas — borrelende fumarolen midden in het dorp</li>
+            <li><span class="hi">🌙</span> Poça da Dona Beija — 5 bossen van 39°C tot 23:00 · €10</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Reserveer Tony's Restaurant (cozido) én Poça da Dona Beija vooraf. Donkere handdoek meenemen.</div>
+      <div class="day-links">
+        <a class="day-link" href="https://www.komoot.com/smarttour/e1388704462" target="_blank">🥾 Furnas lus</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag5" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGEyYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE1ZTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGEzZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTNlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE1ZTJhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhM2UiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn5KnPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+U2FsdG8gZG8gUHJlZ288L3RleHQ+Cjwvc3ZnPg==" data-real="https://live.staticflickr.com/7809/32768371957_cb1c09e46e_b.jpg" alt="Salto do Prego" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGEyYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE1ZTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGEzZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTNlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE1ZTJhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhM2UiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn5KnPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+U2FsdG8gZG8gUHJlZ288L3RleHQ+Cjwvc3ZnPg=='">💧</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">5</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Do 6 augustus</span>
+            <span class="day-island-chip chip-azoren">São Miguel</span>
+          </div>
+          <div class="day-title">Oostkust & Salto do Prego</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🥾</span> PRC 9 SMI — 4 km · 1u30 · 4,8★ hoogst gewaardeerde watervalwandeling</li>
+            <li><span class="hi">🏘️</span> Verlaten dorp Sanguinho — herboren met een klein bartje</li>
+            <li><span class="hi">🌺</span> Miradouro da Ponta do Sossego — hortensia-tuinen</li>
+            <li><span class="hi">💦</span> Parque Natural da Ribeira dos Caldeirões — watervallen & molens</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Verst punt van het eiland (~1u15 rijden). Vroeg vertrekken. Prachtigste kustroute terug via het noorden.</div>
+      <div class="day-links">
+        <a class="day-link" href="https://www.komoot.com/smarttour/e1390348288" target="_blank">🥾 Route</a>
+        <a class="day-link secondary" href="https://trails.visitazores.com/en/trails-azores/sao-miguel/sanguinho" target="_blank">Status</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag6" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEzYTBhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmQ2ZTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRhOGEyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGE4YTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMmEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmQ2ZTFhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM0YThhMmEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTJhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn42DPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+R29ycmVhbmE8L3RleHQ+Cjwvc3ZnPg==" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Tea_plantation%2C_Gorreana%2C_S%C3%A3o_Miguel%2C_Azores.jpg/800px-Tea_plantation%2C_Gorreana%2C_S%C3%A3o_Miguel%2C_Azores.jpg" alt="Gorreana theeplantage" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEzYTBhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmQ2ZTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRhOGEyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGE4YTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMmEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmQ2ZTFhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM0YThhMmEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTJhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn42DPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+R29ycmVhbmE8L3RleHQ+Cjwvc3ZnPg=='">🍃</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">6</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Vr 7 augustus</span>
+            <span class="day-island-chip chip-azoren">São Miguel</span>
+          </div>
+          <div class="day-title">Noordkust & theeplantages</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🍵</span> Gorreana — enige theeplantage van Europa, gratis rondleiding & proeverij</li>
+            <li><span class="hi">🍃</span> Porto Formoso — authentieke tweede theeplantage</li>
+            <li><span class="hi">🥾</span> Optie A: PRC 29 SMI caldeiras — 8,2 km · 2u24 (check status)</li>
+            <li><span class="hi">🏞️</span> Optie B: Lagoa do Congro — verborgen kratermeer, bijna geen toeristen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip alert">⚠️ PRC 29 watervalgedeelte gesloten seit okt. 2025. Caldeiras-deel nog open. Check visitazores.com vóór vertrek.</div>
+      <div class="day-links">
+        <a class="day-link secondary" href="https://trails.visitazores.com/pt-pt/trilhos-dos-acores/sao-miguel/caldeiras-da-ribeira-grande-salto-do-cabrito" target="_blank">Status PRC 29</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag7" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo" style="background:#1a2a4a">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExYTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmUyZTVlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRhNGE4YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGE0YThhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMGExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmUyZTVlIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM0YTRhOGEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTBhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7inIjvuI88L3RleHQ+CiAgPCEtLSBMYWJlbCAtLT4KICA8cmVjdCB4PSIyODAiIHk9IjI4OC4wIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9InJnYmEoMCwwLDAsMC4zNSkiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjMxNC4wIiBmb250LXNpemU9IjE2IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBvcGFjaXR5PSIwLjk1Ij5WZXJ0cmVrZGFnPC90ZXh0Pgo8L3N2Zz4=" alt="Vertrekdag" style="width:100%;height:100%;object-fit:cover;">
+        <div class="day-number-badge">7</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Za 8 augustus</span>
+            <span class="day-island-chip chip-transfer">São Miguel → Madeira</span>
+          </div>
+          <div class="day-title">Vertrekdag</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🌋</span> Gruta do Carvão — langste lavatunnel van São Miguel · ~€8 · 10:00–12:30</li>
+            <li><span class="hi">🛒</span> Mercado da Graça — laatste thee, kaas of ananas meenemen</li>
+            <li><span class="hi">✈️</span> Vlucht PDL → FNC, aankomst Funchal 12:25</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Lever de huurauto in bij luchthaven PDL (10 min rijden). Nieuwe huurauto ophalen op FNC.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MADEIRA DAYS -->
+<div id="madeira" class="section" style="padding-top:0">
+  <div class="island-header">
+    <div>
+      <div class="island-header-label">🏔️ Madeira</div>
+      <div class="island-header-sub">Vrijdag 8 – zaterdag 16 augustus · Hotels: Santa Cruz · Porto Moniz · Funchal</div>
+    </div>
+  </div>
+
+  <div style="background:#fff3cd;border-radius:12px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#856404;border-left:3px solid #ffc107;">
+    <strong>🎫 Nieuwe regelgeving Madeira (2026):</strong> Alle officiële PR-paden vereisen een tijdslot via <a href="https://simplifica.madeira.gov.pt/" target="_blank" style="color:#1a4a7a;font-weight:600">SIMplifica.madeira.gov.pt</a> · €4,50 p.p. (PR1 = €10,50). Reserveer minstens 1 dag van tevoren — populaire slots zijn snel vol.
+  </div>
+
+  <div id="dag8" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGEyYTVlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE1ZThhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGFiMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YWIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEzYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE1ZThhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhYjAiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhM2EiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+d77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+TWFjaGljbzwvdGV4dD4KPC9zdmc+" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Machico%2C_Madeira_-_Jul_2021.jpg/800px-Machico%2C_Madeira_-_Jul_2021.jpg" alt="Machico baai" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGEyYTVlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE1ZThhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGFiMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YWIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEzYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE1ZThhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhYjAiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhM2EiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+d77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+TWFjaGljbzwvdGV4dD4KPC9zdmc+'">🏝️</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">8</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Vr 8 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">Aankomst & Santa Cruz</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">✈️</span> Aankomst FNC 12:25 — huurauto ophalen, inchecken Santa Cruz</li>
+            <li><span class="hi">🏖️</span> Machico — oudste dorp Madeira, goudkleurig zandstrand, vissershaventje</li>
+            <li><span class="hi">🍢</span> Espetada-diner — vleesspies aan laurierstok op houtskool</li>
+            <li><span class="hi">🍞</span> Proef bolo do caco — platbrood met knoflookboter</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Hotel ligt vlakbij de luchthaven. Rustige aankomst — morgen vroeg beginnen voor de PR8!</div>
+    </div>
+  </div>
+
+  <div id="dag9" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGIzYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjYzA2MDJiIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Q0ODY1YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZDQ4NjVhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVhMmEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjYzA2MDJiIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiNkNDg2NWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM1YTJhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn6aOPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+U8OjbyBMb3VyZW7Dp288L3RleHQ+Cjwvc3ZnPg==" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Ponta_de_S%C3%A3o_Louren%C3%A7o%2C_2019_%28cropped%29.jpg/800px-Ponta_de_S%C3%A3o_Louren%C3%A7o%2C_2019_%28cropped%29.jpg" alt="Ponta de São Lourenço" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGIzYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjYzA2MDJiIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Q0ODY1YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZDQ4NjVhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVhMmEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjYzA2MDJiIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiNkNDg2NWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM1YTJhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn6aOPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+U8OjbyBMb3VyZW7Dp288L3RleHQ+Cjwvc3ZnPg=='">🦎</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">9</div>
+        <div class="day-star-badge">⭐ #1 Madeira & Portugal</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Za 9 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">PR8 Ponta de São Lourenço</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🥾</span> PR8 — 6,75 km · ~2u · 4,7★ · 22.800+ reviews</li>
+            <li><span class="hi">🌋</span> Dramatische kliffen, vulkanisch oranje-rood-zwart landschap</li>
+            <li><span class="hi">☕</span> Casa do Sardinha café bij het eindpunt — open 10:00–16:00</li>
+            <li><span class="hi">🏖️</span> Prainha — zwart zandstrand voor afkoeling na de wandeling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">🎫 SIMplifica · €4,50 p.p. Wees om 09:30 op de parkeerplaats — na 10u vol. Geen schaduw op het pad!</div>
+      <div class="day-links">
+        <a class="day-link" href="https://simplifica.madeira.gov.pt/" target="_blank">🎫 Reserveer</a>
+        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1375832832" target="_blank">🥾 Route</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag10" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWE0YTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTRhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRhYjA2ZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGFiMDZlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMmExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmQ4YTRhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM0YWIwNmUiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTJhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+U77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+Q2FibyBHaXLDo288L3RleHQ+Cjwvc3ZnPg==" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Cabo_Gir%C3%A3o.jpg/800px-Cabo_Gir%C3%A3o.jpg" alt="Cabo Girão" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWE0YTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTRhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRhYjA2ZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGFiMDZlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMmExYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmQ4YTRhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM0YWIwNmUiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTJhMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+U77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+Q2FibyBHaXLDo288L3RleHQ+Cjwvc3ZnPg=='">🏔️</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">10</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Zo 10 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">Zuidkust scenic drive → Porto Moniz</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🎣</span> Câmara de Lobos — Churchill's vissersdorp, poncha proeven</li>
+            <li><span class="hi">😮</span> Cabo Girão Skywalk — glazen platform 580 m hoogte · €5</li>
+            <li><span class="hi">💧</span> Véu da Noiva — Bruidsluier waterval langs de noordkust</li>
+            <li><span class="hi">🏊</span> Porto Moniz — eerste avond bij de vulkanische rotspoelen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Scenic route via Encumeada-pas voegt 2–3 uur toe maar is indrukwekkend. Bij mist: tunnelroute.</div>
+    </div>
+  </div>
+
+  <div id="dag11" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGEyYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE1ZTNhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGE1NiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTU2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE1ZTNhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhNTYiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn5KmPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+MjUgRm9udGVzPC90ZXh0Pgo8L3N2Zz4=" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Levada_das_25_Fontes_-_Madeira_03.jpg/800px-Levada_das_25_Fontes_-_Madeira_03.jpg" alt="25 Fontes" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGEyYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE1ZTNhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkOGE1NiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQ4YTU2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE1ZTNhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyZDhhNTYiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn5KmPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+MjUgRm9udGVzPC90ZXh0Pgo8L3N2Zz4='">💦</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">11</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Ma 11 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">PR6 Levada das 25 Fontes</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🥾</span> PR6 — 8 km · ~2u55 · Matig–Zwaar · 4,7★ Komoot / 4,5★ AllTrails</li>
+            <li><span class="hi">🌊</span> 25 watervalletjes tegelijk uit de rotswand — magisch eindpunt</li>
+            <li><span class="hi">🔦</span> 800 m tunnel — neem een hoofdlamp mee!</li>
+            <li><span class="hi">🏊</span> Middag: naturele rotspoelen Porto Moniz · €3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">🎫 SIMplifica · €4,50 p.p. Kies een ochtendslot. Stevige schoenen verplicht — steile trappen.</div>
+      <div class="day-links">
+        <a class="day-link" href="https://simplifica.madeira.gov.pt/" target="_blank">🎫 Reserveer</a>
+        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1375818326" target="_blank">🥾 Route</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag12" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExYTBhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmEzYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzNhNWEyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjM2E1YTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmEzYTFhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMzYTVhMmEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4yyPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+RmFuYWwgJiBTZWl4YWw8L3RleHQ+Cjwvc3ZnPg==" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Seixal_beach.jpg/800px-Seixal_beach.jpg" alt="Seixal strand" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExYTBhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmEzYTFhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzNhNWEyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjM2E1YTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEwYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmEzYTFhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMzYTVhMmEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMGEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4yyPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+RmFuYWwgJiBTZWl4YWw8L3RleHQ+Cjwvc3ZnPg=='">🌲</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">12</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Di 12 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">Noordwestkust — Seixal & Fanal</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🗿</span> Miradouro Ilhéus da Ribeira da Janela — 4,8★ basaltrotsen uit zee</li>
+            <li><span class="hi">🏊</span> Seixal naturele poelen — ruwer dan Porto Moniz · €2,50</li>
+            <li><span class="hi">🌫️</span> Fanal — eeuwenoude til-bomen (600+ jaar) in mystieke mist</li>
+            <li><span class="hi">🥾</span> PR14 Levada dos Cedros (optie A of B) · 4,5★</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Fanal is het mooist mét mist — geeft een mythische sfeer. Bij heldere lucht minder bijzonder.</div>
+      <div class="day-links">
+        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1376293809" target="_blank">🥾 PR14 route</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag13" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEyYTRhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmE0YTZhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVhN2E5YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNWE3YTlhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmE0YTZhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM1YTdhOWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMmEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7im7DvuI88L3RleHQ+CiAgPCEtLSBMYWJlbCAtLT4KICA8cmVjdCB4PSIyODAiIHk9IjI4OC4wIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9InJnYmEoMCwwLDAsMC4zNSkiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjMxNC4wIiBmb250LXNpemU9IjE2IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBvcGFjaXR5PSIwLjk1Ij5QaWNvIGRvIEFyaWVpcm88L3RleHQ+Cjwvc3ZnPg==" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pico_Arieiro_Madeira.jpg/800px-Pico_Arieiro_Madeira.jpg" alt="Pico do Arieiro" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEyYTRhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMmE0YTZhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzVhN2E5YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNWE3YTlhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMWEyYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMmE0YTZhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM1YTdhOWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwYTFhMmEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7im7DvuI88L3RleHQ+CiAgPCEtLSBMYWJlbCAtLT4KICA8cmVjdCB4PSIyODAiIHk9IjI4OC4wIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9InJnYmEoMCwwLDAsMC4zNSkiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjMxNC4wIiBmb250LXNpemU9IjE2IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBvcGFjaXR5PSIwLjk1Ij5QaWNvIGRvIEFyaWVpcm88L3RleHQ+Cjwvc3ZnPg=='">⛰️</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">13</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Wo 13 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">Hooglanden → Funchal</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🏔️</span> Pico do Arieiro — 1.818 m, boven de wolken, bereikbaar per auto</li>
+            <li><span class="hi">🍰</span> Curral das Freiras — kraterval, kastanjecake, licor de castanha</li>
+            <li><span class="hi">👁️</span> Miradouro Eira do Serrado — 4,8★, 360° panorama over de vallei</li>
+            <li><span class="hi">🏨</span> Inchecken hotel Funchal — avond in de Zona Velha</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Check de webcam vóór Pico do Arieiro — bij dichte mist is er nul uitzicht. Neem een extra laag mee.</div>
+    </div>
+  </div>
+
+  <div id="dag14" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGExYTNhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWEzYTZhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJhNWE5YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1YTlhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA1MGQxYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWEzYTZhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyYTVhOWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwNTBkMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+U77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+UGljbyBSdWl2bzwvdGV4dD4KPC9zdmc+" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Pico_Ruivo_-_Madeira.jpg/800px-Pico_Ruivo_-_Madeira.jpg" alt="Pico Ruivo" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGExYTNhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWEzYTZhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJhNWE5YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1YTlhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA1MGQxYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWEzYTZhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMyYTVhOWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwNTBkMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn4+U77iPPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+UGljbyBSdWl2bzwvdGV4dD4KPC9zdmc+'">🏔️</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">14</div>
+        <div class="day-star-badge">⭐ #2 Madeira</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Do 14 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">PR1.2 Pico Ruivo — hoogste top</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🥾</span> PR1.2 — 5,6 km · ~2u · 4,7★ · 1.862 m hoogte</li>
+            <li><span class="hi">☕</span> Abrigo do Pico Ruivo — café halverwege met zelfgemaakte taart</li>
+            <li><span class="hi">🏘️</span> Santana — traditionele rietdakenhuisjes gratis te bewonderen</li>
+            <li><span class="hi">🌿</span> Ribeiro Frio — schilderachtige bosroute terug naar Funchal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">🎫 SIMplifica · €4,50 p.p. Laagjes meenemen: boven kan het 10°C kouder zijn. Geen schaduw onderweg.</div>
+      <div class="day-links">
+        <a class="day-link" href="https://simplifica.madeira.gov.pt/" target="_blank">🎫 Reserveer</a>
+        <a class="day-link secondary" href="https://www.komoot.com/smarttour/e1375721060" target="_blank">🥾 Route</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dag15" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmEwYTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjNWExYTVhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhhMmE4YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGEyYThhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMDUxYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjNWExYTVhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM4YTJhOGEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTA1MWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn46tPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+RnVuY2hhbDwvdGV4dD4KPC9zdmc+" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Funchal_Cable_Car%2C_Madeira.jpg/800px-Funchal_Cable_Car%2C_Madeira.jpg" alt="Funchal kabelbaan" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmEwYTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjNWExYTVhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhhMmE4YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGEyYThhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMDUxYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjNWExYTVhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiM4YTJhOGEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMxYTA1MWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn46tPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+RnVuY2hhbDwvdGV4dD4KPC9zdmc+'">🎭</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">15</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Vr 15 augustus</span>
+            <span class="day-island-chip chip-madeira">Madeira</span>
+          </div>
+          <div class="day-title">Funchal stad</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🛒</span> Mercado dos Lavradores — boerenmarkt 07:00–19:00 (let op fruit-prijzen boven!)</li>
+            <li><span class="hi">🎨</span> Zona Velha — Art of Open Doors, smalle straatjes</li>
+            <li><span class="hi">🚡</span> Kabelbaan Monte · €18 → carro de cesto terug · €30</li>
+            <li><span class="hi">🌸</span> Jardim Monte Palace — tropische tuin · €15</li>
+            <li><span class="hi">🌅</span> Miradouro das Neves — beste zonsondergangsplek, geen touristenbussen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip alert">⚠️ 15 augustus = nationale feestdag. Winkels dicht, restaurants open. Diner vooraf reserveren!</div>
+    </div>
+  </div>
+
+  <div id="dag16" class="day-card">
+    <div class="day-card-header">
+      <div class="day-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGExYTNhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE0YTdhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzNhNmE5YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjM2E2YTlhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA1MGYxYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE0YTdhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMzYTZhOWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwNTBmMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn5GLPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+VG90IHppZW5zITwvdGV4dD4KPC9zdmc+" data-real="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Funchal_port_and_city_from_Pico_dos_Barcelos_viewpoint_1.jpg/800px-Funchal_port_and_city_from_Pico_dos_Barcelos_viewpoint_1.jpg" alt="Funchal panorama" onload="this.src=this.dataset.real||this.src" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGExYTNhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMWE0YTdhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzNhNmE5YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjM2E2YTlhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA1MGYxYSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBTa3kgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjc2t5KSIvPgogIDwhLS0gU3VuL21vb24gZ2xvdyAtLT4KICA8Y2lyY2xlIGN4PSI2MDAuMCIgY3k9IjkwLjAiIHI9IjYwIiBmaWxsPSIjMWE0YTdhIiBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNibHVyKSIvPgogIDxjaXJjbGUgY3g9IjYwMC4wIiBjeT0iOTAuMCIgcj0iMzUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjE1Ii8+CiAgPCEtLSBEaXN0YW50IG1vdW50YWlucyAtLT4KICA8cGF0aCBkPSJNMCwyNDcuNTAwMDAwMDAwMDAwMDMgTDEyMC4wLDEzNS4wIEwyNDAuMCwyMDIuNSBMMzYwLjAsMTEyLjUgTDQ4MC4wLDE4MC4wIEw2MDAuMCw5MC4wIEw3MjAuMCwxNzEuMCBMODAwLDE0NC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMzYTZhOWEiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRm9yZWdyb3VuZCBoaWxscyAtLT4KICA8cGF0aCBkPSJNMCwzMTUuMCBRMjAwLjAsMjQ3LjUwMDAwMDAwMDAwMDAzIDQwMC4wLDI5Mi41IFE2MDAuMCwzMzcuNSA4MDAsMjcwLjAgTDgwMCw0NTAgTDAsNDUwWiIgZmlsbD0idXJsKCNsYW5kKSIvPgogIDwhLS0gRm9yZWdyb3VuZCBkYXJrIC0tPgogIDxwYXRoIGQ9Ik0wLDM2OS4wIFEyNDAuMCwzNTEuMCA0ODAuMCwzODIuNSBRNjQwLjAsNDA1LjAgODAwLDM2MC4wIEw4MDAsNDUwIEwwLDQ1MFoiIGZpbGw9IiMwNTBmMWEiIG9wYWNpdHk9IjAuOCIvPgogIDwhLS0gRW1vamkgLS0+CiAgPHRleHQgeD0iNDAwIiB5PSIyMzQuMCIgZm9udC1zaXplPSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgb3BhY2l0eT0iMC45Ij7wn5GLPC90ZXh0PgogIDwhLS0gTGFiZWwgLS0+CiAgPHJlY3QgeD0iMjgwIiB5PSIyODguMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MCIgcng9IjIwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzUpIi8+CiAgPHRleHQgeD0iNDAwIiB5PSIzMTQuMCIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC45NSI+VG90IHppZW5zITwvdGV4dD4KPC9zdmc+'">👋</div>'">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number-badge">16</div>
+      </div>
+      <div class="day-info">
+        <div>
+          <div class="day-meta">
+            <span class="day-date-label">Za 16 augustus</span>
+            <span class="day-island-chip chip-transfer">Vertrekdag</span>
+          </div>
+          <div class="day-title">Tot ziens, Madeira</div>
+          <ul class="day-highlights-list">
+            <li><span class="hi">🛍️</span> Laatste souvenirs — madeirawijn, bolo de mel, poncha in flesje</li>
+            <li><span class="hi">✈️</span> Huurauto inleveren bij FNC — reken 25 min + verkeer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day-footer">
+      <div class="day-tip">Goede vlucht! 🛫</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVATIONS -->
+<div id="reservations" class="section">
+  <div class="section-label">Vooraf boeken</div>
+  <div class="reservations-list">
+    <div class="res-card">
+      <div class="res-icon">♨️</div>
+      <div class="res-info">
+        <div class="res-title">Caldeira Velha — Dag 3</div>
+        <div class="res-meta">Tijdsloten van 1,5 uur · €10 p.p. · Niet op dezelfde dag boekbaar</div>
+      </div>
+      <a class="res-action" href="https://parquesnaturais.azores.gov.pt/bilheteira/caldeiravelha/?lang=en" target="_blank">Boek →</a>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🫕</div>
+      <div class="res-info">
+        <div class="res-title">Tony's Restaurant Furnas (cozido) — Dag 4</div>
+        <div class="res-meta">Reserveer de cozido-lunch vooraf — populair en snel volgeboekt</div>
+      </div>
+      <a class="res-action" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Tony%27s+Furnas" target="_blank">Google Maps →</a>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🌙</div>
+      <div class="res-info">
+        <div class="res-title">Poça da Dona Beija — Dag 4</div>
+        <div class="res-meta">Alleen online · €10 (voor 17:30) of €16 (na 18:00) · Geen kassa ter plaatse</div>
+      </div>
+      <a class="res-action" href="https://www.google.com/search?q=poça+da+dona+beija+tickets" target="_blank">Zoek tickets →</a>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🥾</div>
+      <div class="res-info">
+        <div class="res-title">PR8 São Lourenço — Dag 9</div>
+        <div class="res-meta">SIMplifica · €4,50 p.p. · Ochtendslot · Minstens 1 dag van tevoren</div>
+      </div>
+      <a class="res-action" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🥾</div>
+      <div class="res-info">
+        <div class="res-title">PR6 Levada das 25 Fontes — Dag 11</div>
+        <div class="res-meta">SIMplifica · €4,50 p.p. · Ochtendslot voor minste drukte op smal pad</div>
+      </div>
+      <a class="res-action" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🏔️</div>
+      <div class="res-info">
+        <div class="res-title">PR1.2 Pico Ruivo — Dag 14</div>
+        <div class="res-meta">SIMplifica · €4,50 p.p. · Ochtend- of vroege middagslot</div>
+      </div>
+      <a class="res-action" href="https://simplifica.madeira.gov.pt/" target="_blank">SIMplifica →</a>
+    </div>
+  </div>
+</div>
+
+<!-- PACKING LIST -->
+<div id="packing" class="section">
+  <div class="section-label">Paklijst</div>
+  <div class="packing-grid">
+    <div class="packing-card">
+      <h4>👟 Kleding & schoenen</h4>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Stevige wandelschoenen</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Waterschoenen / slippers</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Lichte regenjas</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Fleece of warme laag (bergen)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Windjas</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Zwemkleding (2×)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Donkere handdoek (thermaal bad)</label>
+    </div>
+    <div class="packing-card">
+      <h4>🎒 Uitrusting</h4>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Hoofdlamp / zaklamp (tunnel PR6!)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Drinkfles (1,5 L p.p.)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Snacks voor wandeldagen</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Zonnecreme + zonnebril + hoed</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Powerbank</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Munten voor toiletten (€1)</label>
+    </div>
+    <div class="packing-card">
+      <h4>📱 Apps & documenten</h4>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> SIMplifica account aanmaken</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Caldeira Velha boeken (dag 3)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Poça da Dona Beija boeken (dag 4)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Tony's Restaurant reserveren (dag 4)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Komoot app installeren</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> AllTrails app installeren</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Spot Azores webcam bookmarken</label>
+    </div>
+    <div class="packing-card">
+      <h4>🍽️ Eten & proeven</h4>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Cozido das Furnas (dag 4)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Espetada op laurierstok (Madeira)</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Bolo do caco — knoflookbrood</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Lapas grelhadas — gegrilde limpets</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Poncha — rum met honing & citroen</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Madeira-wijn proeven</label>
+      <label class="packing-item"><input type="checkbox" onchange="toggleCheck(this)"> Azoriaanse ananas</label>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <strong>Azoren & Madeira — Zomervakantie 2026</strong><br>
+  2 augustus – 16 augustus · Versie 1.11<br><br>
+  🌋 São Miguel · Ponta Delgada &nbsp;|&nbsp; 🏔️ Madeira · Santa Cruz · Porto Moniz · Funchal<br>
+  Webcams: <a href="https://www.spotazores.com/" style="color:rgba(255,255,255,0.5)" target="_blank">spotazores.com</a> &nbsp;|&nbsp;
+  <a href="https://beyondmadeira.com/live-webcams" style="color:rgba(255,255,255,0.5)" target="_blank">beyondmadeira.com/live-webcams</a>
+</footer>
+
+<script>
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function toggleCheck(el) {
+  el.closest('.packing-item').classList.toggle('checked', el.checked);
+  saveChecks();
+}
+
+function saveChecks() {
+  const checks = [...document.querySelectorAll('.packing-item input')].map(i => i.checked);
+  try { localStorage.setItem('reisplan_checks', JSON.stringify(checks)); } catch(e) {}
+}
+
+function loadChecks() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('reisplan_checks') || '[]');
+    document.querySelectorAll('.packing-item input').forEach((el, i) => {
+      if (saved[i]) {
+        el.checked = true;
+        el.closest('.packing-item').classList.add('checked');
+      }
+    });
+  } catch(e) {}
+}
+
+// Active nav on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      if (id === 'overview') document.querySelectorAll('.nav-btn')[0].classList.add('active');
+      else if (id === 'azoren') document.querySelectorAll('.nav-btn')[1].classList.add('active');
+      else if (id === 'madeira') document.querySelectorAll('.nav-btn')[2].classList.add('active');
+      else if (id === 'reservations') document.querySelectorAll('.nav-btn')[3].classList.add('active');
+      else if (id === 'packing') document.querySelectorAll('.nav-btn')[4].classList.add('active');
+    }
+  });
+}, { threshold: 0.2 });
+
+['overview','azoren','madeira','reservations','packing'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+
+loadChecks();
+</script>
+
+<script>
+// Progressive image enhancement: try to load real photos over SVG placeholders
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('img[data-real]').forEach(function(img) {
+    var real = new Image();
+    real.onload = function() { img.src = this.src; };
+    real.src = img.dataset.real;
+  });
+});
+</script>
+
+</body>
+</html>
