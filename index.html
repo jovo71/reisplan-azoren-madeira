@@ -162,7 +162,7 @@ footer{background:var(--ocean);color:rgba(255,255,255,.45);text-align:center;pad
 footer strong{color:rgba(255,255,255,.8)}
 footer a{color:rgba(255,255,255,.45)}
 
-  .webcam-strip{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px;padding:12px 20px 0}
+  .webcam-strip{display:flex;gap:8px;flex-wrap:wrap;margin:0 -20px;padding:10px 20px;background:#f7fbff;border-bottom:1px solid #ddeef8}
   .webcam-btn{display:inline-flex;align-items:center;gap:6px;background:#e8f4fd;color:#0a3d62;text-decoration:none;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;letter-spacing:.3px;white-space:nowrap;transition:background .2s;border:1px solid #b8d9f0}
   .webcam-btn:hover{background:#c5e3f7;color:#0a3d62}
   .webcam-btn svg{width:12px;height:12px;flex-shrink:0}
@@ -172,7 +172,7 @@ footer a{color:rgba(255,255,255,.45)}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <style>
-    .day-map { height: 340px; border-radius: 0 0 var(--r) var(--r); margin-top: 16px; border-top: 1px solid #f0ebe3; z-index: 1; }
+    .day-map { height: 300px; border-radius: 0; margin: 0 -20px 0; border-bottom: 1px solid #f0ebe3; z-index: 1; }
     .leaflet-popup-content { font-family: "DM Sans", sans-serif; font-size: 13px; line-height: 1.5; min-width: 160px; }
     .leaflet-popup-content strong { color: #0a3d62; }
     .leaflet-popup-content .pop-type { font-size: 11px; color: #6b7c93; margin-top: 2px; }
@@ -312,6 +312,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle1">▸</div>
     </div>
     <div class="day-body" id="body1" style="display:none">
+    <div id="map-dag1" class="day-map"></div>
     <div class="webcam-strip"><a href="https://spotazores.com/en/webcam/sao-miguel/ponta-delgada-marina/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Marina Ponta Delgada</a></div>
     <div class="flight-card">
       <div class="flight-header">
@@ -468,8 +469,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag1" class="day-map"></div>
     </div>
 </div>
   </div>
@@ -491,6 +490,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle2">▸</div>
     </div>
     <div class="day-body" id="body2" style="display:none">
+    <div id="map-dag2" class="day-map"></div>
     <div class="webcam-strip"><a href="https://spotazores.com/en/webcam/sao-miguel/sete-cidades-cumeeiras/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Sete Cidades Cumeeiras</a><a href="https://spotazores.com/en/webcam/sao-miguel/sete-cidades-lagoa/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Sete Cidades Lagoa</a><a href="https://spotazores.com/en/webcam/sao-miguel/mosteiros-praia/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Mosteiros strand</a></div>
       
     
@@ -612,8 +612,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag2" class="day-map"></div>
     </div>
     </div>
 </div>
@@ -635,6 +633,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle3">▸</div>
     </div>
     <div class="day-body" id="body3" style="display:none">
+    <div id="map-dag3" class="day-map"></div>
     <div class="webcam-strip"><a href="https://spotazores.com/en/webcam/sao-miguel/lagoa-do-fogo/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Lagoa do Fogo</a><a href="https://spotazores.com/en/webcam/sao-miguel/ribeira-grande/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Ribeira Grande</a></div>
       <div style="font-size:11px;color:#bf360c;margin-top:6px;padding:4px 8px;background:#fff3e0;border-radius:6px">⚠️ AllTrails: gedeeltelijke sluiting seit mei 2026</div>
     <p>Het andere grote kratermeer, met een wildere uitstraling dan Sete Cidades. De klassieke volledige PRC2-wandeling (12 km / 3u45) zit aan de bovengrens van je tijdsbudget maar is goed te doen. Als je een kortere optie wilt, heb ik een alternatief gegeven.</p>
@@ -736,8 +735,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag3" class="day-map"></div>
     </div>
 </div>
 
@@ -758,6 +755,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle4">▸</div>
     </div>
     <div class="day-body" id="body4" style="display:none">
+    <div id="map-dag4" class="day-map"></div>
     <div class="webcam-strip"><a href="https://spotazores.com/en/webcam/sao-miguel/furnas/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Furnas (lagoa)</a></div>
       
     
@@ -879,8 +877,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag4" class="day-map"></div>
     </div>
     </div>
 </div>
@@ -902,6 +898,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle5">▸</div>
     </div>
     <div class="day-body" id="body5" style="display:none">
+    <div id="map-dag5" class="day-map"></div>
     <div class="webcam-strip"><a href="https://spotazores.com/en/webcam/sao-miguel/faial-da-terra/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Faial da Terra</a><a href="https://spotazores.com/en/webcam/sao-miguel/nordeste/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Nordeste</a><a href="https://spotazores.com/en/webcam/sao-miguel/povoacao/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Povoação</a></div>
       
     
@@ -1013,8 +1010,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag5" class="day-map"></div>
     </div>
     </div>
 </div>
@@ -1036,6 +1031,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle6">▸</div>
     </div>
     <div class="day-body" id="body6" style="display:none">
+    <div id="map-dag6" class="day-map"></div>
     <div class="webcam-strip"><a href="https://spotazores.com/en/webcam/sao-miguel/ribeira-grande/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Ribeira Grande</a><a href="https://spotazores.com/en/webcam/sao-miguel/piscinas-da-ribeira-grande/" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Piscinas Ribeira Grande</a></div>
       <div style="font-size:11px;color:#bf360c;margin-top:6px;padding:4px 8px;background:#fff3e0;border-radius:6px">⚠️ Watervalgedeelte gesloten seit okt. 2025</div>
     <p>Een rustigere dag — die heb je wel verdiend. Noordkust, theeplantages, en zelf je tempo bepalen 's middags.</p>
@@ -1128,8 +1124,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag6" class="day-map"></div>
     </div>
 </div>
 
@@ -1150,6 +1144,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle7">▸</div>
     </div>
     <div class="day-body" id="body7" style="display:none">
+    <div id="map-dag7" class="day-map"></div>
 
     <div class="flight-card">
       <div class="flight-header">
@@ -1239,7 +1234,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    <div id="map-dag7" class="day-map"></div>
     </div>
 </div>
   </div>
@@ -1272,6 +1266,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle8">▸</div>
     </div>
     <div class="day-body" id="body8" style="display:none">
+    <div id="map-dag8" class="day-map"></div>
 
     <div class="hotel-card">
       <div class="hotel-header">
@@ -1353,7 +1348,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    <div id="map-dag8" class="day-map"></div>
     </div>
 </div>
   </div>
@@ -1375,6 +1369,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle9">▸</div>
     </div>
     <div class="day-body" id="body9" style="display:none">
+    <div id="map-dag9" class="day-map"></div>
     <div class="webcam-strip"><a href="https://www.madeira-web.com/en/webcams/natural-pools-porto-moniz-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Porto Moniz (poelen)</a><a href="https://www.madeira-web.com/en/webcams/portomoniz-village-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Porto Moniz (dorp)</a></div>
       
     
@@ -1462,8 +1457,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag9" class="day-map"></div>
     </div>
     </div>
 </div>
@@ -1485,6 +1478,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle10">▸</div>
     </div>
     <div class="day-body" id="body10" style="display:none">
+    <div id="map-dag10" class="day-map"></div>
     <div class="webcam-strip"><a href="https://www.madeira-web.com/en/webcams/natural-pools-porto-moniz-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Porto Moniz (poelen)</a><a href="https://www.madeira-web.com/en/webcams/doca-do-cavacas-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Cabo Girão / Funchal kust</a></div>
 
     <div class="hotel-card">
@@ -1616,8 +1610,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag10" class="day-map"></div>
     </div>
 </div>
   </div>
@@ -1639,6 +1631,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle11">▸</div>
     </div>
     <div class="day-body" id="body11" style="display:none">
+    <div id="map-dag11" class="day-map"></div>
     <div class="webcam-strip"><a href="https://www.madeira-web.com/en/webcams/natural-pools-porto-moniz-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Porto Moniz (poelen)</a><a href="https://www.madeira-web.com/en/webcams/pontadelgada-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Ponta Delgada Noord</a></div>
       <div style="font-size:11px;color:#bf360c;margin-top:6px;padding:4px 8px;background:#fff3e0;border-radius:6px">⚠️ AllTrails: Zwaar (steile trappen) vs Komoot: Matig</div>
     <p>De beroemdste <em>levada</em>-wandeling van Madeira, die jullie noemden — door laurissilva-oerwoud naar een poel waar vijfentwintig watervalletjes tegelijk uit de rotswand stromen.</p>
@@ -1739,8 +1732,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag11" class="day-map"></div>
     </div>
 </div>
 
@@ -1761,6 +1752,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle12">▸</div>
     </div>
     <div class="day-body" id="body12" style="display:none">
+    <div id="map-dag12" class="day-map"></div>
     <div class="webcam-strip"><a href="https://www.madeira-web.com/en/webcams/pontadelgada-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Ponta Delgada Noord</a><a href="https://beyondmadeira.com/live-webcams#mountains" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Bergen (Beyond Madeira)</a></div>
       
     
@@ -1864,8 +1856,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag12" class="day-map"></div>
     </div>
     </div>
 </div>
@@ -1887,6 +1877,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle13">▸</div>
     </div>
     <div class="day-body" id="body13" style="display:none">
+    <div id="map-dag13" class="day-map"></div>
     <div class="webcam-strip"><a href="https://beyondmadeira.com/live-webcams#mountains" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Pico do Arieiro</a><a href="https://www.madeira-web.com/en/webcams/funchal-marina-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Funchal Marina</a></div>
 
     <div class="hotel-card">
@@ -2007,8 +1998,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag13" class="day-map"></div>
     </div>
 </div>
   </div>
@@ -2030,6 +2019,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle14">▸</div>
     </div>
     <div class="day-body" id="body14" style="display:none">
+    <div id="map-dag14" class="day-map"></div>
     <div class="webcam-strip"><a href="https://www.madeira-web.com/en/webcams/funchal-marina-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Funchal Marina</a><a href="https://beyondmadeira.com/live-webcams#mountains" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Bergen – Pico Ruivo</a></div>
       
     
@@ -2127,8 +2117,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag14" class="day-map"></div>
     </div>
     </div>
 </div>
@@ -2150,6 +2138,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle15">▸</div>
     </div>
     <div class="day-body" id="body15" style="display:none">
+    <div id="map-dag15" class="day-map"></div>
     <div class="webcam-strip"><a href="https://www.madeira-web.com/en/webcams/funchal-marina-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Funchal Marina</a><a href="https://www.madeira-web.com/en/webcams/lido-bathing-complex-livecam.html" target="_blank" class="webcam-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>📷 Lido Funchal</a></div>
       <p>Lichtere dag in en rond Funchal — markt, oude stad, kabelbaan, tropische tuin. Geen wandeling, wel veel sfeer.</p>
 <div class="alert">⚠️ <strong>Let op:</strong> 15 augustus is <em>Assunção de Nossa Senhora</em> (Maria-Tenhemelopneming), een nationale feestdag in Portugal. Veel winkels zijn dicht; restaurants en de kabelbaan blijven meestal wel open, maar reserveer voor het diner. Bij Monte is een belangrijke processie en festiviteit op deze dag — kan extra druk zijn maar ook bijzonder om te zien.</div>
@@ -2257,8 +2246,6 @@ footer a{color:rgba(255,255,255,.45)}
         </tbody>
       </table>
     </div>
-    
-    <div id="map-dag15" class="day-map"></div>
     </div>
 </div>
   </div>
@@ -2280,6 +2267,7 @@ footer a{color:rgba(255,255,255,.45)}
       <div class="day-toggle" id="toggle16">▸</div>
     </div>
     <div class="day-body" id="body16" style="display:none">
+    <div id="map-dag16" class="day-map"></div>
 
     <div class="flight-card">
       <div class="flight-header">
@@ -2326,7 +2314,6 @@ footer a{color:rgba(255,255,255,.45)}
 <p>---</p>
     
     <div style="position:relative">
-      <div id="map-dag16" class="day-map"></div>
     </div>
 </div>
 </div><!-- /madeira -->
@@ -2427,7 +2414,7 @@ footer a{color:rgba(255,255,255,.45)}
 
 <footer>
   <strong>Azoren &amp; Madeira — Zomervakantie 2026</strong><br>
-  2 augustus – 16 augustus · Versie 1.14 · São Miguel · Porto Moniz · Funchal<br>
+  2 augustus – 16 augustus · Versie 1.15 · São Miguel · Porto Moniz · Funchal<br>
   Webcams: <a href="https://www.spotazores.com/" target="_blank">spotazores.com</a> &nbsp;·&nbsp;
   <a href="https://beyondmadeira.com/live-webcams" target="_blank">beyondmadeira.com/live-webcams</a>
 </footer>
